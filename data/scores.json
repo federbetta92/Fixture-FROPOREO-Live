@@ -1,5 +1,90 @@
 {
-  "scores": {},
-  "updatedAt": "2026-06-15T20:01:38.802Z",
-  "matchCount": 0
+  "scores": {
+    "A1": {
+      "home": 2,
+      "away": 0,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.934Z"
+    },
+    "A2": {
+      "home": 2,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.934Z"
+    },
+    "D1": {
+      "home": 4,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.958Z"
+    },
+    "B2": {
+      "home": 1,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.972Z"
+    },
+    "C1": {
+      "home": 1,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.973Z"
+    },
+    "C2": {
+      "home": 0,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.973Z"
+    },
+    "E1": {
+      "home": 7,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.988Z"
+    },
+    "F1": {
+      "home": 2,
+      "away": 2,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.988Z"
+    },
+    "E2": {
+      "home": 1,
+      "away": 0,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.988Z"
+    },
+    "F2": {
+      "home": 5,
+      "away": 1,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:55.988Z"
+    },
+    "H1": {
+      "home": 0,
+      "away": 0,
+      "status": "finished",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:56.000Z"
+    },
+    "G1": {
+      "home": 0,
+      "away": 1,
+      "status": "live",
+      "auto": true,
+      "updatedAt": "2026-06-15T20:02:56.000Z"
+    }
+  },
+  "updatedAt": "2026-06-15T20:02:56.013Z",
+  "matchCount": 12
 }
