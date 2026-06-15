@@ -1,0 +1,700 @@
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --orange:      #F07823;
+  --orange-dark: #C95F10;
+  --orange-lite: #F9A96A;
+  --pink:        #F5C3AA;
+  --green-900:   #071F17;
+  --green-800:   #0C3B2E;
+  --green-700:   #0F4A38;
+  --green-600:   #155C45;
+  --green-500:   #1D7A5E;
+  --cream:       #FDF0E8;
+  --win:  #2ECC71;
+  --lose: #E74C3C;
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--green-900);
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+img { display: inline-block; vertical-align: middle; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ─── VIEW SWITCHER SCREEN ───────────────────────────── */
+#view-chooser {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--green-900);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 32px; padding: 24px;
+}
+#view-chooser .vc-logo {
+  /* Cambiamos los tonos aquí también */
+  background: #75AADB;
+  border: 3px solid #FFFFFF;
+  border-radius: 10px;
+  padding: 8px 22px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px; letter-spacing: 5px;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+}
+#view-chooser h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 4px;
+  color: var(--orange-lite); text-align: center;
+}
+#view-chooser .vc-btns {
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+}
+.vc-btn {
+  background: var(--green-800);
+  border: 2px solid rgba(240,120,35,.3);
+  border-radius: 12px;
+  padding: 20px 28px;
+  color: var(--cream); text-align: center;
+  transition: border-color .2s, transform .15s;
+  min-width: 140px;
+}
+.vc-btn:hover { border-color: var(--orange); transform: translateY(-2px); }
+.vc-btn .vc-icon { font-size: 40px; display: block; margin-bottom: 10px; }
+.vc-btn .vc-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px; letter-spacing: 3px; color: var(--orange-lite);
+  display: block;
+}
+.vc-btn .vc-sub {
+  font-size: 11px; color: rgba(255,255,255,.4);
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 1px; margin-top: 3px; display: block;
+}
+#view-chooser .vc-note {
+  font-size: 12px; color: rgba(255,255,255,.3);
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 1px; text-align: center;
+}
+
+/* ─── APP WRAPPER ────────────────────────────────────── */
+#app { display: none; }
+
+/* ─── HEADER ─────────────────────────────────────────── */
+.header {
+  background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 60%, var(--green-600) 100%);
+  border-bottom: 3px solid var(--orange);
+  position: relative; overflow: hidden;
+}
+.header::before {
+  content:'';position:absolute;inset:0;
+  background: repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(240,120,35,.03) 40px,rgba(240,120,35,.03) 42px);
+  pointer-events:none;
+}
+.header-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 20px 16px;
+  max-width: 1400px; margin: 0 auto;
+}
+.header-ball {
+  font-size: 42px; flex-shrink: 0;
+  filter: drop-shadow(0 0 14px rgba(240,120,35,.8));
+  animation: glow 3s ease-in-out infinite;
+}
+@keyframes glow {
+  0%,100% { filter: drop-shadow(0 0 14px rgba(240,120,35,.6)); }
+  50%      { filter: drop-shadow(0 0 28px rgba(240,120,35,1)); }
+}
+.header-text { flex: 1; min-width: 0; }
+/* Logo compacto pero visible */
+.header-brand {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #75AADB !important;
+  color: #FFFFFF !important;
+  border: 2px solid #4A90E2 !important;
+  
+  padding: 10px 30px !important; /* Aumentamos un poco el padding */
+  font-size: 24px !important;    /* Un poquito más grande */
+  font-family: 'Bebas Neue', sans-serif !important;
+  letter-spacing: 1.5px !important;
+  border-radius: 8px !important;
+  white-space: nowrap !important;
+  
+  /* ESTO ES LO QUE FALTABA */
+  min-width: 140px !important; 
+  flex-shrink: 0 !important; 
+}
+.header-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(18px, 6vw, 72px); /* Bajamos el mínimo a 18px y el ritmo a 6vw */
+  letter-spacing: 5px; 
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cream), var(--orange-lite), var(--orange));
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+}
+
+/* Y acá abajo achicamos el espacio entre letras solo para celu */
+@media (max-width: 480px) {
+  .header-title {
+    letter-spacing: 2px; /* Menos espacio horizontal en celular */
+  }
+}
+/* Atacamos directo al ID para ganarle a cualquier otro estilo */
+#header-sub {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: clamp(11px, 2.5vw, 13px) !important;
+  font-weight: 400 !important; 
+  letter-spacing: 3px !important;
+  color: var(--orange-lite) !important; 
+  margin-top: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+.header-countries {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+.country-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important; 
+  white-space: nowrap !important; 
+}
+
+.header-dates {
+  white-space: nowrap !important;
+}
+
+/* 🛠️ FUERZA BRUTA PARA CELULARES */
+@media (max-width: 480px) {
+  #header-sub {
+    flex-direction: column !important; /* Apila países arriba y fechas abajo */
+    gap: 6px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .header-countries {
+    flex-direction: column !important; /* Un país abajo del otro */
+    gap: 4px !important;
+  }
+
+  .country-separator, .date-separator {
+    display: none !important; /* Desaparecen los puntos y barras */
+  }
+
+
+/* Esto es el "seguro de vida" para que nada se ponga al lado de la fecha */
+#header-sub {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+}
+.header-right {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0;
+}
+.header-flags { font-size: 22px; display: flex; gap: 6px; }
+#live-badge {
+  display: none; align-items: center; gap: 6px;
+  background: rgba(231,76,60,.15); border: 1px solid rgba(231,76,60,.5);
+  border-radius: 4px; padding: 4px 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #ff6b6b;
+}
+.live-dot {
+  width: 7px; height: 7px; background: #ff6b6b;
+  border-radius: 50%; animation: blink 1.2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* View switch button in header */
+#switch-view-btn {
+  background: rgba(240,120,35,.1); border: 1px solid rgba(240,120,35,.3);
+  border-radius: 5px; padding: 5px 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  color: var(--orange-lite); white-space: nowrap;
+  transition: background .2s;
+}
+#switch-view-btn:hover { background: rgba(240,120,35,.2); }
+
+/* ─── NAV ────────────────────────────────────────────── */
+.nav {
+  background: var(--green-800);
+  border-bottom: 1px solid rgba(240,120,35,.2);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; overflow-x: auto; scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 18px; background: none; border: none;
+  color: rgba(253,240,232,.45);
+  border-bottom: 3px solid transparent;
+  transition: all .2s; white-space: nowrap;
+}
+.nav-btn:hover, .nav-btn.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+  background: rgba(240,120,35,.05);
+}
+
+/* ─── MAIN ────────────────────────────────────────────── */
+.main { max-width: 1400px; margin: 0 auto; padding: 20px 14px 60px; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* ─── UPDATE BAR ─────────────────────────────────────── */
+.update-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  background: rgba(240,120,35,.05);
+  border: 1px solid rgba(240,120,35,.12);
+  border-radius: 6px; padding: 10px 16px; margin-bottom: 20px;
+}
+.update-bar span { font-size: 12px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; }
+.update-label { color: rgba(255,255,255,.4); }
+.update-time  { color: var(--orange); font-weight: 700; }
+.update-hint  { color: rgba(255,255,255,.3); }
+.refresh-btn {
+  background: rgba(240,120,35,.12); border: 1px solid rgba(240,120,35,.35);
+  border-radius: 4px; padding: 6px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  color: var(--orange); transition: background .2s;
+}
+.refresh-btn:hover { background: rgba(240,120,35,.25); }
+
+/* ─── SECTION TITLE ──────────────────────────────────── */
+.sec-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; letter-spacing: 5px; color: var(--orange);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-title::after { content:''; flex:1; height:1px; background: linear-gradient(90deg,rgba(240,120,35,.4),transparent); }
+
+/* ─── MOBILE GROUPS LAYOUT ───────────────────────────── */
+.view-mobile .groups-grid {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+/* ─── DESKTOP GROUPS LAYOUT ──────────────────────────── */
+.view-desktop .groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+/* ─── GROUP CARD ─────────────────────────────────────── */
+.group-card {
+  background: linear-gradient(160deg, var(--green-800), var(--green-700));
+  border: 1px solid rgba(240,120,35,.2);
+  border-radius: 10px; overflow: hidden;
+}
+.group-card-header {
+  background: linear-gradient(90deg, var(--green-600), var(--green-500));
+  padding: 11px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid var(--orange);
+}
+.group-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px; letter-spacing: 4px; color: var(--orange-lite);
+}
+.group-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(240,120,35,.6); text-transform: uppercase;
+}
+
+/* ─── TABLA DE POSICIONES (REEMPLAZAR TODO EL BLOQUE .TBL) ─── */
+.tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
+
+.tbl th, .tbl td { 
+  padding: 6px 0; text-align: center; overflow: hidden; 
+  font-family: 'Barlow', sans-serif; font-size: 11px;
+}
+
+/* Damos 40% al equipo para que los nombres respiren */
+.tbl th.col-team, .tbl td.col-team { width: 40%; text-align: left; padding-left: 8px; }
+
+/* Las 6 columnas restantes se reparten el 60% restante (10% cada una) */
+.tbl th:not(.col-team), .tbl td:not(.col-team) { width: 10%; text-align: center; padding: 8px 0; font-size: 12px;}
+
+/* Estilos específicos que tenías */
+.tbl th { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; color: rgba(240,120,35,.55); text-transform: uppercase; }
+.tbl td { color: var(--cream); border-bottom: 1px solid rgba(255,255,255,.04); }
+.tbl .pts { font-family: 'Bebas Neue', sans-serif; font-size: 17px; color: var(--orange-lite); }
+.tbl .gd-pos { color: var(--win); font-weight: bold; }
+.tbl .gd-neg { color: var(--lose); font-weight: bold; }
+.tbl .gd-nil { color: rgba(255,255,255,.4); }
+
+/* ─── AJUSTES DE ESPACIADO EN LA TABLA ──────────────── */
+
+/* 1. Contenedor de la celda del equipo: alineación y espaciado */
+.team-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* <--- Aumentamos gap de 5px a 10px para separar qdot, bandera y nombre */
+}
+
+/* 2. Bandera: le damos un margen derecho extra por si el gap no es suficiente */
+.team-cell img.flag-img { /* Asumiendo que tu función flag() genera un img con esta clase */
+    margin-right: 4px;
+}
+
+/* Aseguramos que los puntos tengan tamaño y color */
+.qdot {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50%;
+    display: inline-block !important; /* Vital para que se vea */
+    flex-shrink: 0;
+}
+
+/* Colores */
+.qdot-1 { background: var(--orange) !important; }
+.qdot-2 { background: var(--orange-dark) !important; }
+.qdot-3 { background: var(--pink) !important; }
+
+/* Espaciador (para los que no tienen punto) */
+.qdot-spacer {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+}
+
+/* Aseguramos que la celda del equipo tenga padding izquierdo */
+.tbl td.col-team {
+    padding-left: 8px; 
+}
+/* Unificamos todo para que no haya conflicto de prioridad */
+.t-name, 
+.view-desktop .t-name { 
+    font-family: 'Barlow', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    white-space: nowrap;
+    color: var(--cream);
+    letter-spacing: 0px;
+}
+/* ─── MATCH ROWS ─────────────────────────────────────── */
+.group-matches { border-top: 1px solid rgba(240,120,35,.1); }
+.match-row {
+  display: flex; align-items: center;
+  padding: 9px 12px; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  cursor: pointer; transition: background .15s;
+}
+.match-row:hover { background: rgba(240,120,35,.08); }
+.match-row:last-child { border-bottom: none; }
+
+.m-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; letter-spacing: .5px;
+  color: rgba(240,120,35,.5);
+  min-width: 56px; flex-shrink: 0;
+}
+.m-teams {
+  flex: 1; display: flex; align-items: center;
+  gap: 5px; min-width: 0; overflow: hidden;
+}
+.m-tname {
+  font-size: 11px; font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: .5px;
+}
+.m-vs {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; color: rgba(255,255,255,.3);
+  font-weight: 700; flex-shrink: 0;
+}
+.m-score {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px; letter-spacing: 2px;
+  color: var(--orange-lite); flex-shrink: 0;
+  min-width: 46px; text-align: center;
+}
+.m-score.pending { color: rgba(255,255,255,.2); font-size: 11px; }
+.m-score.live    { color: #ff6b6b; animation: score-pulse 2s ease-in-out infinite; }
+@keyframes score-pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+.m-edit { font-size: 12px; opacity: .25; flex-shrink: 0; }
+
+/* Desktop wider team name in match rows */
+.view-desktop .m-tname { font-size: 13px; }
+.view-desktop .m-score { font-size: 22px; min-width: 56px; }
+.view-desktop .m-date { min-width: 72px; font-size: 11px; }
+
+/* ─── FIXTURE CALENDAR ───────────────────────────────── */
+.cal-day { margin-bottom: 24px; }
+.cal-day-header {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1px solid rgba(240,120,35,.2);
+}
+.cal-day-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 3px; color: var(--orange);
+}
+.cal-day-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(240,120,35,.4); text-transform: uppercase;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.view-desktop .cal-grid {
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+.cal-card {
+  background: linear-gradient(135deg, var(--green-800), var(--green-700));
+  border: 1px solid rgba(240,120,35,.15);
+  border-radius: 8px; padding: 12px 14px;
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: border-color .2s;
+}
+.cal-card:hover { border-color: rgba(240,120,35,.4); }
+.cal-card.is-live { border-color: rgba(231,76,60,.45); }
+.cal-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 1px;
+  color: var(--orange-lite); flex-shrink: 0; min-width: 46px;
+}
+.cal-divider { width:1px; height:34px; background:rgba(240,120,35,.2); flex-shrink:0; }
+.cal-body { flex:1; min-width:0; }
+.cal-group-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--orange-dark); margin-bottom: 3px;
+}
+.cal-teams {
+  font-weight: 600; font-size: 13px;
+  display: flex; align-items: center; gap: 6px;
+  overflow: hidden;
+}
+.cal-tname { white-space:nowrap; font-weight:600; letter-spacing:.5px; }
+.cal-venue { font-size: 10px; color: rgba(255,255,255,.3); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cal-score {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px; letter-spacing: 3px; color: var(--orange); flex-shrink:0;
+}
+.cal-score.pending { color: rgba(255,255,255,.15); font-size: 14px; }
+.cal-score.live    { color: #ff6b6b; }
+
+/* ─── KNOCKOUT ────────────────────────────────────────── */
+.ko-round-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 4px; color: var(--orange);
+  margin: 24px 0 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ko-round-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(240,120,35,.3),transparent); }
+.ko-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px; margin-bottom: 8px;
+}
+.view-desktop .ko-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.ko-card {
+  background: linear-gradient(135deg, var(--green-800), var(--green-700));
+  border: 1px solid rgba(240,120,35,.18);
+  border-radius: 8px; padding: 14px;
+}
+.ko-card.final-card { border-color: var(--orange-lite); background: linear-gradient(135deg, var(--green-800), #1a1200); }
+.ko-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(240,120,35,.5); text-transform: uppercase; margin-bottom: 8px;
+}
+.ko-match {
+  display: flex; align-items: center; gap: 8px;
+}
+.ko-team {
+  flex: 1; display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; overflow: hidden;
+}
+.ko-team.right { justify-content: flex-end; flex-direction: row-reverse; }
+.ko-team span.tname { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px; font-size:12px; }
+.ko-score {
+  font-family: 'Bebas Neue', sans-serif; font-size: 26px;
+  letter-spacing: 3px; color: var(--orange-lite); flex-shrink:0;
+}
+.final-card .ko-score { color: var(--orange); }
+.ko-venue { font-size: 10px; color: rgba(255,255,255,.3); margin-top:8px; }
+.ko-pending { color:rgba(255,255,255,.25); font-size:12px; font-family:'Barlow Condensed',sans-serif; letter-spacing:1px; }
+
+/* ─── ARGENTINA SPECIAL ──────────────────────────────── */
+.arg-banner {
+  background: linear-gradient(135deg, rgba(240,120,35,.08), rgba(12,59,46,.6));
+  border: 1px solid rgba(240,120,35,.3);
+  border-radius: 10px; padding: 20px;
+  margin-bottom: 24px; position: relative; overflow: hidden;
+}
+.arg-banner::after {
+  content:'🏆'; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:70px; opacity:.07; pointer-events:none;
+}
+.arg-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; letter-spacing: 5px; color: var(--orange-lite);
+  margin-bottom: 14px;
+}
+
+/* ─── SCORE EDITOR MODAL ─────────────────────────────── */
+#score-modal {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,.8);
+  align-items: center; justify-content: center; padding: 20px;
+}
+#score-modal.open { display: flex; }
+.modal-box {
+  background: linear-gradient(135deg, var(--green-800), var(--green-700));
+  border: 2px solid var(--orange);
+  border-radius: 14px; padding: 24px;
+  max-width: 400px; width: 100%;
+  box-shadow: 0 24px 60px rgba(0,0,0,.7);
+}
+.modal-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  color: var(--orange); text-transform: uppercase; margin-bottom: 4px;
+}
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 2px; color: var(--cream);
+  margin-bottom: 3px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+}
+.modal-sub {
+  font-size: 11px; color: rgba(255,255,255,.35);
+  font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; margin-bottom: 20px;
+}
+.modal-scores {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 10px; align-items: center; margin-bottom: 16px;
+}
+.modal-team-label {
+  font-size: 11px; color: var(--orange-lite);
+  font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px;
+  margin-bottom: 6px; text-align: center;
+}
+.modal-inp {
+  width: 100%; background: rgba(0,0,0,.3);
+  border: 2px solid rgba(240,120,35,.35); border-radius: 8px;
+  padding: 12px 6px; font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px; color: var(--cream); text-align: center;
+  outline: none; transition: border-color .2s;
+}
+.modal-inp:focus { border-color: var(--orange); }
+.modal-sep { font-family:'Bebas Neue',sans-serif; font-size:28px; color:rgba(255,255,255,.2); text-align:center; }
+.modal-status-label {
+  font-size: 11px; color: rgba(255,255,255,.4);
+  font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; margin-bottom: 6px;
+}
+.modal-select {
+  width: 100%; background: var(--green-800);
+  border: 2px solid rgba(240,120,35,.35); border-radius: 8px;
+  padding: 10px 12px; color: var(--cream);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 600; letter-spacing: 1px;
+  outline: none; margin-bottom: 16px; cursor: pointer;
+}
+.modal-btns { display:flex; gap:10px; }
+.modal-save {
+  flex: 1; background: var(--orange); color: var(--green-900);
+  border: none; border-radius: 8px; padding: 13px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px;
+  transition: opacity .15s;
+}
+.modal-save:hover { opacity: .85; }
+.modal-cancel {
+  background: rgba(255,255,255,.07); color: rgba(255,255,255,.4);
+  border: 1px solid rgba(255,255,255,.15); border-radius: 8px;
+  padding: 13px 16px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px;
+}
+.modal-hint {
+  margin-top: 12px; font-size: 10px; color: rgba(255,255,255,.2);
+  text-align: center; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px;
+}
+
+/* ─── INSTALL BANNER ─────────────────────────────────── */
+#install-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+  background: linear-gradient(135deg, var(--green-800), var(--green-600));
+  border-top: 2px solid var(--orange);
+  padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+  align-items: center; gap: 14px;
+  box-shadow: 0 -8px 32px rgba(0,0,0,.5);
+}
+#ios-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+  background: linear-gradient(135deg, var(--green-800), var(--green-700));
+  border-top: 2px solid var(--orange);
+  padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+  flex-direction: column; gap: 10px;
+  box-shadow: 0 -8px 32px rgba(0,0,0,.6);
+}
+.banner-btn {
+  background: var(--orange); color: var(--green-900); border: none;
+  border-radius: 6px; padding: 9px 18px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+}
+.banner-dismiss {
+  background: none; border: 1px solid rgba(240,120,35,.3);
+  border-radius: 6px; padding: 9px 12px;
+  color: rgba(255,255,255,.4); font-size: 16px;
+}
+.ios-step {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(240,120,35,.07); border: 1px solid rgba(240,120,35,.2);
+  border-radius: 8px; padding: 12px;
+  font-size: 12px; color: rgba(255,255,255,.7);
+}
+.text-bold {
+    font-weight: 700 !important;
+}
+
+/* ── Auto-sync badge ─────────────────────────────────────── */
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.sync-ok    { background: rgba(0,200,100,.15); color: #2ecc71; border: 1px solid rgba(0,200,100,.3); }
+.sync-syncing { background: rgba(240,120,35,.15); color: var(--orange-lite); border: 1px solid rgba(240,120,35,.3); animation: pulse 1.2s ease-in-out infinite; }
+.sync-idle  { background: rgba(255,255,255,.06); color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.1); }
+.sync-error { background: rgba(255,60,60,.15); color: #e74c3c; border: 1px solid rgba(255,60,60,.3); }
+
+/* ── Indicador de resultado automático vs manual ─────────── */
+.m-score[data-auto="false"]::after { content: " ✏️"; font-size: 9px; opacity: .5; }

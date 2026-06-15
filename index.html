@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Froporeo — Fixture Mundial 2026 (Live)</title>
+<meta name="theme-color" content="#071F17">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Froporeo 2026">
+<meta property="og:title" content="🏆 Froporeo — Fixture Mundial 2026">
+<meta property="og:description" content="Seguí todos los partidos, grupos y resultados. By Froporeo 🧡">
+<meta property="og:type" content="website">
+<link rel="manifest" id="pwa-manifest">
+<link rel="apple-touch-icon" id="apple-icon">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- ══ VIEW CHOOSER ════════════════════════════════════ -->
+<div id="view-chooser">
+  <div class="vc-logo">FROPOREO</div>
+  <h2>¿CÓMO QUERÉS VER EL FIXTURE?</h2>
+  <div class="vc-btns">
+    <button class="vc-btn" onclick="setView('mobile')">
+      <span class="vc-icon">📱</span>
+      <span class="vc-label">Mobile</span>
+      <span class="vc-sub">Compacto · ideal para celu</span>
+    </button>
+    <button class="vc-btn" onclick="setView('desktop')">
+      <span class="vc-icon">🖥️</span>
+      <span class="vc-label">Desktop</span>
+      <span class="vc-sub">Amplio · ideal para PC</span>
+    </button>
+  </div>
+  <p class="vc-note">Podés cambiar la vista en cualquier momento desde el header</p>
+</div>
+
+<!-- ══ APP ══════════════════════════════════════════════ -->
+<div id="app">
+
+  <header class="header">
+    <div class="header-inner">
+      <!-- 3 BALLS -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;flex-shrink:0">
+        <img src="img/ball.png" alt="" style="width:28px;height:28px;object-fit:contain;filter:drop-shadow(0 0 5px rgba(240,120,35,.7));animation:glow 3s ease-in-out infinite 0.6s">
+        <img src="img/ball.png" alt="" style="width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 9px rgba(240,120,35,.7));animation:glow 3s ease-in-out infinite 0.3s">
+        <img src="img/ball.png" alt="" style="width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(240,120,35,.8));animation:glow 3s ease-in-out infinite">
+      </div>
+<!-- CENTER: title -->
+<div class="header-text" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 5px;">
+  
+  <div class="header-title" style="font-family:'Bebas Neue',sans-serif; font-size:45px; line-height:1; color: var(--brand-white); margin-bottom: 8px;">
+    MUNDIAL<br>2026
+  </div>
+  
+  <div style="display:flex; flex-direction:column; align-items:center; font-family:'Barlow Condensed',sans-serif; font-size:20px; color:var(--orange-lite); line-height:1.6; margin-bottom: 8px;">
+    <div style="display:flex; align-items:center; gap: 8px; justify-content: flex-start; width: 100px;"><span><img src="https://flagcdn.com/24x18/us.png" width="24" height="18" alt="USA"></span><span class="text-bold">USA</span></div>
+    <div style="display:flex; align-items:center; gap: 8px; justify-content: flex-start; width: 100px;"><span><img src="https://flagcdn.com/24x18/mx.png" width="24" height="18" alt="MEX"></span><span class="text-bold">MÉXICO</span></div>
+    <div style="display:flex; align-items:center; gap: 8px; justify-content: flex-start; width: 100px;"><span><img src="https://flagcdn.com/24x18/ca.png" width="24" height="18" alt="CAN"></span><span class="text-bold">CANADÁ</span></div>
+  </div>
+
+<div style="font-family:'Barlow Condensed',sans-serif; font-size:18px; color:var(--orange-lite); font-weight:bold; white-space:nowrap; margin-top: 4px;">
+  11 JUN – 19 JUL
+</div>
+</div>
+
+<div style="display:flex; flex-direction:column; align-items:center; gap:10px; flex-shrink:0; min-width: 150px;">
+  <div class="header-brand">FROPOREO</div>
+  <div id="live-badge" style="text-align:center;"><div class="live-dot"></div>EN VIVO</div>
+</div>
+    </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <button class="nav-btn active" onclick="showSection('grupos',this)">Grupos</button>
+      <button class="nav-btn" onclick="showSection('fixture',this)">Fixture</button>
+      <button class="nav-btn" onclick="showSection('argentina',this)"><img src="https://flagcdn.com/24x18/ar.png" width="20" height="15" style="border-radius:2px;vertical-align:middle;margin-right:4px"> Argentina</button>
+      <button class="nav-btn" onclick="showSection('eliminatorias',this)">Eliminatorias</button>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="update-bar">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span class="update-label">Actualizado: </span>
+        <span class="update-time" id="update-time">—</span>
+        <span id="sync-badge" class="sync-badge sync-idle">⏳ Iniciando...</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="update-hint">🤖 Auto · ✏️ Tocá para editar</span>
+        <button class="refresh-btn" onclick="syncScores()">↻ Sync</button>
+      </div>
+    </div>
+
+    <!-- GRUPOS -->
+    <section class="section active" id="sec-grupos">
+      <div class="sec-title">Fase de Grupos</div>
+      <div class="groups-grid" id="groups-grid"></div>
+    </section>
+
+    <!-- FIXTURE -->
+    <section class="section" id="sec-fixture">
+      <div class="sec-title">Calendario</div>
+      <div id="fixture-container"></div>
+    </section>
+
+    <!-- ARGENTINA -->
+    <section class="section" id="sec-argentina">
+      <div class="sec-title">&nbsp;·&nbsp; Argentina</div>
+      <div class="arg-banner">
+        <div class="arg-title" id="arg-banner-title"><img src="https://flagcdn.com/24x18/ar.png" width="24" height="18" style="border-radius:2px;vertical-align:middle"> GRUPO J — CAMPEÓN DEFENSOR</div>
+        <div id="arg-matches"></div>
+      </div>
+      <div class="sec-title" style="font-size:22px">Tabla Grupo J</div>
+      <div id="arg-standings"></div>
+    </section>
+
+    <!-- ELIMINATORIAS -->
+    <section class="section" id="sec-eliminatorias">
+      <div class="sec-title">Fase Eliminatoria</div>
+      <div id="ko-container"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══ MODAL ════════════════════════════════════════════ -->
+<div id="score-modal">
+  <div class="modal-box">
+    <div class="modal-tag">Cargar resultado</div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-sub" id="modal-sub"></div>
+    <input type="hidden" id="modal-id">
+    <div class="modal-scores">
+      <div>
+        <div class="modal-team-label" id="modal-home-label"></div>
+        <input class="modal-inp" id="inp-home" type="number" min="0" max="99" placeholder="0">
+      </div>
+      <div class="modal-sep">—</div>
+      <div>
+        <div class="modal-team-label" id="modal-away-label"></div>
+        <input class="modal-inp" id="inp-away" type="number" min="0" max="99" placeholder="0">
+      </div>
+    </div>
+    <div class="modal-status-label">ESTADO DEL PARTIDO</div>
+    <select class="modal-select" id="inp-status">
+      <option value="finished">✅ Finalizado</option>
+      <option value="live">🔴 En curso (LIVE)</option>
+      <option value="delete">🗑 Borrar resultado</option>
+    </select>
+    <div class="modal-btns">
+      <button class="modal-save" onclick="saveScore()">GUARDAR</button>
+      <button class="modal-cancel" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-hint">Enter para guardar · Esc para cerrar · Se guarda en este dispositivo</div>
+  </div>
+</div>
+
+<!-- ══ INSTALL BANNERS ════════════════════════════════ -->
+<div id="install-banner">
+  <div style="font-size:30px">⚽</div>
+  <div style="flex:1">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;color:var(--orange-lite)">INSTALAR APP</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.4);font-family:'Barlow Condensed',sans-serif">Agregá Froporeo a tu pantalla de inicio</div>
+  </div>
+  <button class="banner-btn" onclick="installApp()">INSTALAR</button>
+  <button class="banner-dismiss" onclick="document.getElementById('install-banner').style.display='none'">✕</button>
+</div>
+
+<div id="ios-banner">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--orange-lite)">📲 INSTALAR EN IPHONE</div>
+    <button class="banner-dismiss" onclick="document.getElementById('ios-banner').style.display='none'">✕</button>
+  </div>
+  <div class="ios-step"><span style="font-size:22px">1️⃣</span> Tocá el botón <strong style="color:var(--orange)">Compartir ⎋</strong> en Safari</div>
+  <div class="ios-step"><span style="font-size:22px">2️⃣</span> Elegí <strong style="color:var(--orange)">"Agregar a pantalla de inicio"</strong> y confirmá</div>
+</div>
+
+<!-- ══ SCRIPTS ═══════════════════════════════════════ -->
+<script src="js/app.js"></script>
+</body>
+</html>

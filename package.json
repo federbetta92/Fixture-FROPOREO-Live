@@ -1,0 +1,11 @@
+{
+  "name": "fixture-froporeo-live",
+  "version": "2.0.0",
+  "description": "Fixture Mundial 2026 con resultados automáticos vía ESPN",
+  "scripts": {
+    "fetch": "node scripts/fetch-scores.js",
+    "start": "node server.js"
+  },
+  "keywords": ["mundial", "2026", "fixture", "froporeo"],
+  "license": "MIT"
+}
