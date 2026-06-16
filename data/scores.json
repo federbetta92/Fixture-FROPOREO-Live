@@ -5,100 +5,100 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.404Z"
+      "updatedAt": "2026-06-16T15:30:27.772Z"
     },
     "A2": {
       "home": 2,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.404Z"
+      "updatedAt": "2026-06-16T15:30:27.772Z"
     },
     "D1": {
       "home": 4,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.454Z"
+      "updatedAt": "2026-06-16T15:30:27.864Z"
     },
     "B2": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.482Z"
+      "updatedAt": "2026-06-16T15:30:27.922Z"
     },
     "C1": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.482Z"
+      "updatedAt": "2026-06-16T15:30:27.922Z"
     },
     "C2": {
       "home": 0,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.482Z"
+      "updatedAt": "2026-06-16T15:30:27.922Z"
     },
     "E1": {
       "home": 7,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.503Z"
+      "updatedAt": "2026-06-16T15:30:28.072Z"
     },
     "F1": {
       "home": 2,
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.503Z"
+      "updatedAt": "2026-06-16T15:30:28.073Z"
     },
     "E2": {
       "home": 1,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.503Z"
+      "updatedAt": "2026-06-16T15:30:28.073Z"
     },
     "F2": {
       "home": 5,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.503Z"
+      "updatedAt": "2026-06-16T15:30:28.073Z"
     },
     "H1": {
       "home": 0,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.525Z"
+      "updatedAt": "2026-06-16T15:30:28.110Z"
     },
     "G1": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.525Z"
+      "updatedAt": "2026-06-16T15:30:28.110Z"
     },
     "H2": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.526Z"
+      "updatedAt": "2026-06-16T15:30:28.110Z"
     },
     "G2": {
       "home": 2,
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-16T10:29:12.526Z"
+      "updatedAt": "2026-06-16T15:30:28.110Z"
     }
   },
-  "updatedAt": "2026-06-16T10:29:12.568Z",
+  "updatedAt": "2026-06-16T15:30:28.233Z",
   "matchCount": 14
 }
