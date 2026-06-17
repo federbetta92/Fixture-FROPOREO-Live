@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T19:49:58.585Z",
+  "generatedAt": "2026-06-17T21:48:27.713Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -227,10 +227,12 @@
     },
     {
       "date": "20260617",
-      "raw": "England vs Croatia",
-      "mapped": "Inglaterra vs Croacia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "England",
+      "awayEN": "Croatia",
+      "homeES": "Inglaterra",
+      "awayES": "Croacia",
+      "statusName": "STATUS_SECOND_HALF",
+      "matchedId": "L1"
     },
     {
       "date": "20260617",
