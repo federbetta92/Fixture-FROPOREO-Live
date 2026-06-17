@@ -95,7 +95,7 @@ function findMatch(homeES, awayES) {
   return null;
 }
 
-async function fetchDate(dateStr, scores) {
+async function fetchDate(dateStr, scores, debugLog) {
   const endpoints = [
     `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=${dateStr}`,
     `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world.cup/scoreboard?dates=${dateStr}`,
@@ -105,13 +105,13 @@ async function fetchDate(dateStr, scores) {
     try {
       const data = await fetchJSON(url);
       const events = data.events || [];
+      debugLog.push({ date: dateStr, endpoint: url.includes('cup') ? 'cup' : 'world', eventsFound: events.length });
       if (events.length === 0) continue;
 
       for (const event of events) {
         try {
           const comp = event.competitions[0];
           const statusName = comp.status?.type?.name || '';
-          if (statusName === 'STATUS_SCHEDULED') continue;
 
           const homeCmp = comp.competitors?.find(c => c.homeAway === 'home');
           const awayCmp = comp.competitors?.find(c => c.homeAway === 'away');
@@ -122,8 +122,18 @@ async function fetchDate(dateStr, scores) {
           const homeES = ESPN_TO_SPANISH[homeEN] || homeEN;
           const awayES = ESPN_TO_SPANISH[awayEN] || awayEN;
 
+          if (statusName === 'STATUS_SCHEDULED') {
+            debugLog.push({ date: dateStr, raw: `${homeEN} vs ${awayEN}`, mapped: `${homeES} vs ${awayES}`, statusName, skipped: 'scheduled' });
+            continue;
+          }
+
           const found = findMatch(homeES, awayES);
-          if (!found) { console.log(`  ⚠ Sin match: ${homeES} vs ${awayES}`); continue; }
+          debugLog.push({
+            date: dateStr,
+            homeEN, awayEN, homeES, awayES, statusName,
+            matchedId: found ? found.match.id : null,
+          });
+          if (!found) { console.log(`  ⚠ Sin match: ${homeES} vs ${awayES} (raw: ${homeEN} vs ${awayEN})`); continue; }
 
           const { match, flipped } = found;
           let h = parseInt(homeCmp.score) || 0;
@@ -135,11 +145,12 @@ async function fetchDate(dateStr, scores) {
 
           scores[match.id] = { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString() };
           console.log(`  ✓ ${match.id}: ${homeES} ${h}-${a} ${awayES} [${status}]`);
-        } catch(e) { /* ignorar eventos con error */ }
+        } catch(e) { debugLog.push({ date: dateStr, error: e.message }); }
       }
       return;
     } catch(e) {
       console.warn(`  Error endpoint ${url.includes('cup') ? 'cup' : 'world'}: ${e.message}`);
+      debugLog.push({ date: dateStr, endpoint: url.includes('cup') ? 'cup' : 'world', fetchError: e.message });
     }
   }
 }
@@ -147,11 +158,13 @@ async function fetchDate(dateStr, scores) {
 async function main() {
   console.log('🔄 Actualizando resultados del Mundial 2026...\n');
   const outputPath = path.join(__dirname, '..', 'data', 'scores.json');
+  const debugPath  = path.join(__dirname, '..', 'data', 'debug.json');
 
   let existingScores = {};
   try { existingScores = JSON.parse(fs.readFileSync(outputPath, 'utf8')).scores || {}; } catch(e) {}
 
   const scores = { ...existingScores };
+  const debugLog = [];
   const start = new Date('2026-06-11');
   const end   = new Date('2026-07-20');
   const today = new Date();
@@ -161,13 +174,14 @@ async function main() {
   while (cur <= until && cur <= end) {
     const ds = cur.toISOString().slice(0,10).replace(/-/g,'');
     console.log(`📅 ${ds}`);
-    await fetchDate(ds, scores);
+    await fetchDate(ds, scores, debugLog);
     cur.setDate(cur.getDate() + 1);
   }
 
   const output = { scores, updatedAt: new Date().toISOString(), matchCount: Object.keys(scores).length };
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+  fs.writeFileSync(debugPath, JSON.stringify({ generatedAt: new Date().toISOString(), debugLog }, null, 2));
   console.log(`\n✅ ${Object.keys(scores).length} resultados guardados.`);
 }
 
