@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T14:40:32.476Z",
+  "generatedAt": "2026-06-17T17:38:58.855Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -218,10 +218,12 @@
     },
     {
       "date": "20260617",
-      "raw": "Portugal vs Congo DR",
-      "mapped": "Portugal vs RD de Congo",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "Portugal",
+      "awayEN": "Congo DR",
+      "homeES": "Portugal",
+      "awayES": "RD de Congo",
+      "statusName": "STATUS_IN_PROGRESS",
+      "matchedId": "K1"
     },
     {
       "date": "20260617",
