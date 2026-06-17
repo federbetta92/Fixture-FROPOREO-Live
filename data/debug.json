@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T17:38:58.855Z",
+  "generatedAt": "2026-06-17T19:49:58.585Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -222,7 +222,7 @@
       "awayEN": "Congo DR",
       "homeES": "Portugal",
       "awayES": "RD de Congo",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "K1"
     },
     {
