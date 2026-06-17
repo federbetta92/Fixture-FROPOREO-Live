@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T21:48:27.713Z",
+  "generatedAt": "2026-06-17T23:11:34.031Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -231,15 +231,17 @@
       "awayEN": "Croatia",
       "homeES": "Inglaterra",
       "awayES": "Croacia",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "L1"
     },
     {
       "date": "20260617",
-      "raw": "Ghana vs Panama",
-      "mapped": "Ghana vs Panamá",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "Ghana",
+      "awayEN": "Panama",
+      "homeES": "Ghana",
+      "awayES": "Panamá",
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "L2"
     },
     {
       "date": "20260617",
