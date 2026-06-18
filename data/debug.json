@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T19:50:53.917Z",
+  "generatedAt": "2026-06-18T21:54:39.424Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -272,7 +272,7 @@
       "awayEN": "Bosnia-Herzegovina",
       "homeES": "Suiza",
       "awayES": "Bosnia",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "B3"
     },
     {
