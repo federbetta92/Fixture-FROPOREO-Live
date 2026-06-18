@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T14:13:49.055Z",
+  "generatedAt": "2026-06-18T16:53:33.334Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -34,9 +34,9 @@
       "homeEN": "Canada",
       "awayEN": "Bosnia-Herzegovina",
       "homeES": "Canadá",
-      "awayES": "Bosnia-Herzegovina",
+      "awayES": "Bosnia",
       "statusName": "STATUS_FULL_TIME",
-      "matchedId": null
+      "matchedId": "B1"
     },
     {
       "date": "20260612",
@@ -89,9 +89,9 @@
       "homeEN": "Australia",
       "awayEN": "Türkiye",
       "homeES": "Australia",
-      "awayES": "Türkiye",
+      "awayES": "Turquía",
       "statusName": "STATUS_FULL_TIME",
-      "matchedId": null
+      "matchedId": "D2"
     },
     {
       "date": "20260614",
@@ -259,15 +259,17 @@
     },
     {
       "date": "20260618",
-      "raw": "Czechia vs South Africa",
-      "mapped": "República Checa vs Sudáfrica",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "Czechia",
+      "awayEN": "South Africa",
+      "homeES": "República Checa",
+      "awayES": "Sudáfrica",
+      "statusName": "STATUS_HALFTIME",
+      "matchedId": "A3"
     },
     {
       "date": "20260618",
       "raw": "Switzerland vs Bosnia-Herzegovina",
-      "mapped": "Suiza vs Bosnia-Herzegovina",
+      "mapped": "Suiza vs Bosnia",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     },
@@ -314,7 +316,7 @@
     {
       "date": "20260619",
       "raw": "Türkiye vs Paraguay",
-      "mapped": "Türkiye vs Paraguay",
+      "mapped": "Turquía vs Paraguay",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
