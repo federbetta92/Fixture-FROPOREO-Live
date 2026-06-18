@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T01:43:27.480Z",
+  "generatedAt": "2026-06-18T06:30:36.197Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -245,10 +245,12 @@
     },
     {
       "date": "20260617",
-      "raw": "Uzbekistan vs Colombia",
-      "mapped": "Uzbekistán vs Colombia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "Uzbekistan",
+      "awayEN": "Colombia",
+      "homeES": "Uzbekistán",
+      "awayES": "Colombia",
+      "statusName": "STATUS_FULL_TIME",
+      "matchedId": "K2"
     },
     {
       "date": "20260618",
