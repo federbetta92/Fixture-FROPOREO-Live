@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T23:11:34.031Z",
+  "generatedAt": "2026-06-18T01:43:27.480Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -240,7 +240,7 @@
       "awayEN": "Panama",
       "homeES": "Ghana",
       "awayES": "Panamá",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "L2"
     },
     {
@@ -280,6 +280,39 @@
       "date": "20260618",
       "raw": "Mexico vs South Korea",
       "mapped": "México vs Corea del Sur",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260619",
+      "endpoint": "world",
+      "eventsFound": 4
+    },
+    {
+      "date": "20260619",
+      "raw": "United States vs Australia",
+      "mapped": "Estados Unidos vs Australia",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260619",
+      "raw": "Scotland vs Morocco",
+      "mapped": "Escocia vs Marruecos",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260619",
+      "raw": "Brazil vs Haiti",
+      "mapped": "Brasil vs Haití",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260619",
+      "raw": "Türkiye vs Paraguay",
+      "mapped": "Türkiye vs Paraguay",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
