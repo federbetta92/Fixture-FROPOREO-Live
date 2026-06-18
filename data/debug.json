@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T17:31:53.988Z",
+  "generatedAt": "2026-06-18T19:50:53.917Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -263,15 +263,17 @@
       "awayEN": "South Africa",
       "homeES": "República Checa",
       "awayES": "Sudáfrica",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "A3"
     },
     {
       "date": "20260618",
-      "raw": "Switzerland vs Bosnia-Herzegovina",
-      "mapped": "Suiza vs Bosnia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "Switzerland",
+      "awayEN": "Bosnia-Herzegovina",
+      "homeES": "Suiza",
+      "awayES": "Bosnia",
+      "statusName": "STATUS_HALFTIME",
+      "matchedId": "B3"
     },
     {
       "date": "20260618",
