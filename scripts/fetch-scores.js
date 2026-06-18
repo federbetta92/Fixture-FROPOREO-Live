@@ -1,36 +1,44 @@
 /**
  * fetch-scores.js
  * Corre en GitHub Actions cada 5 minutos.
- * Busca resultados del Mundial 2026 en ESPN y guarda data/scores.json
+ * 1. Fetchea resultados del Mundial 2026 desde ESPN
+ * 2. Detecta cambios: goles, inicio/fin de partido, "por comenzar"
+ * 3. Envía push notifications vía OneSignal REST API
+ * 4. Guarda data/scores.json y data/notifications-sent.json
  */
 
 const https = require('https');
 const fs    = require('fs');
 const path  = require('path');
 
+// ─── Constantes ──────────────────────────────────────────────────────────────
+const ONESIGNAL_APP_ID  = 'f20b4e99-f0f3-4700-ac24-b95d4f4d464b';
+const UPCOMING_ALERT_MS = 20 * 60 * 1000; // avisar 20 min antes
+
+// ─── Mapeo ESPN (inglés) → español ───────────────────────────────────────────
 const ESPN_TO_SPANISH = {
-  'Mexico': 'México', 'South Africa': 'Sudáfrica', 'South Korea': 'Corea del Sur',
-  'Czech Republic': 'República Checa', 'Czechia': 'República Checa',
-  'Canada': 'Canadá', 'Bosnia and Herzegovina': 'Bosnia', 'Bosnia & Herzegovina': 'Bosnia',
-  'Bosnia-Herzegovina': 'Bosnia', 'Bosnia': 'Bosnia',
-  'Qatar': 'Qatar', 'Switzerland': 'Suiza', 'Brazil': 'Brasil', 'Morocco': 'Marruecos',
-  'Haiti': 'Haití', 'Scotland': 'Escocia', 'United States': 'Estados Unidos',
-  'USA': 'Estados Unidos', 'Paraguay': 'Paraguay', 'Australia': 'Australia',
-  'Turkey': 'Turquía', 'Turkiye': 'Turquía', 'Türkiye': 'Turquía', 'Germany': 'Alemania',
-  'Curacao': 'Curazao', 'Curaçao': 'Curazao',
-  "Cote d'Ivoire": 'Costa de Marfil', "Côte d'Ivoire": 'Costa de Marfil',
-  'Ivory Coast': 'Costa de Marfil', 'Ecuador': 'Ecuador', 'Netherlands': 'Países Bajos',
-  'Japan': 'Japón', 'Sweden': 'Suecia', 'Tunisia': 'Túnez', 'Belgium': 'Bélgica',
-  'Egypt': 'Egipto', 'Iran': 'Irán', 'New Zealand': 'Nueva Zelanda',
-  'Spain': 'España', 'Cape Verde': 'Cabo Verde', 'Saudi Arabia': 'Arabia Saudita',
-  'Uruguay': 'Uruguay', 'France': 'Francia', 'Senegal': 'Senegal', 'Iraq': 'Irak',
-  'Norway': 'Noruega', 'Argentina': 'Argentina', 'Algeria': 'Argelia',
-  'Austria': 'Austria', 'Jordan': 'Jordania', 'Portugal': 'Portugal',
-  'DR Congo': 'RD de Congo', 'Democratic Republic of Congo': 'RD de Congo',
-  'Congo DR': 'RD de Congo', 'Uzbekistan': 'Uzbekistán', 'Colombia': 'Colombia',
-  'England': 'Inglaterra', 'Croatia': 'Croacia', 'Ghana': 'Ghana', 'Panama': 'Panamá',
+  'Mexico':'México','South Africa':'Sudáfrica','South Korea':'Corea del Sur',
+  'Czech Republic':'República Checa','Czechia':'República Checa',
+  'Canada':'Canadá','Bosnia and Herzegovina':'Bosnia','Bosnia & Herzegovina':'Bosnia',
+  'Bosnia-Herzegovina':'Bosnia','Bosnia':'Bosnia',
+  'Qatar':'Qatar','Switzerland':'Suiza','Brazil':'Brasil','Morocco':'Marruecos',
+  'Haiti':'Haití','Scotland':'Escocia','United States':'Estados Unidos','USA':'Estados Unidos',
+  'Paraguay':'Paraguay','Australia':'Australia','Turkey':'Turquía','Turkiye':'Turquía',
+  'Türkiye':'Turquía',
+  'Germany':'Alemania','Curacao':'Curazao','Curaçao':'Curazao',
+  "Cote d'Ivoire":'Costa de Marfil',"Côte d'Ivoire":'Costa de Marfil',
+  'Ivory Coast':'Costa de Marfil','Ecuador':'Ecuador','Netherlands':'Países Bajos',
+  'Japan':'Japón','Sweden':'Suecia','Tunisia':'Túnez','Belgium':'Bélgica',
+  'Egypt':'Egipto','Iran':'Irán','New Zealand':'Nueva Zelanda','Spain':'España',
+  'Cape Verde':'Cabo Verde','Saudi Arabia':'Arabia Saudita','Uruguay':'Uruguay',
+  'France':'Francia','Senegal':'Senegal','Iraq':'Irak','Norway':'Noruega',
+  'Argentina':'Argentina','Algeria':'Argelia','Austria':'Austria','Jordan':'Jordania',
+  'Portugal':'Portugal','DR Congo':'RD de Congo','Democratic Republic of Congo':'RD de Congo',
+  'Congo DR':'RD de Congo','Uzbekistan':'Uzbekistán','Colombia':'Colombia',
+  'England':'Inglaterra','Croatia':'Croacia','Ghana':'Ghana','Panama':'Panamá',
 };
 
+// ─── Partidos del torneo ──────────────────────────────────────────────────────
 const MATCHES = [
   {id:'A1',home:'México',away:'Sudáfrica'},{id:'A2',home:'Corea del Sur',away:'República Checa'},
   {id:'B1',home:'Canadá',away:'Bosnia'},{id:'D1',home:'Estados Unidos',away:'Paraguay'},
@@ -70,6 +78,7 @@ const MATCHES = [
   {id:'J5',home:'Argelia',away:'Austria'},{id:'J6',home:'Jordania',away:'Argentina'},
 ];
 
+// ─── HTTP helpers ──────────────────────────────────────────────────────────────
 function fetchJSON(url) {
   return new Promise((resolve, reject) => {
     const req = https.get(url, {
@@ -88,6 +97,140 @@ function fetchJSON(url) {
   });
 }
 
+function postJSON(url, body, apiKey) {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(body);
+    const urlObj = new URL(url);
+    const req = https.request({
+      hostname: urlObj.hostname,
+      path: urlObj.pathname,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Key ${apiKey}`,
+        'Accept': 'application/json',
+        'Content-Length': Buffer.byteLength(data),
+      },
+      timeout: 15000,
+    }, (res) => {
+      let response = '';
+      res.on('data', chunk => response += chunk);
+      res.on('end', () => {
+        try { resolve({ status: res.statusCode, body: JSON.parse(response) }); }
+        catch(e) { resolve({ status: res.statusCode, body: response }); }
+      });
+    });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error('Timeout')); });
+    req.write(data);
+    req.end();
+  });
+}
+
+// ─── OneSignal push sender ────────────────────────────────────────────────────
+async function sendPush(apiKey, heading, content) {
+  try {
+    const result = await postJSON('https://onesignal.com/api/v1/notifications', {
+      app_id: ONESIGNAL_APP_ID,
+      included_segments: ['All'],
+      headings: { es: heading, en: heading },
+      contents: { es: content, en: content },
+      priority: 10,
+      url: 'https://federbetta92.github.io/Fixture-FROPOREO-Live/',
+    }, apiKey);
+
+    if (result.body && result.body.id) {
+      console.log(`  📲 Push → "${heading}": ${content}`);
+    } else {
+      console.warn(`  ⚠️ Push fallida (HTTP ${result.status}):`, JSON.stringify(result.body));
+    }
+  } catch(e) {
+    console.warn(`  ⚠️ Error enviando push:`, e.message);
+  }
+}
+
+// ─── Detección de cambios para notificaciones ─────────────────────────────────
+function detectScoreChanges(prevScores, newScores) {
+  const toSend = [];
+
+  for (const [id, newS] of Object.entries(newScores)) {
+    const match = MATCHES.find(m => m.id === id);
+    if (!match) continue;
+    const prevS = prevScores[id];
+
+    // ① Partido arrancó
+    if ((!prevS || prevS.status === 'finished') && newS.status === 'live') {
+      toSend.push({
+        key: `started-${id}`,
+        heading: `🏟️ ¡Arrancó!`,
+        content: `${match.home} vs ${match.away}`,
+      });
+    }
+
+    // ② GOL(es)
+    if (prevS && newS.status === 'live') {
+      const prevHome = prevS.home ?? 0;
+      const prevAway = prevS.away ?? 0;
+      const diffHome = newS.home - prevHome;
+      const diffAway = newS.away - prevAway;
+
+      for (let i = 1; i <= diffHome; i++) {
+        const h = prevHome + i;
+        toSend.push({
+          key: `goal-${id}-h${h}-a${newS.away}`,
+          heading: `⚽ ¡Gol de ${match.home}!`,
+          content: `${match.home} ${h} – ${newS.away} ${match.away}`,
+        });
+      }
+      for (let i = 1; i <= diffAway; i++) {
+        const a = prevAway + i;
+        toSend.push({
+          key: `goal-${id}-h${newS.home}-a${a}`,
+          heading: `⚽ ¡Gol de ${match.away}!`,
+          content: `${match.home} ${newS.home} – ${a} ${match.away}`,
+        });
+      }
+    }
+
+    // ③ Partido terminó
+    if (prevS && prevS.status === 'live' && newS.status === 'finished') {
+      toSend.push({
+        key: `finished-${id}`,
+        heading: `⏱️ ¡Final!`,
+        content: `${match.home} ${newS.home} – ${newS.away} ${match.away}`,
+      });
+    }
+  }
+
+  return toSend;
+}
+
+function detectUpcoming(scheduledEvents) {
+  const toSend = [];
+  const now = Date.now();
+
+  for (const { homeES, awayES, isoDate } of scheduledEvents) {
+    const kickoff = new Date(isoDate).getTime();
+    if (isNaN(kickoff)) continue;
+    const msUntil = kickoff - now;
+    if (msUntil > 0 && msUntil <= UPCOMING_ALERT_MS) {
+      const match = MATCHES.find(m => m.home === homeES && m.away === awayES)
+                 || MATCHES.find(m => m.home === awayES && m.away === homeES);
+      if (!match) continue;
+      // Clave diaria: evita re-notificar en cada corrida del Action
+      const day = new Date(isoDate).toISOString().slice(0, 10);
+      toSend.push({
+        key: `upcoming-${match.id}-${day}`,
+        heading: `⏰ ¡Está por comenzar!`,
+        content: `${match.home} vs ${match.away} en menos de 20 minutos`,
+      });
+    }
+  }
+
+  return toSend;
+}
+
+// ─── Fetch ESPN para una fecha ────────────────────────────────────────────────
 function findMatch(homeES, awayES) {
   let m = MATCHES.find(m => m.home === homeES && m.away === awayES);
   if (m) return { match: m, flipped: false };
@@ -96,7 +239,7 @@ function findMatch(homeES, awayES) {
   return null;
 }
 
-async function fetchDate(dateStr, scores, debugLog) {
+async function fetchDate(dateStr, scores, debugLog, scheduledEvents) {
   const endpoints = [
     `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=${dateStr}`,
     `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world.cup/scoreboard?dates=${dateStr}`,
@@ -123,17 +266,15 @@ async function fetchDate(dateStr, scores, debugLog) {
           const homeES = ESPN_TO_SPANISH[homeEN] || homeEN;
           const awayES = ESPN_TO_SPANISH[awayEN] || awayEN;
 
+          // Capturar partidos programados para detectar "por comenzar"
           if (statusName === 'STATUS_SCHEDULED') {
-            debugLog.push({ date: dateStr, raw: `${homeEN} vs ${awayEN}`, mapped: `${homeES} vs ${awayES}`, statusName, skipped: 'scheduled' });
+            scheduledEvents.push({ homeES, awayES, isoDate: event.date });
+            debugLog.push({ date: dateStr, homeEN, awayEN, homeES, awayES, statusName, skipped: 'scheduled' });
             continue;
           }
 
           const found = findMatch(homeES, awayES);
-          debugLog.push({
-            date: dateStr,
-            homeEN, awayEN, homeES, awayES, statusName,
-            matchedId: found ? found.match.id : null,
-          });
+          debugLog.push({ date: dateStr, homeEN, awayEN, homeES, awayES, statusName, matchedId: found?.match?.id ?? null });
           if (!found) { console.log(`  ⚠ Sin match: ${homeES} vs ${awayES} (raw: ${homeEN} vs ${awayEN})`); continue; }
 
           const { match, flipped } = found;
@@ -146,7 +287,9 @@ async function fetchDate(dateStr, scores, debugLog) {
 
           scores[match.id] = { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString() };
           console.log(`  ✓ ${match.id}: ${homeES} ${h}-${a} ${awayES} [${status}]`);
-        } catch(e) { debugLog.push({ date: dateStr, error: e.message }); }
+        } catch(e) {
+          debugLog.push({ date: dateStr, error: e.message });
+        }
       }
       return;
     } catch(e) {
@@ -156,16 +299,27 @@ async function fetchDate(dateStr, scores, debugLog) {
   }
 }
 
+// ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   console.log('🔄 Actualizando resultados del Mundial 2026...\n');
-  const outputPath = path.join(__dirname, '..', 'data', 'scores.json');
-  const debugPath  = path.join(__dirname, '..', 'data', 'debug.json');
 
+  const scoresPath  = path.join(__dirname, '..', 'data', 'scores.json');
+  const debugPath   = path.join(__dirname, '..', 'data', 'debug.json');
+  const sentPath    = path.join(__dirname, '..', 'data', 'notifications-sent.json');
+
+  // Leer estado previo
   let existingScores = {};
-  try { existingScores = JSON.parse(fs.readFileSync(outputPath, 'utf8')).scores || {}; } catch(e) {}
+  try { existingScores = JSON.parse(fs.readFileSync(scoresPath, 'utf8')).scores || {}; } catch(e) {}
 
-  const scores = { ...existingScores };
-  const debugLog = [];
+  let sentKeys = new Set();
+  try { sentKeys = new Set(JSON.parse(fs.readFileSync(sentPath, 'utf8')).keys || []); } catch(e) {}
+
+  const scores         = { ...existingScores };
+  const prevScores     = JSON.parse(JSON.stringify(existingScores)); // deep copy
+  const debugLog       = [];
+  const scheduledEvents = [];
+
+  // Fetchear desde inicio del torneo hasta mañana
   const start = new Date('2026-06-11');
   const end   = new Date('2026-07-20');
   const today = new Date();
@@ -175,15 +329,57 @@ async function main() {
   while (cur <= until && cur <= end) {
     const ds = cur.toISOString().slice(0,10).replace(/-/g,'');
     console.log(`📅 ${ds}`);
-    await fetchDate(ds, scores, debugLog);
+    await fetchDate(ds, scores, debugLog, scheduledEvents);
     cur.setDate(cur.getDate() + 1);
   }
 
-  const output = { scores, updatedAt: new Date().toISOString(), matchCount: Object.keys(scores).length };
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+  // Guardar scores.json y debug.json
+  fs.mkdirSync(path.dirname(scoresPath), { recursive: true });
+  fs.writeFileSync(scoresPath, JSON.stringify({
+    scores,
+    updatedAt: new Date().toISOString(),
+    matchCount: Object.keys(scores).length,
+  }, null, 2));
   fs.writeFileSync(debugPath, JSON.stringify({ generatedAt: new Date().toISOString(), debugLog }, null, 2));
   console.log(`\n✅ ${Object.keys(scores).length} resultados guardados.`);
+
+  // ── Notificaciones ─────────────────────────────────────────────────────────
+  const apiKey = process.env.ONESIGNAL_API_KEY;
+
+  if (!apiKey) {
+    console.warn('\n⚠️  ONESIGNAL_API_KEY no configurada — las notificaciones están desactivadas.');
+    console.warn('   Agregala como Secret en: GitHub repo → Settings → Secrets → Actions → ONESIGNAL_API_KEY');
+  } else {
+    console.log('\n📲 Detectando cambios para notificaciones...');
+
+    const toSend = [
+      ...detectScoreChanges(prevScores, scores),
+      ...detectUpcoming(scheduledEvents),
+    ];
+
+    let sent = 0;
+    for (const notif of toSend) {
+      if (sentKeys.has(notif.key)) {
+        console.log(`  ↩️  Ya enviada: ${notif.key}`);
+        continue;
+      }
+      await sendPush(apiKey, notif.heading, notif.content);
+      sentKeys.add(notif.key);
+      sent++;
+      // Pausa breve entre pushes para no saturar la API
+      await new Promise(r => setTimeout(r, 300));
+    }
+
+    // Guardar claves enviadas (máximo 1000 para no crecer indefinidamente)
+    const keysArray = Array.from(sentKeys).slice(-1000);
+    fs.writeFileSync(sentPath, JSON.stringify({
+      keys: keysArray,
+      updatedAt: new Date().toISOString(),
+      totalSent: keysArray.length,
+    }, null, 2));
+
+    console.log(`   ${sent} notificaciones nuevas enviadas. Total acumulado: ${keysArray.length}`);
+  }
 }
 
 main().catch(e => { console.error('❌', e); process.exit(1); });

@@ -2,14 +2,8 @@ name: "🔄 Actualizar Resultados Mundial"
 
 on:
   schedule:
-    # Cada 5 minutos durante el torneo (11 Jun - 19 Jul 2026)
     - cron: "*/5 * * * *"
   workflow_dispatch:
-    inputs:
-      force:
-        description: "Forzar actualización aunque no haya cambios"
-        required: false
-        default: "false"
 
 permissions:
   contents: write
@@ -17,7 +11,7 @@ permissions:
 jobs:
   update-scores:
     runs-on: ubuntu-latest
-    name: Fetch ESPN + commit
+    name: Fetch ESPN + notificaciones
 
     steps:
       - name: ⬇️ Checkout
@@ -30,16 +24,18 @@ jobs:
         with:
           node-version: "20"
 
-      - name: 🔄 Fetchear resultados ESPN
+      - name: 🔄 Fetchear resultados y enviar notificaciones
+        env:
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: node scripts/fetch-scores.js
 
       - name: 📦 Commit si hay cambios
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/scores.json data/debug.json
+          git add data/scores.json data/debug.json data/notifications-sent.json
           if git diff --staged --quiet; then
-            echo "Sin cambios en resultados."
+            echo "Sin cambios."
           else
             HORA=$(date -u +'%H:%M UTC')
             git commit -m "⚽ Auto: resultados actualizados $HORA"
