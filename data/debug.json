@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T16:53:33.334Z",
+  "generatedAt": "2026-06-18T17:31:53.988Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -263,7 +263,7 @@
       "awayEN": "South Africa",
       "homeES": "República Checa",
       "awayES": "Sudáfrica",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "A3"
     },
     {
