@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T21:54:39.424Z",
+  "generatedAt": "2026-06-18T22:58:51.767Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -277,15 +277,19 @@
     },
     {
       "date": "20260618",
-      "raw": "Canada vs Qatar",
-      "mapped": "Canadá vs Qatar",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "homeEN": "Canada",
+      "awayEN": "Qatar",
+      "homeES": "Canadá",
+      "awayES": "Qatar",
+      "statusName": "STATUS_HALFTIME",
+      "matchedId": "B4"
     },
     {
       "date": "20260618",
-      "raw": "Mexico vs South Korea",
-      "mapped": "México vs Corea del Sur",
+      "homeEN": "Mexico",
+      "awayEN": "South Korea",
+      "homeES": "México",
+      "awayES": "Corea del Sur",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     },
@@ -296,29 +300,37 @@
     },
     {
       "date": "20260619",
-      "raw": "United States vs Australia",
-      "mapped": "Estados Unidos vs Australia",
+      "homeEN": "United States",
+      "awayEN": "Australia",
+      "homeES": "Estados Unidos",
+      "awayES": "Australia",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     },
     {
       "date": "20260619",
-      "raw": "Scotland vs Morocco",
-      "mapped": "Escocia vs Marruecos",
+      "homeEN": "Scotland",
+      "awayEN": "Morocco",
+      "homeES": "Escocia",
+      "awayES": "Marruecos",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     },
     {
       "date": "20260619",
-      "raw": "Brazil vs Haiti",
-      "mapped": "Brasil vs Haití",
+      "homeEN": "Brazil",
+      "awayEN": "Haiti",
+      "homeES": "Brasil",
+      "awayES": "Haití",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     },
     {
       "date": "20260619",
-      "raw": "Türkiye vs Paraguay",
-      "mapped": "Turquía vs Paraguay",
+      "homeEN": "Türkiye",
+      "awayEN": "Paraguay",
+      "homeES": "Turquía",
+      "awayES": "Paraguay",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
