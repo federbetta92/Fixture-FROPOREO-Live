@@ -825,8 +825,7 @@ function setupPWA() {
     document.getElementById('pwa-manifest').href = URL.createObjectURL(mBlob);
   };
 
-  // Registrar el service worker unificado (PWA + OneSignal)
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/OneSignalSDKWorker.js').catch(()=>{});
+  // OneSignal registra el service worker automáticamente (OneSignalSDKWorker.js)
   
   let deferred = null;
   window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred=e; document.getElementById('install-banner').style.display='flex'; });
