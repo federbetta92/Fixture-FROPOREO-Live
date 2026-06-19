@@ -11,69 +11,76 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - name: 🔍 Diagnóstico OneSignal
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
-          python3 << 'PYEOF'
-          import urllib.request, json, os
+          node -e "
+          const https = require('https');
+          const fs = require('fs');
+          const API_KEY = process.env.ONESIGNAL_API_KEY;
+          const APP_ID = 'f20b4e99-f0f3-4700-ac24-b95d4f4d464b';
 
-          api_key = os.environ['ONESIGNAL_API_KEY']
-          app_id  = 'f20b4e99-f0f3-4700-ac24-b95d4f4d464b'
-          headers = {'Authorization': f'Key {api_key}', 'Content-Type': 'application/json'}
-
-          def get(url):
-              req = urllib.request.Request(url, headers=headers)
-              with urllib.request.urlopen(req) as r:
-                  return json.loads(r.read())
-
-          def post(url, body):
-              data = json.dumps(body).encode()
-              req = urllib.request.Request(url, data=data, headers=headers, method='POST')
-              with urllib.request.urlopen(req, timeout=15) as r:
-                  return json.loads(r.read())
-
-          result = {}
-
-          # 1. Info de la app
-          app = get(f'https://onesignal.com/api/v1/apps/{app_id}')
-          result['app'] = {
-              'name': app.get('name'),
-              'players': app.get('players', 0),
-              'messageable_players': app.get('messageable_players', 0),
+          function req(method, path, body) {
+            return new Promise((resolve, reject) => {
+              const data = body ? JSON.stringify(body) : null;
+              const r = https.request({
+                hostname: 'onesignal.com',
+                path,
+                method,
+                headers: {
+                  'Authorization': 'Key ' + API_KEY,
+                  'Content-Type': 'application/json',
+                  ...(data ? {'Content-Length': Buffer.byteLength(data)} : {})
+                }
+              }, res => {
+                let d = '';
+                res.on('data', c => d += c);
+                res.on('end', () => resolve({status: res.statusCode, body: JSON.parse(d)}));
+              });
+              r.on('error', reject);
+              if (data) r.write(data);
+              r.end();
+            });
           }
 
-          # 2. Lista de suscriptores
-          players_resp = get(f'https://onesignal.com/api/v1/players?app_id={app_id}&limit=10')
-          result['players'] = {
-              'total': players_resp.get('total_count', 0),
-              'list': [{'id': p['id'], 'device': p.get('device_type'), 'opted_in': p.get('notification_types',0) > 0} for p in players_resp.get('players', [])]
-          }
+          (async () => {
+            const result = {};
 
-          # 3. Enviar push
-          notif = post('https://onesignal.com/api/v1/notifications', {
-              'app_id': app_id,
-              'included_segments': ['All'],
-              'headings': {'es': '⚽ Test FROPOREO'},
-              'contents': {'es': 'Funciona! Notificaciones del Mundial activas'},
-              'url': 'https://fixture-froporeo-live.vercel.app/'
-          })
-          result['notification'] = {
-              'id': notif.get('id'),
-              'recipients': notif.get('recipients', 0),
-              'errors': notif.get('errors'),
-          }
+            // 1. App info
+            const app = await req('GET', '/api/v1/apps/' + APP_ID);
+            result.app_status = app.status;
+            result.app = { name: app.body.name, players: app.body.players, messageable: app.body.messageable_players, errors: app.body.errors };
 
-          print(json.dumps(result, indent=2))
+            // 2. Players
+            const pl = await req('GET', '/api/v1/players?app_id=' + APP_ID + '&limit=10');
+            result.players_status = pl.status;
+            result.players = { total: pl.body.total_count, list: (pl.body.players||[]).map(p => ({id: p.id, device: p.device_type, opted: p.notification_types > 0})) };
 
-          with open('data/onesignal-diagnostic.json', 'w') as f:
-              json.dump(result, f, indent=2)
-          PYEOF
+            // 3. Send push
+            const notif = await req('POST', '/api/v1/notifications', {
+              app_id: APP_ID,
+              included_segments: ['All'],
+              headings: {es: '⚽ Test FROPOREO'},
+              contents: {es: 'Funciona! Recibis alertas del Mundial'},
+              url: 'https://fixture-froporeo-live.vercel.app/'
+            });
+            result.notif_status = notif.status;
+            result.notification = { id: notif.body.id, recipients: notif.body.recipients, errors: notif.body.errors };
 
-      - name: 💾 Commit diagnóstico
+            console.log(JSON.stringify(result, null, 2));
+            fs.mkdirSync('data', {recursive: true});
+            fs.writeFileSync('data/onesignal-diagnostic.json', JSON.stringify(result, null, 2));
+          })().catch(e => { console.error(e); process.exit(1); });
+          "
+
+      - name: 💾 Guardar resultado en repo
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
           git add data/onesignal-diagnostic.json
-          git diff --staged --quiet || git commit -m "diag: OneSignal diagnostic result" && git push
+          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: OneSignal result" && git push)
