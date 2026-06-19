@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T08:17:04.508Z",
+  "generatedAt": "2026-06-19T21:56:01.924Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -304,8 +304,8 @@
       "awayEN": "Australia",
       "homeES": "Estados Unidos",
       "awayES": "Australia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FULL_TIME",
+      "matchedId": "D3"
     },
     {
       "date": "20260619",
