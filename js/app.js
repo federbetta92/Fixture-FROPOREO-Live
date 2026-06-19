@@ -358,11 +358,22 @@ async function fetchFromESPN() {
   }
 
   let changed = false;
+  _scheduledISO = []; // resetear próximos partidos
   for (const d of dates) {
     const ds = d.toISOString().slice(0,10).replace(/-/g,'');
     try {
       const data = await fetchESPNDate(ds);
       for (const ev of (data.events || [])) {
+        // Capturar próximos para alerta de 5 min
+        const comp = ev.competitions?.[0];
+        const statusName = comp?.status?.type?.name || '';
+        if (statusName === 'STATUS_SCHEDULED' && ev.date) {
+          const hEN = comp.competitors?.find(c=>c.homeAway==='home')?.team?.displayName||'';
+          const aEN = comp.competitors?.find(c=>c.homeAway==='away')?.team?.displayName||'';
+          const hES = ESPN_TO_SPANISH[hEN]||hEN, aES = ESPN_TO_SPANISH[aEN]||aEN;
+          const m = MATCHES.find(m=>(m.home===hES&&m.away===aES)||(m.home===aES&&m.away===hES));
+          if (m) _scheduledISO.push({id:m.id, home:m.home, away:m.away, isoDate:ev.date});
+        }
         if (processESPNEvent(ev)) changed = true;
       }
     } catch(e) { /* silencioso */ }
@@ -376,26 +387,31 @@ async function syncScores() {
   syncInProgress = true;
   setSyncBadge('syncing', '🔄 Sincronizando...');
 
+  // Snapshot previo para detectar cambios y reproducir sonidos
+  const prevScores = JSON.parse(JSON.stringify(scores));
+
   let anyChange = false;
 
   // 1. JSON de GitHub Pages (siempre disponible, max 5 min delay)
-  try {
-    if (await loadRemoteJSON()) anyChange = true;
-  } catch(e) {}
+  try { if (await loadRemoteJSON()) anyChange = true; } catch(e) {}
 
   // 2. ESPN directo (si CORS lo permite, actualización en tiempo real)
-  try {
-    if (await fetchFromESPN()) anyChange = true;
-  } catch(e) {}
+  try { if (await fetchFromESPN()) anyChange = true; } catch(e) {}
 
-  if (anyChange) { saveScores(); refreshAll(); }
+  if (anyChange) {
+    detectAndPlaySounds(prevScores, scores);
+    saveScores();
+    refreshAll();
+  }
+
+  // Chequear si hay partido por comenzar en ~5 min
+  checkUpcomingAlerts();
 
   lastSyncOk = new Date();
   const hora = lastSyncOk.toLocaleTimeString('es-AR', {hour:'2-digit',minute:'2-digit'});
   const hasLive = Object.values(scores).some(s => s.status === 'live');
   setSyncBadge('ok', `✅ Sync ${hora}${hasLive?' · 🔴 LIVE':''}`);
 
-  // Si hay partidos en vivo, re-sincronizar cada 90 segundos; si no, cada 3 minutos
   clearTimeout(syncTimer);
   syncTimer = setTimeout(syncScores, hasLive ? 90_000 : 180_000);
 
@@ -838,7 +854,138 @@ function showToast(msg) {
 //  INIT
 // ════════════════════════════════════════════════════
 // ════════════════════════════════════════════════════
-//  NOTIFICACIONES — botón propio para PWA
+//  SONIDOS DEL MUNDIAL — Web Audio API
+// ════════════════════════════════════════════════════
+let _audioCtx = null;
+function ac() {
+  if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (_audioCtx.state === 'suspended') _audioCtx.resume();
+  return _audioCtx;
+}
+
+function playAlert() {            // ⏰ Partido por comenzar — 2 bip suaves
+  try {
+    const ctx = ac(), t = ctx.currentTime;
+    [0, 0.25].forEach(d => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = 'sine'; o.frequency.value = 880;
+      g.gain.setValueAtTime(0.2, t+d);
+      g.gain.exponentialRampToValueAtTime(0.001, t+d+0.25);
+      o.start(t+d); o.stop(t+d+0.25);
+    });
+  } catch(e) {}
+}
+
+function playWhistleStart() {     // 🏟️ Silbatazo inicial — 1 pitido largo agudo
+  try {
+    const ctx = ac(), t = ctx.currentTime;
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.type = 'sine';
+    o.frequency.setValueAtTime(2800, t);
+    o.frequency.exponentialRampToValueAtTime(2400, t+0.6);
+    g.gain.setValueAtTime(0.35, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t+0.7);
+    o.start(t); o.stop(t+0.7);
+  } catch(e) {}
+}
+
+function playWhistleEnd() {       // ⏱️ Pitazo final — 3 pitidos (corto-corto-largo)
+  try {
+    const ctx = ac(), t = ctx.currentTime;
+    [[0, 0.25],[0.4, 0.25],[0.8, 0.9]].forEach(([d, dur]) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = 'sine'; o.frequency.value = 2600;
+      g.gain.setValueAtTime(0.35, t+d);
+      g.gain.exponentialRampToValueAtTime(0.001, t+d+dur);
+      o.start(t+d); o.stop(t+d+dur);
+    });
+  } catch(e) {}
+}
+
+function playGoal() {             // ⚽ Grito de gol — crescendo + fanfare
+  try {
+    const ctx = ac(), t = ctx.currentTime;
+    // Multitud creciente
+    for (let i = 0; i < 6; i++) {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = i % 2 ? 'sawtooth' : 'square';
+      o.frequency.setValueAtTime(120 + i*40, t);
+      o.frequency.exponentialRampToValueAtTime(300 + i*60, t+2);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.08, t+0.15+i*0.05);
+      g.gain.exponentialRampToValueAtTime(0.001, t+2.2);
+      o.start(t); o.stop(t+2.2);
+    }
+    // Fanfare ascendente (DO-MI-SOL-DO)
+    [523,659,784,1047].forEach((hz, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = 'sine'; o.frequency.value = hz;
+      const st = t + 0.15 + i*0.18;
+      g.gain.setValueAtTime(0.22, st);
+      g.gain.exponentialRampToValueAtTime(0.001, st+0.35);
+      o.start(st); o.stop(st+0.35);
+    });
+  } catch(e) {}
+}
+
+// ── Toast visual (cuando la app está abierta) ────────────────────────
+function showToast(icon, title, body) {
+  const el = document.createElement('div');
+  el.className = 'match-toast';
+  el.innerHTML = `<span class="toast-icon">${icon}</span><div><strong>${title}</strong><br><span>${body}</span></div>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('toast-show'));
+  setTimeout(() => { el.classList.remove('toast-show'); setTimeout(() => el.remove(), 400); }, 4500);
+}
+
+// ── Detección de "5 min antes" con la app abierta ────────────────────
+const _notifiedUpcoming = new Set();
+let _scheduledISO = [];   // [{id, home, away, isoDate}] cargado desde ESPN
+
+function checkUpcomingAlerts() {
+  const now = Date.now();
+  const WIN_MIN = 6 * 60 * 1000, WIN_MAX = 1 * 60 * 1000; // entre 6 y 1 min antes
+  for (const m of _scheduledISO) {
+    const ms = new Date(m.isoDate).getTime() - now;
+    if (ms > WIN_MAX && ms <= WIN_MIN && !_notifiedUpcoming.has(m.id)) {
+      _notifiedUpcoming.add(m.id);
+      playAlert();
+      showToast('⏰', '¡Está por comenzar!', `${m.home} vs ${m.away} en minutos`);
+    }
+  }
+}
+
+// ── Detectar cambios de score para reproducir sonidos ────────────────
+function detectAndPlaySounds(prevScores, newScores) {
+  for (const [id, newS] of Object.entries(newScores)) {
+    const match = MATCHES.find(m => m.id === id);
+    if (!match) continue;
+    const prevS = prevScores[id];
+
+    // Partido arrancó
+    if ((!prevS || prevS.status === 'finished') && newS.status === 'live') {
+      playWhistleStart();
+      showToast('🏟️', '¡Silbatazo inicial!', `${match.home} vs ${match.away}`);
+      return; // un sonido por sync
+    }
+    // Gol
+    if (prevS && newS.status === 'live') {
+      const dh = newS.home - (prevS.home||0), da = newS.away - (prevS.away||0);
+      if (dh > 0) { playGoal(); showToast('⚽', `¡GOOOOL de ${match.home}!`, `${match.home} ${newS.home} – ${newS.away} ${match.away}`); return; }
+      if (da > 0) { playGoal(); showToast('⚽', `¡GOOOOL de ${match.away}!`, `${match.home} ${newS.home} – ${newS.away} ${match.away}`); return; }
+    }
+    // Partido terminó
+    if (prevS && prevS.status === 'live' && newS.status === 'finished') {
+      playWhistleEnd();
+      showToast('⏱️', '¡Pitazo final!', `${match.home} ${newS.home} – ${newS.away} ${match.away}`);
+      return;
+    }
+  }
+}
 // ════════════════════════════════════════════════════
 function updateNotifBtn(state) {
   const btn = document.getElementById('notif-btn');

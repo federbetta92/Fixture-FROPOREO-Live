@@ -13,7 +13,7 @@ const path  = require('path');
 
 // ─── Constantes ──────────────────────────────────────────────────────────────
 const ONESIGNAL_APP_ID  = 'f20b4e99-f0f3-4700-ac24-b95d4f4d464b';
-const UPCOMING_ALERT_MS = 20 * 60 * 1000; // avisar 20 min antes
+const UPCOMING_ALERT_MS = 6 * 60 * 1000; // avisar 20 min antes
 
 // ─── Mapeo ESPN (inglés) → español ───────────────────────────────────────────
 const ESPN_TO_SPANISH = {
@@ -133,8 +133,8 @@ async function sendPush(apiKey, heading, content) {
     const result = await postJSON('https://onesignal.com/api/v1/notifications', {
       app_id: ONESIGNAL_APP_ID,
       included_segments: ['All'],
-      headings: { es: heading, en: heading },
-      contents: { es: content, en: content },
+      headings: { en: heading, es: heading },
+      contents: { en: content, es: content },
       priority: 10,
       url: 'https://fixture-froporeo-live.vercel.app/',
     }, apiKey);
