@@ -13,7 +13,7 @@ const path  = require('path');
 
 // ─── Constantes ──────────────────────────────────────────────────────────────
 const ONESIGNAL_APP_ID  = 'f20b4e99-f0f3-4700-ac24-b95d4f4d464b';
-const UPCOMING_ALERT_MS = 6 * 60 * 1000; // avisar 20 min antes
+const UPCOMING_ALERT_MS = 7 * 60 * 1000; // ventana de detección (el Action corre c/5 min, dejamos margen)
 
 // ─── Mapeo ESPN (inglés) → español ───────────────────────────────────────────
 const ESPN_TO_SPANISH = {
@@ -222,7 +222,7 @@ function detectUpcoming(scheduledEvents) {
       toSend.push({
         key: `upcoming-${match.id}-${day}`,
         heading: `⏰ ¡Está por comenzar!`,
-        content: `${match.home} vs ${match.away} en menos de 20 minutos`,
+        content: `${match.home} vs ${match.away} en 5 minutos`,
       });
     }
   }
