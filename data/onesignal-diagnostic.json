@@ -1,0 +1,40 @@
+{
+  "app_status": 200,
+  "app": {
+    "name": "FROPOREO App",
+    "players": 4,
+    "messageable": 4
+  },
+  "players_status": 200,
+  "players": {
+    "total": 4,
+    "list": [
+      {
+        "id": "1388eadd-e755-428d-a68e-77aef3b28177",
+        "device": 5,
+        "opted": false
+      },
+      {
+        "id": "cb97ff68-86c4-4b6b-865f-8cf3929fd4f3",
+        "device": 5,
+        "opted": false
+      },
+      {
+        "id": "060416b5-8e91-4ac8-a8a4-55059415e23c",
+        "device": 5,
+        "opted": false
+      },
+      {
+        "id": "bb4ae79f-62a5-4014-ac93-25dd8bc1a31e",
+        "device": 5,
+        "opted": false
+      }
+    ]
+  },
+  "notif_status": 400,
+  "notification": {
+    "errors": [
+      "Message Notifications must have Any/English language content"
+    ]
+  }
+}
