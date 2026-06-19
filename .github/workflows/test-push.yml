@@ -1,0 +1,40 @@
+name: "🧪 Test Push Notification"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📲 Enviar notificación de prueba + ver suscriptores
+        env:
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
+        run: |
+          echo "=== Suscriptores registrados ==="
+          curl -s "https://onesignal.com/api/v1/apps/f20b4e99-f0f3-4700-ac24-b95d4f4d464b" \
+            -H "Authorization: Key $ONESIGNAL_API_KEY" | python3 -c "
+          import sys,json
+          d=json.load(sys.stdin)
+          print('Suscriptores:', d.get('players',0))
+          print('Messaged:', d.get('messageable_players',0))
+          "
+
+          echo ""
+          echo "=== Enviando push de prueba ==="
+          curl -s -X POST "https://onesignal.com/api/v1/notifications" \
+            -H "Authorization: Key $ONESIGNAL_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "app_id": "f20b4e99-f0f3-4700-ac24-b95d4f4d464b",
+              "included_segments": ["All"],
+              "headings": {"es": "⚽ Test FROPOREO"},
+              "contents": {"es": "Funciona! Ya recibis alertas de goles del Mundial 🎉"},
+              "url": "https://fixture-froporeo-live.vercel.app/"
+            }' | python3 -c "
+          import sys,json
+          d=json.load(sys.stdin)
+          print('Notification ID:', d.get('id','—'))
+          print('Recipients:', d.get('recipients',0))
+          print('Errors:', d.get('errors','ninguno'))
+          "
