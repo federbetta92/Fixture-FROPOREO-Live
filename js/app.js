@@ -1008,19 +1008,21 @@ async function toggleNotifications() {
     return;
   }
   try {
-    const permission = await OneSignal.Notifications.permissionNative;
+    const permission = OneSignal.Notifications.permissionNative;
     if (permission === 'denied') {
       alert('Las notificaciones están bloqueadas. Habilitálas en la configuración de tu navegador y recargá la app.');
       return;
     }
-    const isSubscribed = await OneSignal.User.PushSubscription.optedIn;
+    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
     if (isSubscribed) {
       await OneSignal.User.PushSubscription.optOut();
       updateNotifBtn('default');
     } else {
       await OneSignal.Notifications.requestPermission();
-      const nowSubscribed = await OneSignal.User.PushSubscription.optedIn;
+      await OneSignal.User.PushSubscription.optIn(); // opt-in explícito
+      const nowSubscribed = OneSignal.User.PushSubscription.optedIn;
       updateNotifBtn(nowSubscribed ? 'subscribed' : 'default');
+      if (nowSubscribed) showToast('🔔', '¡Notificaciones activadas!', 'Vas a recibir alertas de goles y partidos');
     }
   } catch(e) {
     console.warn('Error notif:', e);
@@ -1030,7 +1032,7 @@ async function toggleNotifications() {
 // Actualizar estado del botón cuando OneSignal carga
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 OneSignalDeferred.push(async function(OneSignal) {
-  const optedIn = await OneSignal.User.PushSubscription.optedIn;
+  const optedIn = OneSignal.User.PushSubscription.optedIn;
   updateNotifBtn(optedIn ? 'subscribed' : 'default');
   OneSignal.User.PushSubscription.addEventListener('change', e => {
     updateNotifBtn(e.current.optedIn ? 'subscribed' : 'default');

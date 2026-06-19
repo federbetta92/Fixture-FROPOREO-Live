@@ -730,3 +730,11 @@ button { cursor: pointer; font-family: inherit; }
 .match-toast.toast-show { top: 16px; }
 .toast-icon { font-size: 28px; flex-shrink: 0; }
 .match-toast strong { color: var(--orange); font-size: 16px; }
+
+/* ── Botones de prueba de sonido ─────────────────────────────── */
+.test-sound-btn {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.7); border-radius: 5px; padding: 3px 8px;
+  font-size: 12px; cursor: pointer; font-family: 'Barlow Condensed', sans-serif;
+}
+.test-sound-btn:active { background: rgba(255,255,255,.15); }

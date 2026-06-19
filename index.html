@@ -94,6 +94,14 @@
         <button id="notif-btn" class="notif-btn" onclick="toggleNotifications()" title="Notificaciones de goles">🔔</button>
         <button class="refresh-btn" onclick="syncScores()">↻ Sync</button>
       </div>
+      <!-- Botones de prueba de sonido — eliminar después del Mundial -->
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,.08)">
+        <span style="font-size:11px;color:rgba(255,255,255,.4);align-self:center">Probar:</span>
+        <button class="test-sound-btn" onclick="playAlert();showToast('⏰','¡Está por comenzar!','Argentina vs Francia en minutos')">⏰ Previo</button>
+        <button class="test-sound-btn" onclick="playWhistleStart();showToast('🏟️','¡Silbatazo inicial!','Argentina vs Francia')">🏟️ Inicio</button>
+        <button class="test-sound-btn" onclick="playGoal();showToast('⚽','¡GOOOOL de Argentina!','Argentina 1 – 0 Francia')">⚽ Gol</button>
+        <button class="test-sound-btn" onclick="playWhistleEnd();showToast('⏱️','¡Pitazo final!','Argentina 1 – 0 Francia')">⏱️ Final</button>
+      </div>
     </div>
 
     <!-- GRUPOS -->
