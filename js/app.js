@@ -809,8 +809,8 @@ function setupPWA() {
     document.getElementById('pwa-manifest').href = URL.createObjectURL(mBlob);
   };
 
-  const swCode = `self.addEventListener('install',()=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));`;
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register(URL.createObjectURL(new Blob([swCode],{type:'application/javascript'}))).catch(()=>{});
+  // Registrar el service worker unificado (PWA + OneSignal)
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/OneSignalSDKWorker.js').catch(()=>{});
   
   let deferred = null;
   window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred=e; document.getElementById('install-banner').style.display='flex'; });
