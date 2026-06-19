@@ -136,7 +136,7 @@ async function sendPush(apiKey, heading, content) {
       headings: { es: heading, en: heading },
       contents: { es: content, en: content },
       priority: 10,
-      url: 'https://federbetta92.github.io/Fixture-FROPOREO-Live/',
+      url: 'https://fixture-froporeo-live.vercel.app/',
     }, apiKey);
 
     if (result.body && result.body.id) {
