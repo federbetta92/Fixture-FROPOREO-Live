@@ -698,3 +698,19 @@ button { cursor: pointer; font-family: inherit; }
 
 /* ── Indicador de resultado automático vs manual ─────────── */
 .m-score[data-auto="false"]::after { content: " ✏️"; font-size: 9px; opacity: .5; }
+
+/* ── Botón de notificaciones propio ─────────────────────────── */
+.notif-btn {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .2s;
+  line-height: 1;
+}
+.notif-btn:active { background: rgba(255,255,255,.18); }
+.notif-btn.subscribed  { background: rgba(0,200,100,.18); border-color: rgba(0,200,100,.3); }
+.notif-btn.blocked     { background: rgba(255,60,60,.15); border-color: rgba(255,60,60,.3); opacity:.6; }

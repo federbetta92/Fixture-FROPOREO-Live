@@ -89,8 +89,9 @@
         <span class="update-time" id="update-time">—</span>
         <span id="sync-badge" class="sync-badge sync-idle">⏳ Iniciando...</span>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <span class="update-hint">🤖 Auto · ✏️ Tocá para editar</span>
+        <button id="notif-btn" class="notif-btn" onclick="toggleNotifications()" title="Notificaciones de goles">🔔</button>
         <button class="refresh-btn" onclick="syncScores()">↻ Sync</button>
       </div>
     </div>

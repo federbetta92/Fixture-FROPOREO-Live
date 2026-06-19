@@ -837,6 +837,59 @@ function showToast(msg) {
 // ════════════════════════════════════════════════════
 //  INIT
 // ════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════
+//  NOTIFICACIONES — botón propio para PWA
+// ════════════════════════════════════════════════════
+function updateNotifBtn(state) {
+  const btn = document.getElementById('notif-btn');
+  if (!btn) return;
+  if (state === 'subscribed') {
+    btn.textContent = '🔔'; btn.title = 'Notificaciones activas — tocá para desactivar';
+    btn.className = 'notif-btn subscribed';
+  } else if (state === 'blocked') {
+    btn.textContent = '🔕'; btn.title = 'Notificaciones bloqueadas en este navegador';
+    btn.className = 'notif-btn blocked';
+  } else {
+    btn.textContent = '🔔'; btn.title = 'Activar alertas de goles';
+    btn.className = 'notif-btn';
+  }
+}
+
+async function toggleNotifications() {
+  if (!window.OneSignal) {
+    alert('Las notificaciones aún están cargando, intentá en un momento.');
+    return;
+  }
+  try {
+    const permission = await OneSignal.Notifications.permissionNative;
+    if (permission === 'denied') {
+      alert('Las notificaciones están bloqueadas. Habilitálas en la configuración de tu navegador y recargá la app.');
+      return;
+    }
+    const isSubscribed = await OneSignal.User.PushSubscription.optedIn;
+    if (isSubscribed) {
+      await OneSignal.User.PushSubscription.optOut();
+      updateNotifBtn('default');
+    } else {
+      await OneSignal.Notifications.requestPermission();
+      const nowSubscribed = await OneSignal.User.PushSubscription.optedIn;
+      updateNotifBtn(nowSubscribed ? 'subscribed' : 'default');
+    }
+  } catch(e) {
+    console.warn('Error notif:', e);
+  }
+}
+
+// Actualizar estado del botón cuando OneSignal carga
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
+  const optedIn = await OneSignal.User.PushSubscription.optedIn;
+  updateNotifBtn(optedIn ? 'subscribed' : 'default');
+  OneSignal.User.PushSubscription.addEventListener('change', e => {
+    updateNotifBtn(e.current.optedIn ? 'subscribed' : 'default');
+  });
+});
+
 function init() {
   loadScores();
   const headerSub = document.getElementById('header-sub');
