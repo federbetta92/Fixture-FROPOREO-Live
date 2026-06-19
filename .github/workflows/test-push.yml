@@ -3,56 +3,77 @@ name: "🧪 Test Push Notification"
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔍 Diagnóstico completo OneSignal
+      - uses: actions/checkout@v4
+
+      - name: 🔍 Diagnóstico OneSignal
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
-          echo "=== 1. Info de la app ==="
-          curl -s "https://onesignal.com/api/v1/apps/f20b4e99-f0f3-4700-ac24-b95d4f4d464b" \
-            -H "Authorization: Key $ONESIGNAL_API_KEY" | python3 -c "
-          import sys,json
-          d=json.load(sys.stdin)
-          print('App name:', d.get('name','?'))
-          print('Suscriptores totales:', d.get('players',0))
-          print('Mensajeables:', d.get('messageable_players',0))
-          print('Errores:', d.get('errors','ninguno'))
-          "
+          python3 << 'PYEOF'
+          import urllib.request, json, os
 
-          echo ""
-          echo "=== 2. Lista de suscriptores ==="
-          curl -s "https://onesignal.com/api/v1/players?app_id=f20b4e99-f0f3-4700-ac24-b95d4f4d464b&limit=10" \
-            -H "Authorization: Key $ONESIGNAL_API_KEY" | python3 -c "
-          import sys,json
-          d=json.load(sys.stdin)
-          players = d.get('players',[])
-          print('Total jugadores:', d.get('total_count',0))
-          for p in players:
-            print(f'  - id:{p[\"id\"]} device:{p.get(\"device_type\",\"?\")} opted_in:{p.get(\"notification_types\",0)>0} last_active:{p.get(\"last_active\",\"?\")}')
-          if not players:
-            print('  (ninguno registrado)')
-          "
+          api_key = os.environ['ONESIGNAL_API_KEY']
+          app_id  = 'f20b4e99-f0f3-4700-ac24-b95d4f4d464b'
+          headers = {'Authorization': f'Key {api_key}', 'Content-Type': 'application/json'}
 
-          echo ""
-          echo "=== 3. Enviando push de prueba ==="
-          RESULT=$(curl -s -X POST "https://onesignal.com/api/v1/notifications" \
-            -H "Authorization: Key $ONESIGNAL_API_KEY" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "app_id": "f20b4e99-f0f3-4700-ac24-b95d4f4d464b",
-              "included_segments": ["All"],
-              "headings": {"es": "⚽ Test FROPOREO"},
-              "contents": {"es": "Prueba de notificacion del Mundial!"},
-              "url": "https://fixture-froporeo-live.vercel.app/"
-            }')
-          echo "$RESULT" | python3 -c "
-          import sys,json
-          d=json.load(sys.stdin)
-          print('Notification ID:', d.get('id','—'))
-          print('Recipients:', d.get('recipients',0))
-          print('Errors:', d.get('errors','ninguno'))
-          print('Raw:', d)
-          "
+          def get(url):
+              req = urllib.request.Request(url, headers=headers)
+              with urllib.request.urlopen(req) as r:
+                  return json.loads(r.read())
+
+          def post(url, body):
+              data = json.dumps(body).encode()
+              req = urllib.request.Request(url, data=data, headers=headers, method='POST')
+              with urllib.request.urlopen(req, timeout=15) as r:
+                  return json.loads(r.read())
+
+          result = {}
+
+          # 1. Info de la app
+          app = get(f'https://onesignal.com/api/v1/apps/{app_id}')
+          result['app'] = {
+              'name': app.get('name'),
+              'players': app.get('players', 0),
+              'messageable_players': app.get('messageable_players', 0),
+          }
+
+          # 2. Lista de suscriptores
+          players_resp = get(f'https://onesignal.com/api/v1/players?app_id={app_id}&limit=10')
+          result['players'] = {
+              'total': players_resp.get('total_count', 0),
+              'list': [{'id': p['id'], 'device': p.get('device_type'), 'opted_in': p.get('notification_types',0) > 0} for p in players_resp.get('players', [])]
+          }
+
+          # 3. Enviar push
+          notif = post('https://onesignal.com/api/v1/notifications', {
+              'app_id': app_id,
+              'included_segments': ['All'],
+              'headings': {'es': '⚽ Test FROPOREO'},
+              'contents': {'es': 'Funciona! Notificaciones del Mundial activas'},
+              'url': 'https://fixture-froporeo-live.vercel.app/'
+          })
+          result['notification'] = {
+              'id': notif.get('id'),
+              'recipients': notif.get('recipients', 0),
+              'errors': notif.get('errors'),
+          }
+
+          print(json.dumps(result, indent=2))
+
+          with open('data/onesignal-diagnostic.json', 'w') as f:
+              json.dump(result, f, indent=2)
+          PYEOF
+
+      - name: 💾 Commit diagnóstico
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/onesignal-diagnostic.json
+          git diff --staged --quiet || git commit -m "diag: OneSignal diagnostic result" && git push
