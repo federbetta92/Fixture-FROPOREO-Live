@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T20:24:53.128Z",
+  "generatedAt": "2026-06-20T20:25:54.542Z",
   "debugLog": [
     {
       "date": "20260618",
@@ -103,7 +103,7 @@
       "awayEN": "Ivory Coast",
       "homeES": "Alemania",
       "awayES": "Costa de Marfil",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "E3"
     },
     {
