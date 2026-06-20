@@ -263,7 +263,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.657Z",
+      "updatedAt": "2026-06-20T18:22:00.634Z",
       "lastScorer": {
         "name": "Michal Sadílek",
         "side": "home"
@@ -275,7 +275,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.657Z",
+      "updatedAt": "2026-06-20T18:22:00.634Z",
       "lastScorer": {
         "name": "Ermin Mahmic",
         "side": "away"
@@ -287,7 +287,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.657Z",
+      "updatedAt": "2026-06-20T18:22:00.635Z",
       "lastScorer": {
         "name": "Jonathan David",
         "side": "home"
@@ -299,7 +299,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.657Z",
+      "updatedAt": "2026-06-20T18:22:00.635Z",
       "lastScorer": {
         "name": "Luis Romo",
         "side": "home"
@@ -311,7 +311,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.670Z",
+      "updatedAt": "2026-06-20T18:22:00.642Z",
       "lastScorer": {
         "name": "Alex Freeman",
         "side": "home"
@@ -323,7 +323,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.670Z",
+      "updatedAt": "2026-06-20T18:22:00.643Z",
       "lastScorer": {
         "name": "Ismael Saibari",
         "side": "away"
@@ -335,7 +335,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.670Z",
+      "updatedAt": "2026-06-20T18:22:00.643Z",
       "lastScorer": {
         "name": "Vinícius Júnior",
         "side": "home"
@@ -347,7 +347,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.670Z",
+      "updatedAt": "2026-06-20T18:22:00.643Z",
       "lastScorer": {
         "name": "Matías Galarza",
         "side": "away"
@@ -359,7 +359,7 @@
       "away": 1,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-20T18:20:58.683Z",
+      "updatedAt": "2026-06-20T18:22:00.650Z",
       "lastScorer": {
         "name": "Anthony Elanga",
         "side": "away"
@@ -367,6 +367,6 @@
       "firstLiveAt": "2026-06-20T17:09:33.500Z"
     }
   },
-  "updatedAt": "2026-06-20T18:20:58.703Z",
+  "updatedAt": "2026-06-20T18:22:00.657Z",
   "matchCount": 33
 }
