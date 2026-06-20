@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T20:00:15.641Z",
+  "generatedAt": "2026-06-20T20:01:17.040Z",
   "debugLog": [
     {
       "date": "20260618",
@@ -103,8 +103,8 @@
       "awayEN": "Ivory Coast",
       "homeES": "Alemania",
       "awayES": "Costa de Marfil",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "E3"
     },
     {
       "date": "20260620",
