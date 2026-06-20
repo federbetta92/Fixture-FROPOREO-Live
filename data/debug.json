@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T22:59:17.589Z",
+  "generatedAt": "2026-06-20T00:20:59.766Z",
   "debugLog": [
     {
       "date": "20260611",
@@ -313,7 +313,7 @@
       "awayEN": "Morocco",
       "homeES": "Escocia",
       "awayES": "Marruecos",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "C3"
     },
     {
@@ -363,6 +363,56 @@
       "awayEN": "Curaçao",
       "homeES": "Ecuador",
       "awayES": "Curazao",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260621",
+      "endpoint": "world",
+      "eventsFound": 5
+    },
+    {
+      "date": "20260621",
+      "homeEN": "Tunisia",
+      "awayEN": "Japan",
+      "homeES": "Túnez",
+      "awayES": "Japón",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260621",
+      "homeEN": "Spain",
+      "awayEN": "Saudi Arabia",
+      "homeES": "España",
+      "awayES": "Arabia Saudita",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260621",
+      "homeEN": "Belgium",
+      "awayEN": "Iran",
+      "homeES": "Bélgica",
+      "awayES": "Irán",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260621",
+      "homeEN": "Uruguay",
+      "awayEN": "Cape Verde",
+      "homeES": "Uruguay",
+      "awayES": "Cabo Verde",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260621",
+      "homeEN": "New Zealand",
+      "awayEN": "Egypt",
+      "homeES": "Nueva Zelanda",
+      "awayES": "Egipto",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
