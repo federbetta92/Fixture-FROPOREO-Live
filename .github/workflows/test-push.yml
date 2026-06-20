@@ -11,14 +11,13 @@ jobs:
       - name: 🔍 Ver estado real de ESPN ahora mismo
         run: |
           TODAY=$(date -u +%Y%m%d)
-          echo "=== Fecha consultada: $TODAY ==="
           curl -s "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=$TODAY" \
             -H "User-Agent: Mozilla/5.0" > /tmp/espn.json
           python3 -c "
           import json
           d = json.load(open('/tmp/espn.json'))
           events = d.get('events', [])
-          print(f'Eventos encontrados: {len(events)}')
+          out = {'fetched_at_utc': '$(date -u +%Y-%m-%dT%H:%M:%SZ)', 'date_queried': '$TODAY', 'event_count': len(events), 'events': []}
           for e in events:
               comp = e['competitions'][0]
               status = comp['status']['type']
@@ -26,5 +25,17 @@ jobs:
               away = comp['competitors'][1]['team']['displayName']
               hs = comp['competitors'][0].get('score','?')
               as_ = comp['competitors'][1].get('score','?')
-              print(f'  {home} {hs}-{as_} {away} | status: {status[\"name\"]} ({status.get(\"detail\",\"\")}) | date: {e.get(\"date\")}')
+              out['events'].append({
+                  'home': home, 'away': away, 'score': f'{hs}-{as_}',
+                  'status_name': status['name'], 'status_detail': status.get('detail',''),
+                  'iso_date': e.get('date'), 'clock': comp.get('status',{}).get('displayClock','')
+              })
+          json.dump(out, open('data/espn-live-check.json','w'), indent=2)
+          print(json.dumps(out, indent=2))
           "
+      - name: 💾 Guardar
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/espn-live-check.json
+          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: estado ESPN" && git push)
