@@ -1007,24 +1007,41 @@ async function toggleNotifications() {
     return;
   }
   try {
-    const permission = OneSignal.Notifications.permissionNative;
-    if (permission === 'denied') {
-      alert('Las notificaciones están bloqueadas. Habilitálas en la configuración de tu navegador y recargá la app.');
-      return;
-    }
-    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
+    // OneSignal.Notifications.permission es BOOLEANO en el Web SDK (no 'permissionNative', eso es de SDKs móviles)
+    const hasPermission = OneSignal.Notifications.permission;
+    const isSubscribed  = OneSignal.User.PushSubscription.optedIn;
+
     if (isSubscribed) {
       await OneSignal.User.PushSubscription.optOut();
       updateNotifBtn('default');
-    } else {
+      return;
+    }
+
+    if (!hasPermission) {
+      // Esto dispara el diálogo NATIVO del navegador (no el slidedown de OneSignal)
       await OneSignal.Notifications.requestPermission();
-      await OneSignal.User.PushSubscription.optIn(); // opt-in explícito
-      const nowSubscribed = OneSignal.User.PushSubscription.optedIn;
-      updateNotifBtn(nowSubscribed ? 'subscribed' : 'default');
-      if (nowSubscribed) showToast('🔔', '¡Notificaciones activadas!', 'Vas a recibir alertas de goles y partidos');
+    }
+
+    // Confirmar opt-in explícitamente — necesario para que quede "subscribed" en el dashboard
+    await OneSignal.User.PushSubscription.optIn();
+
+    // Dar un instante a que el SDK sincronice el estado interno
+    await new Promise(r => setTimeout(r, 400));
+    const nowGranted    = OneSignal.Notifications.permission;
+    const nowSubscribed = OneSignal.User.PushSubscription.optedIn;
+
+    if (nowGranted && nowSubscribed) {
+      updateNotifBtn('subscribed');
+      showToast('🔔', '¡Notificaciones activadas!', 'Vas a recibir alertas de goles y partidos');
+    } else if (!nowGranted) {
+      updateNotifBtn('blocked');
+      alert('No se pudo activar. Si tocaste "Bloquear" sin querer, habilitá notificaciones en el ícono 🔒 de la barra de direcciones y volvé a intentar.');
+    } else {
+      updateNotifBtn('default');
     }
   } catch(e) {
     console.warn('Error notif:', e);
+    alert('Hubo un problema activando las notificaciones. Probá recargar la página.');
   }
 }
 
@@ -1032,9 +1049,20 @@ async function toggleNotifications() {
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 OneSignalDeferred.push(async function(OneSignal) {
   const optedIn = OneSignal.User.PushSubscription.optedIn;
-  updateNotifBtn(optedIn ? 'subscribed' : 'default');
+  const hasPerm = OneSignal.Notifications.permission;
+  updateNotifBtn(optedIn ? 'subscribed' : (hasPerm === false ? 'default' : 'default'));
+
   OneSignal.User.PushSubscription.addEventListener('change', e => {
     updateNotifBtn(e.current.optedIn ? 'subscribed' : 'default');
+  });
+
+  // Si el navegador otorga permiso (incluso por fuera de nuestro botón), confirmamos opt-in
+  OneSignal.Notifications.addEventListener('permissionChange', async (granted) => {
+    if (granted) {
+      try { await OneSignal.User.PushSubscription.optIn(); } catch(e) {}
+    } else {
+      updateNotifBtn('blocked');
+    }
   });
 });
 
