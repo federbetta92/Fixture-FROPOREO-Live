@@ -2,12 +2,12 @@ name: "🔄 Actualizar Resultados Mundial"
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # red de seguridad — GitHub puede tardar más bajo carga
+    - cron: "0 */3 * * *"   # red de respaldo cada 3h — GitHub puede demorar el disparo real
   workflow_dispatch:
 
 concurrency:
   group: live-scores-polling
-  cancel-in-progress: true   # si se dispara un run nuevo, corta el anterior (evita duplicados)
+  cancel-in-progress: true   # un disparo nuevo reemplaza al anterior (evita 2 procesos pisándose el git push)
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ jobs:
   update-scores:
     runs-on: ubuntu-latest
     name: Polling continuo ESPN + notificaciones
-    timeout-minutes: 60
+    timeout-minutes: 355
 
     steps:
       - name: ⬇️ Checkout
@@ -29,14 +29,14 @@ jobs:
         with:
           node-version: "20"
 
-      - name: 🔄 Loop de polling cada 60s durante ~55 minutos
+      - name: 🔄 Loop de polling cada 60s durante ~5h45 (casi el máximo de GitHub Actions)
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          END=$((SECONDS + 55*60))
+          END=$((SECONDS + 345*60))
           ITER=0
           while [ $SECONDS -lt $END ]; do
             ITER=$((ITER+1))
@@ -48,12 +48,12 @@ jobs:
               echo "Sin cambios."
             else
               git commit -m "⚽ Auto: resultados $(date -u +'%H:%M UTC')"
-              git push || echo "⚠️ push falló (probablemente concurrencia), reintentando con pull"
-              if [ $? -ne 0 ]; then
+              if ! git push; then
+                echo "⚠️ push falló, reintentando con pull --rebase"
                 git pull --rebase origin master && git push
               fi
             fi
 
             sleep 60
           done
-          echo "✅ Loop completo, terminando job (el próximo tick del cron relanza)"
+          echo "✅ Loop de 5h45 completo, terminando job (el próximo tick del cron relanza)"
