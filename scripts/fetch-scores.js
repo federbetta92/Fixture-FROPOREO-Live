@@ -140,12 +140,15 @@ async function sendPush(apiKey, heading, content) {
     }, apiKey);
 
     if (result.body && result.body.id) {
-      console.log(`  📲 Push → "${heading}": ${content}`);
+      console.log(`  📲 Push OK → "${heading}": ${content}`);
+      return true;
     } else {
       console.warn(`  ⚠️ Push fallida (HTTP ${result.status}):`, JSON.stringify(result.body));
+      return false;
     }
   } catch(e) {
     console.warn(`  ⚠️ Error enviando push:`, e.message);
+    return false;
   }
 }
 
@@ -343,14 +346,19 @@ async function main() {
   const debugLog       = [];
   const scheduledEvents = [];
 
-  // Fetchear desde inicio del torneo hasta mañana
-  const start = new Date('2026-06-11');
-  const end   = new Date('2026-07-20');
+  // Sólo re-fetchear días recientes (los partidos viejos ya están guardados y no cambian).
+  // Esto mantiene cada iteración del loop rápida (~pocos segundos) para que el polling
+  // real sea cada 60s y no se vaya alargando con días históricos innecesarios.
+  const tournamentStart = new Date('2026-06-11');
+  const tournamentEnd   = new Date('2026-07-20');
   const today = new Date();
-  const until = new Date(today); until.setDate(until.getDate() + 1);
+  let start = new Date(today); start.setDate(start.getDate() - 2);
+  let until = new Date(today); until.setDate(until.getDate() + 1);
+  if (start < tournamentStart) start = tournamentStart;
+  const end = until > tournamentEnd ? tournamentEnd : until;
 
   const cur = new Date(start);
-  while (cur <= until && cur <= end) {
+  while (cur <= end) {
     const ds = cur.toISOString().slice(0,10).replace(/-/g,'');
     console.log(`📅 ${ds}`);
     await fetchDate(ds, scores, debugLog, scheduledEvents);
@@ -381,15 +389,19 @@ async function main() {
       ...detectUpcoming(scheduledEvents),
     ];
 
-    let sent = 0;
+    let sent = 0, retried = 0;
     for (const notif of toSend) {
       if (sentKeys.has(notif.key)) {
         console.log(`  ↩️  Ya enviada: ${notif.key}`);
         continue;
       }
-      await sendPush(apiKey, notif.heading, notif.content);
-      sentKeys.add(notif.key);
-      sent++;
+      const ok = await sendPush(apiKey, notif.heading, notif.content);
+      if (ok) {
+        sentKeys.add(notif.key);
+        sent++;
+      } else {
+        retried++; // no se marca como enviada → se reintenta en la próxima iteración (60s)
+      }
       // Pausa breve entre pushes para no saturar la API
       await new Promise(r => setTimeout(r, 300));
     }
@@ -402,7 +414,7 @@ async function main() {
       totalSent: keysArray.length,
     }, null, 2));
 
-    console.log(`   ${sent} notificaciones nuevas enviadas. Total acumulado: ${keysArray.length}`);
+    console.log(`   ${sent} notificaciones enviadas, ${retried} a reintentar. Total acumulado: ${keysArray.length}`);
   }
 }
 
