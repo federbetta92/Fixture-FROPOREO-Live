@@ -289,8 +289,12 @@ async function fetchDate(dateStr, scores, debugLog, scheduledEvents) {
           let a = parseInt(awayCmp.score) || 0;
           if (flipped) [h, a] = [a, h];
 
-          const liveStatuses = ['STATUS_IN_PROGRESS','STATUS_HALFTIME','STATUS_END_OF_PERIOD','STATUS_SHOOTOUT'];
-          const status = liveStatuses.includes(statusName) ? 'live' : 'finished';
+          // Whitelist de estados FINALIZADOS (más robusto que listar todos los posibles
+          // estados "en vivo" de ESPN, que incluyen STATUS_FIRST_HALF, STATUS_SECOND_HALF,
+          // STATUS_EXTRA_TIME, etc. — cualquier estado que no sea scheduled ni finished se
+          // trata como 'live' por defecto, para no perder ningún estado intermedio).
+          const finishedStatuses = ['STATUS_FINAL','STATUS_FULL_TIME','STATUS_POSTPONED','STATUS_CANCELED','STATUS_FORFEIT','STATUS_ABANDONED'];
+          const status = finishedStatuses.includes(statusName) ? 'finished' : 'live';
 
           // Best-effort: nombre del último goleador (si ESPN lo expone en "details")
           let lastScorer = null;

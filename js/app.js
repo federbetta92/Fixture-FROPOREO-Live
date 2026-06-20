@@ -337,8 +337,8 @@ function processESPNEvent(event) {
     let a = parseInt(awayCmp.score) || 0;
     if (flipped) { [h, a] = [a, h]; }
 
-    const liveOnes = ['STATUS_IN_PROGRESS','STATUS_HALFTIME','STATUS_END_OF_PERIOD','STATUS_SHOOTOUT'];
-    const status = liveOnes.includes(statusName) ? 'live' : 'finished';
+    const finishedStatuses = ['STATUS_FINAL','STATUS_FULL_TIME','STATUS_POSTPONED','STATUS_CANCELED','STATUS_FORFEIT','STATUS_ABANDONED'];
+    const status = finishedStatuses.includes(statusName) ? 'finished' : 'live';
 
     return mergeAutoScore(match.id, { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString() });
   } catch(e) { return false; }
