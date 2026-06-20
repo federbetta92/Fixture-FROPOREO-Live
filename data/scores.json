@@ -263,101 +263,110 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.562Z",
+      "updatedAt": "2026-06-20T17:09:33.478Z",
       "lastScorer": {
         "name": "Michal Sadílek",
         "side": "home"
-      }
+      },
+      "firstLiveAt": null
     },
     "B3": {
       "home": 4,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.562Z",
+      "updatedAt": "2026-06-20T17:09:33.478Z",
       "lastScorer": {
         "name": "Ermin Mahmic",
         "side": "away"
-      }
+      },
+      "firstLiveAt": null
     },
     "B4": {
       "home": 6,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.562Z",
+      "updatedAt": "2026-06-20T17:09:33.478Z",
       "lastScorer": {
         "name": "Jonathan David",
         "side": "home"
-      }
+      },
+      "firstLiveAt": null
     },
     "A4": {
       "home": 1,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.562Z",
+      "updatedAt": "2026-06-20T17:09:33.478Z",
       "lastScorer": {
         "name": "Luis Romo",
         "side": "home"
-      }
+      },
+      "firstLiveAt": null
     },
     "D3": {
       "home": 2,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.586Z",
+      "updatedAt": "2026-06-20T17:09:33.489Z",
       "lastScorer": {
         "name": "Alex Freeman",
         "side": "home"
-      }
+      },
+      "firstLiveAt": null
     },
     "C3": {
       "home": 0,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.586Z",
+      "updatedAt": "2026-06-20T17:09:33.490Z",
       "lastScorer": {
         "name": "Ismael Saibari",
         "side": "away"
-      }
+      },
+      "firstLiveAt": null
     },
     "C4": {
       "home": 3,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.586Z",
+      "updatedAt": "2026-06-20T17:09:33.490Z",
       "lastScorer": {
         "name": "Vinícius Júnior",
         "side": "home"
-      }
+      },
+      "firstLiveAt": null
     },
     "D4": {
       "home": 0,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.586Z",
+      "updatedAt": "2026-06-20T17:09:33.490Z",
       "lastScorer": {
         "name": "Matías Galarza",
         "side": "away"
-      }
+      },
+      "firstLiveAt": null
     },
     "F3": {
       "home": 1,
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-20T17:07:57.604Z",
+      "updatedAt": "2026-06-20T17:09:33.500Z",
       "lastScorer": {
         "name": "Brian Brobbey",
         "side": "home"
-      }
+      },
+      "firstLiveAt": "2026-06-20T17:09:33.500Z"
     }
   },
-  "updatedAt": "2026-06-20T17:07:57.620Z",
+  "updatedAt": "2026-06-20T17:09:33.514Z",
   "matchCount": 33
 }
