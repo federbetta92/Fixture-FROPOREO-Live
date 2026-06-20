@@ -5,219 +5,337 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.291Z"
+      "updatedAt": "2026-06-20T02:16:54.405Z",
+      "lastScorer": {
+        "name": "Raúl Jiménez",
+        "side": "home"
+      }
     },
     "A2": {
       "home": 2,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.291Z"
+      "updatedAt": "2026-06-20T02:16:54.406Z",
+      "lastScorer": {
+        "name": "Oh Hyeon-Gyu",
+        "side": "home"
+      }
     },
     "D1": {
       "home": 4,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.332Z"
+      "updatedAt": "2026-06-20T02:16:54.429Z",
+      "lastScorer": {
+        "name": "Giovanni Reyna",
+        "side": "home"
+      }
     },
     "B2": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.344Z"
+      "updatedAt": "2026-06-20T02:16:54.519Z",
+      "lastScorer": null
     },
     "C1": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.344Z"
+      "updatedAt": "2026-06-20T02:16:54.519Z",
+      "lastScorer": {
+        "name": "Vinícius Júnior",
+        "side": "home"
+      }
     },
     "C2": {
       "home": 0,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.344Z"
+      "updatedAt": "2026-06-20T02:16:54.519Z",
+      "lastScorer": {
+        "name": "John McGinn",
+        "side": "away"
+      }
     },
     "E1": {
       "home": 7,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.355Z"
+      "updatedAt": "2026-06-20T02:16:54.627Z",
+      "lastScorer": {
+        "name": "Kai Havertz",
+        "side": "home"
+      }
     },
     "F1": {
       "home": 2,
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.355Z"
+      "updatedAt": "2026-06-20T02:16:54.627Z",
+      "lastScorer": {
+        "name": "Daichi Kamada",
+        "side": "away"
+      }
     },
     "E2": {
       "home": 1,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.356Z"
+      "updatedAt": "2026-06-20T02:16:54.627Z",
+      "lastScorer": {
+        "name": "Amad Diallo",
+        "side": "home"
+      }
     },
     "F2": {
       "home": 5,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.356Z"
+      "updatedAt": "2026-06-20T02:16:54.627Z",
+      "lastScorer": {
+        "name": "Yasin Ayari",
+        "side": "home"
+      }
     },
     "H1": {
       "home": 0,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.368Z"
+      "updatedAt": "2026-06-20T02:16:54.743Z",
+      "lastScorer": null
     },
     "G1": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.369Z"
+      "updatedAt": "2026-06-20T02:16:54.743Z",
+      "lastScorer": {
+        "name": "Emam Ashour",
+        "side": "away"
+      }
     },
     "H2": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.369Z"
+      "updatedAt": "2026-06-20T02:16:54.743Z",
+      "lastScorer": {
+        "name": "Maxi Araújo",
+        "side": "away"
+      }
     },
     "G2": {
       "home": 2,
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.369Z"
+      "updatedAt": "2026-06-20T02:16:54.743Z",
+      "lastScorer": {
+        "name": "Mohammad Mohebbi",
+        "side": "home"
+      }
     },
     "I1": {
       "home": 3,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.390Z"
+      "updatedAt": "2026-06-20T02:16:54.819Z",
+      "lastScorer": {
+        "name": "Kylian Mbappé",
+        "side": "home"
+      }
     },
     "I2": {
       "home": 1,
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.390Z"
+      "updatedAt": "2026-06-20T02:16:54.819Z",
+      "lastScorer": {
+        "name": "Leo Østigard",
+        "side": "away"
+      }
     },
     "J1": {
       "home": 3,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.390Z"
+      "updatedAt": "2026-06-20T02:16:54.819Z",
+      "lastScorer": {
+        "name": "Lionel Messi",
+        "side": "home"
+      }
     },
     "J2": {
       "home": 3,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.400Z"
+      "updatedAt": "2026-06-20T02:16:54.943Z",
+      "lastScorer": {
+        "name": "Ali Olwan",
+        "side": "away"
+      }
     },
     "K1": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.400Z"
+      "updatedAt": "2026-06-20T02:16:54.943Z",
+      "lastScorer": {
+        "name": "Yoane Wissa",
+        "side": "away"
+      }
     },
     "L1": {
       "home": 4,
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.400Z"
+      "updatedAt": "2026-06-20T02:16:54.943Z",
+      "lastScorer": {
+        "name": "Marcus Rashford",
+        "side": "home"
+      }
     },
     "L2": {
       "home": 1,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.401Z"
+      "updatedAt": "2026-06-20T02:16:54.943Z",
+      "lastScorer": {
+        "name": "Caleb Yirenkyi",
+        "side": "home"
+      }
     },
     "K2": {
       "home": 1,
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.401Z"
+      "updatedAt": "2026-06-20T02:16:54.943Z",
+      "lastScorer": {
+        "name": "Jáminton Campaz",
+        "side": "away"
+      }
     },
     "B1": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.332Z"
+      "updatedAt": "2026-06-20T02:16:54.429Z",
+      "lastScorer": {
+        "name": "Cyle Larin",
+        "side": "home"
+      }
     },
     "D2": {
       "home": 2,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.355Z"
+      "updatedAt": "2026-06-20T02:16:54.627Z",
+      "lastScorer": {
+        "name": "Connor Metcalfe",
+        "side": "home"
+      }
     },
     "A3": {
       "home": 1,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.410Z"
+      "updatedAt": "2026-06-20T02:16:55.055Z",
+      "lastScorer": {
+        "name": "Michal Sadílek",
+        "side": "home"
+      }
     },
     "B3": {
       "home": 4,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.410Z"
+      "updatedAt": "2026-06-20T02:16:55.055Z",
+      "lastScorer": {
+        "name": "Ermin Mahmic",
+        "side": "away"
+      }
     },
     "B4": {
       "home": 6,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.410Z"
+      "updatedAt": "2026-06-20T02:16:55.055Z",
+      "lastScorer": {
+        "name": "Jonathan David",
+        "side": "home"
+      }
     },
     "A4": {
       "home": 1,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.410Z"
+      "updatedAt": "2026-06-20T02:16:55.055Z",
+      "lastScorer": {
+        "name": "Luis Romo",
+        "side": "home"
+      }
     },
     "D3": {
       "home": 2,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.419Z"
+      "updatedAt": "2026-06-20T02:16:55.125Z",
+      "lastScorer": {
+        "name": "Alex Freeman",
+        "side": "home"
+      }
     },
     "C3": {
       "home": 0,
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.419Z"
+      "updatedAt": "2026-06-20T02:16:55.125Z",
+      "lastScorer": {
+        "name": "Ismael Saibari",
+        "side": "away"
+      }
     },
     "C4": {
       "home": 3,
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-20T02:15:42.419Z"
+      "updatedAt": "2026-06-20T02:16:55.125Z",
+      "lastScorer": {
+        "name": "Vinícius Júnior",
+        "side": "home"
+      }
     }
   },
-  "updatedAt": "2026-06-20T02:15:42.443Z",
+  "updatedAt": "2026-06-20T02:16:55.239Z",
   "matchCount": 31
 }
