@@ -2,8 +2,12 @@ name: "🔄 Actualizar Resultados Mundial"
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/10 * * * *"   # red de seguridad — GitHub puede tardar más bajo carga
   workflow_dispatch:
+
+concurrency:
+  group: live-scores-polling
+  cancel-in-progress: true   # si se dispara un run nuevo, corta el anterior (evita duplicados)
 
 permissions:
   contents: write
@@ -11,7 +15,8 @@ permissions:
 jobs:
   update-scores:
     runs-on: ubuntu-latest
-    name: Fetch ESPN + notificaciones
+    name: Polling continuo ESPN + notificaciones
+    timeout-minutes: 60
 
     steps:
       - name: ⬇️ Checkout
@@ -24,20 +29,31 @@ jobs:
         with:
           node-version: "20"
 
-      - name: 🔄 Fetchear resultados y enviar notificaciones
+      - name: 🔄 Loop de polling cada 60s durante ~55 minutos
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
-        run: node scripts/fetch-scores.js
-
-      - name: 📦 Commit si hay cambios
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/scores.json data/debug.json data/notifications-sent.json
-          if git diff --staged --quiet; then
-            echo "Sin cambios."
-          else
-            HORA=$(date -u +'%H:%M UTC')
-            git commit -m "⚽ Auto: resultados actualizados $HORA"
-            git push
-          fi
+
+          END=$((SECONDS + 55*60))
+          ITER=0
+          while [ $SECONDS -lt $END ]; do
+            ITER=$((ITER+1))
+            echo "═══ Iteración $ITER — $(date -u +'%H:%M:%S') UTC ═══"
+            node scripts/fetch-scores.js || echo "⚠️ fetch-scores.js falló, sigo el loop"
+
+            git add data/scores.json data/debug.json data/notifications-sent.json
+            if git diff --staged --quiet; then
+              echo "Sin cambios."
+            else
+              git commit -m "⚽ Auto: resultados $(date -u +'%H:%M UTC')"
+              git push || echo "⚠️ push falló (probablemente concurrencia), reintentando con pull"
+              if [ $? -ne 0 ]; then
+                git pull --rebase origin master && git push
+              fi
+            fi
+
+            sleep 60
+          done
+          echo "✅ Loop completo, terminando job (el próximo tick del cron relanza)"
