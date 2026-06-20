@@ -1,0 +1,34 @@
+{
+  "fetched_at_utc": "2026-06-20T17:03:05Z",
+  "date_queried": "20260620",
+  "event_count": 3,
+  "events": [
+    {
+      "home": "Netherlands",
+      "away": "Sweden",
+      "score": "0-0",
+      "status_name": "STATUS_FIRST_HALF",
+      "status_detail": "3'",
+      "iso_date": "2026-06-20T17:00Z",
+      "clock": "3'"
+    },
+    {
+      "home": "Germany",
+      "away": "Ivory Coast",
+      "score": "0-0",
+      "status_name": "STATUS_SCHEDULED",
+      "status_detail": "Sat, June 20th at 4:00 PM EDT",
+      "iso_date": "2026-06-20T20:00Z",
+      "clock": "0'"
+    },
+    {
+      "home": "Ecuador",
+      "away": "Cura\u00e7ao",
+      "score": "0-0",
+      "status_name": "STATUS_SCHEDULED",
+      "status_detail": "Sat, June 20th at 8:00 PM EDT",
+      "iso_date": "2026-06-21T00:00Z",
+      "clock": "0'"
+    }
+  ]
+}
