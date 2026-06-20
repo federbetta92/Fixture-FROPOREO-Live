@@ -3,48 +3,15 @@
     "players": 9,
     "messageable": 6
   },
-  "players": {
-    "total": 9,
-    "list": [
-      {
-        "id": "1388eadd-e755-428d-a68e-77aef3b28177",
-        "opted": false
-      },
-      {
-        "id": "cb97ff68-86c4-4b6b-865f-8cf3929fd4f3",
-        "opted": false
-      },
-      {
-        "id": "060416b5-8e91-4ac8-a8a4-55059415e23c",
-        "opted": false
-      },
-      {
-        "id": "bb4ae79f-62a5-4014-ac93-25dd8bc1a31e",
-        "opted": false
-      },
-      {
-        "id": "5d9bb80a-7011-4daa-bad0-48bf0ea63eeb",
-        "opted": false
-      },
-      {
-        "id": "6734a2f3-1244-4253-81e7-56b5f6bf35af",
-        "opted": false
-      },
-      {
-        "id": "cf15cfbb-1251-4bc7-81a6-18e2b628da13",
-        "opted": false
-      },
-      {
-        "id": "aeceac40-165a-49f0-b887-7e7dc80e4b2a",
-        "opted": false
-      },
-      {
-        "id": "e5410e6d-bee7-4182-a96b-d0cbb80b538a",
-        "opted": false
-      }
-    ]
+  "notification_create": {
+    "id": "c3798f28-7c0c-4df5-b3a5-9ac9eb061a13"
   },
-  "notification": {
-    "id": "5f6777c4-1a75-4589-b8a4-1dad12b64eb3"
+  "notification_status": {
+    "successful": 6,
+    "failed": 0,
+    "errored": 0,
+    "remaining": 0,
+    "converted": 0,
+    "received": null
   }
 }
