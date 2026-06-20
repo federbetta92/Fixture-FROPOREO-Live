@@ -173,21 +173,25 @@ function detectScoreChanges(prevScores, newScores) {
       const prevAway = prevS.away ?? 0;
       const diffHome = newS.home - prevHome;
       const diffAway = newS.away - prevAway;
+      const scorerName = (newS.lastScorer && newS.lastScorer.name) ? newS.lastScorer.name : null;
+      const scorerSide = newS.lastScorer ? newS.lastScorer.side : null;
 
       for (let i = 1; i <= diffHome; i++) {
         const h = prevHome + i;
+        const who = (scorerSide === 'home' && scorerName) ? ` — ⚽ ${scorerName}` : '';
         toSend.push({
           key: `goal-${id}-h${h}-a${newS.away}`,
           heading: `⚽ ¡Gol de ${match.home}!`,
-          content: `${match.home} ${h} – ${newS.away} ${match.away}`,
+          content: `${match.home} ${h} – ${newS.away} ${match.away}${who}`,
         });
       }
       for (let i = 1; i <= diffAway; i++) {
         const a = prevAway + i;
+        const who = (scorerSide === 'away' && scorerName) ? ` — ⚽ ${scorerName}` : '';
         toSend.push({
           key: `goal-${id}-h${newS.home}-a${a}`,
           heading: `⚽ ¡Gol de ${match.away}!`,
-          content: `${match.home} ${newS.home} – ${a} ${match.away}`,
+          content: `${match.home} ${newS.home} – ${a} ${match.away}${who}`,
         });
       }
     }
@@ -285,8 +289,28 @@ async function fetchDate(dateStr, scores, debugLog, scheduledEvents) {
           const liveStatuses = ['STATUS_IN_PROGRESS','STATUS_HALFTIME','STATUS_END_OF_PERIOD','STATUS_SHOOTOUT'];
           const status = liveStatuses.includes(statusName) ? 'live' : 'finished';
 
-          scores[match.id] = { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString() };
-          console.log(`  ✓ ${match.id}: ${homeES} ${h}-${a} ${awayES} [${status}]`);
+          // Best-effort: nombre del último goleador (si ESPN lo expone en "details")
+          let lastScorer = null;
+          try {
+            const goals = (comp.details || []).filter(d =>
+              (d.type?.text || '').toLowerCase().includes('goal') &&
+              !(d.type?.text || '').toLowerCase().includes('own')
+            );
+            if (goals.length) {
+              const last = goals[goals.length - 1];
+              const scorerName = last.athletesInvolved?.[0]?.displayName
+                || last.athletesInvolved?.[0]?.shortName
+                || null;
+              const teamId = last.team?.id;
+              if (scorerName) {
+                const isHomeScorer = teamId === homeCmp.team?.id;
+                lastScorer = { name: scorerName, side: flipped ? (isHomeScorer?'away':'home') : (isHomeScorer?'home':'away') };
+              }
+            }
+          } catch(e) { /* si ESPN no expone esto, seguimos sin nombre */ }
+
+          scores[match.id] = { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString(), lastScorer };
+          console.log(`  ✓ ${match.id}: ${homeES} ${h}-${a} ${awayES} [${status}]${lastScorer ? ' ⚽ '+lastScorer.name : ''}`);
         } catch(e) {
           debugLog.push({ date: dateStr, error: e.message });
         }
