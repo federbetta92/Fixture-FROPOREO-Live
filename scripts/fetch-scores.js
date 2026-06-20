@@ -247,17 +247,14 @@ function findMatch(homeES, awayES) {
 }
 
 async function fetchDate(dateStr, scores, debugLog, scheduledEvents) {
-  const endpoints = [
-    `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=${dateStr}`,
-    `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world.cup/scoreboard?dates=${dateStr}`,
-  ];
+  // Solo 'fifa.world' — el fallback 'fifa.world.cup' devolvía datos desactualizados
+  // que llegaron a marcar un partido como finalizado a los pocos minutos de arrancar.
+  const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=${dateStr}`;
 
-  for (const url of endpoints) {
-    try {
+  try {
       const data = await fetchJSON(url);
       const events = data.events || [];
-      debugLog.push({ date: dateStr, endpoint: url.includes('cup') ? 'cup' : 'world', eventsFound: events.length });
-      if (events.length === 0) continue;
+      debugLog.push({ date: dateStr, endpoint: 'world', eventsFound: events.length });
 
       for (const event of events) {
         try {
@@ -316,17 +313,30 @@ async function fetchDate(dateStr, scores, debugLog, scheduledEvents) {
             }
           } catch(e) { /* si ESPN no expone esto, seguimos sin nombre */ }
 
-          scores[match.id] = { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString(), lastScorer };
-          console.log(`  ✓ ${match.id}: ${homeES} ${h}-${a} ${awayES} [${status}]${lastScorer ? ' ⚽ '+lastScorer.name : ''}`);
+          // Trackear cuándo se vio 'live' por primera vez, para evitar falsos "finished"
+          // prematuros si ESPN devuelve un dato corrupto/desactualizado puntualmente.
+          const prevEntry = scores[match.id];
+          let firstLiveAt = prevEntry?.firstLiveAt || null;
+          if (status === 'live' && !firstLiveAt) firstLiveAt = new Date().toISOString();
+
+          let finalStatus = status;
+          if (status === 'finished' && firstLiveAt) {
+            const minutesLive = (Date.now() - new Date(firstLiveAt).getTime()) / 60000;
+            if (minutesLive < 40) {
+              console.log(`  ⚠️ ${match.id}: ESPN dice 'finished' pero solo ${minutesLive.toFixed(1)} min desde el inicio — ignorado como glitch, mantengo 'live'`);
+              finalStatus = 'live';
+            }
+          }
+
+          scores[match.id] = { home: h, away: a, status: finalStatus, auto: true, updatedAt: new Date().toISOString(), lastScorer, firstLiveAt };
+          console.log(`  ✓ ${match.id}: ${homeES} ${h}-${a} ${awayES} [${finalStatus}]${lastScorer ? ' ⚽ '+lastScorer.name : ''}`);
         } catch(e) {
           debugLog.push({ date: dateStr, error: e.message });
         }
       }
-      return;
-    } catch(e) {
-      console.warn(`  Error endpoint ${url.includes('cup') ? 'cup' : 'world'}: ${e.message}`);
-      debugLog.push({ date: dateStr, endpoint: url.includes('cup') ? 'cup' : 'world', fetchError: e.message });
-    }
+  } catch(e) {
+    console.warn(`  Error endpoint world: ${e.message}`);
+    debugLog.push({ date: dateStr, endpoint: 'world', fetchError: e.message });
   }
 }
 
