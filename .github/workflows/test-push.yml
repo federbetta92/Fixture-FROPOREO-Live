@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: 🔍 Diagnóstico + push de prueba
+      - name: 🔍 Diagnóstico + push + estado real de entrega
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
@@ -34,15 +34,30 @@ jobs:
             const result = {};
             const app = await req('GET','/api/v1/apps/'+APP_ID);
             result.app = {players:app.body.players, messageable:app.body.messageable_players};
-            const pl = await req('GET','/api/v1/players?app_id='+APP_ID+'&limit=10');
-            result.players = {total:pl.body.total_count, list:(pl.body.players||[]).map(p=>({id:p.id,opted:p.notification_types>0}))};
+
+            // Enviar push de prueba
             const notif = await req('POST','/api/v1/notifications',{
               app_id:APP_ID, included_segments:['All'],
               headings:{en:'⚽ Test FROPOREO',es:'⚽ Test FROPOREO'},
-              contents:{en:'Funciona! Alertas del Mundial activas 🎉',es:'Funciona! Alertas del Mundial activas 🎉'},
+              contents:{en:'Funciona! Alertas del Mundial activas',es:'Funciona! Alertas del Mundial activas'},
               url:'https://fixture-froporeo-live.vercel.app/'
             });
-            result.notification = {id:notif.body.id, recipients:notif.body.recipients, errors:notif.body.errors};
+            result.notification_create = {id:notif.body.id, recipients:notif.body.recipients, errors:notif.body.errors};
+
+            // Esperar y consultar el estado REAL de entrega (fuente de verdad)
+            if (notif.body.id) {
+              await new Promise(r=>setTimeout(r,4000));
+              const view = await req('GET', '/api/v1/notifications/'+notif.body.id+'?app_id='+APP_ID);
+              result.notification_status = {
+                successful: view.body.successful,
+                failed: view.body.failed,
+                errored: view.body.errored,
+                remaining: view.body.remaining,
+                converted: view.body.converted,
+                received: view.body.received,
+              };
+            }
+
             console.log(JSON.stringify(result,null,2));
             fs.mkdirSync('data',{recursive:true});
             fs.writeFileSync('data/onesignal-diagnostic.json',JSON.stringify(result,null,2));
@@ -53,4 +68,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
           git add data/onesignal-diagnostic.json
-          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: test push result" && git push)
+          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: estado real de entrega" && git push)
