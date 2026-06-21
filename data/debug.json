@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T16:48:07.359Z",
+  "generatedAt": "2026-06-21T19:50:48.796Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -94,7 +94,7 @@
       "awayEN": "Saudi Arabia",
       "homeES": "España",
       "awayES": "Arabia Saudita",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "H3"
     },
     {
@@ -103,8 +103,8 @@
       "awayEN": "Iran",
       "homeES": "Bélgica",
       "awayES": "Irán",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "G3"
     },
     {
       "date": "20260621",
