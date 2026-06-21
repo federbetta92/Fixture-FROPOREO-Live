@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T20:11:09.828Z",
+  "generatedAt": "2026-06-21T20:12:11.042Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -103,7 +103,7 @@
       "awayEN": "Iran",
       "homeES": "Bélgica",
       "awayES": "Irán",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "G3"
     },
     {
