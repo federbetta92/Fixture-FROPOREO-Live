@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T00:43:06.990Z",
+  "generatedAt": "2026-06-21T00:44:08.092Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -71,7 +71,7 @@
       "awayEN": "Curaçao",
       "homeES": "Ecuador",
       "awayES": "Curazao",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "E4"
     },
     {
