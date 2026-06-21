@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T22:01:12.744Z",
+  "generatedAt": "2026-06-21T22:02:13.858Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -112,8 +112,8 @@
       "awayEN": "Cape Verde",
       "homeES": "Uruguay",
       "awayES": "Cabo Verde",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "H4"
     },
     {
       "date": "20260621",
