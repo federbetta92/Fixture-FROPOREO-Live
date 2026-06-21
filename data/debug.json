@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T23:11:13.429Z",
+  "generatedAt": "2026-06-21T23:12:14.807Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -112,7 +112,7 @@
       "awayEN": "Cape Verde",
       "homeES": "Uruguay",
       "awayES": "Cabo Verde",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "H4"
     },
     {
