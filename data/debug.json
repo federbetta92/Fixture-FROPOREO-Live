@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T05:10:05.864Z",
+  "generatedAt": "2026-06-21T05:11:06.920Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -85,7 +85,7 @@
       "awayEN": "Japan",
       "homeES": "Túnez",
       "awayES": "Japón",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "F4"
     },
     {
