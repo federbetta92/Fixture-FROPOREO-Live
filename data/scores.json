@@ -311,7 +311,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.536Z",
+      "updatedAt": "2026-06-21T20:44:43.831Z",
       "lastScorer": {
         "name": "Alex Freeman",
         "side": "home"
@@ -323,7 +323,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.537Z",
+      "updatedAt": "2026-06-21T20:44:43.832Z",
       "lastScorer": {
         "name": "Ismael Saibari",
         "side": "away"
@@ -335,7 +335,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.537Z",
+      "updatedAt": "2026-06-21T20:44:43.832Z",
       "lastScorer": {
         "name": "Vinícius Júnior",
         "side": "home"
@@ -347,7 +347,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.537Z",
+      "updatedAt": "2026-06-21T20:44:43.832Z",
       "lastScorer": {
         "name": "Matías Galarza",
         "side": "away"
@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.575Z",
+      "updatedAt": "2026-06-21T20:44:43.859Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.575Z",
+      "updatedAt": "2026-06-21T20:44:43.860Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,7 +383,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.575Z",
+      "updatedAt": "2026-06-21T20:44:43.860Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     },
@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.604Z",
+      "updatedAt": "2026-06-21T20:44:43.878Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.604Z",
+      "updatedAt": "2026-06-21T20:44:43.878Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,11 +416,11 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-21T20:43:42.604Z",
+      "updatedAt": "2026-06-21T20:44:43.878Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     }
   },
-  "updatedAt": "2026-06-21T20:43:42.625Z",
+  "updatedAt": "2026-06-21T20:44:43.901Z",
   "matchCount": 38
 }
