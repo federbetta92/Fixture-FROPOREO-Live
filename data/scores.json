@@ -311,7 +311,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.372Z",
+      "updatedAt": "2026-06-21T00:41:04.642Z",
       "lastScorer": {
         "name": "Alex Freeman",
         "side": "home"
@@ -323,7 +323,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.373Z",
+      "updatedAt": "2026-06-21T00:41:04.642Z",
       "lastScorer": {
         "name": "Ismael Saibari",
         "side": "away"
@@ -335,7 +335,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.373Z",
+      "updatedAt": "2026-06-21T00:41:04.642Z",
       "lastScorer": {
         "name": "Vinícius Júnior",
         "side": "home"
@@ -347,7 +347,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.373Z",
+      "updatedAt": "2026-06-21T00:41:04.642Z",
       "lastScorer": {
         "name": "Matías Galarza",
         "side": "away"
@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.464Z",
+      "updatedAt": "2026-06-21T00:41:04.661Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.464Z",
+      "updatedAt": "2026-06-21T00:41:04.661Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,11 +383,11 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-21T00:40:03.464Z",
+      "updatedAt": "2026-06-21T00:41:04.661Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     }
   },
-  "updatedAt": "2026-06-21T00:40:03.628Z",
+  "updatedAt": "2026-06-21T00:41:04.704Z",
   "matchCount": 35
 }
