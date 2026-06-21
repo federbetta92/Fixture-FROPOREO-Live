@@ -311,7 +311,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.355Z",
+      "updatedAt": "2026-06-21T05:30:26.379Z",
       "lastScorer": {
         "name": "Alex Freeman",
         "side": "home"
@@ -323,7 +323,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.355Z",
+      "updatedAt": "2026-06-21T05:30:26.379Z",
       "lastScorer": {
         "name": "Ismael Saibari",
         "side": "away"
@@ -335,7 +335,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.355Z",
+      "updatedAt": "2026-06-21T05:30:26.379Z",
       "lastScorer": {
         "name": "Vinícius Júnior",
         "side": "home"
@@ -347,7 +347,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.355Z",
+      "updatedAt": "2026-06-21T05:30:26.379Z",
       "lastScorer": {
         "name": "Matías Galarza",
         "side": "away"
@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.377Z",
+      "updatedAt": "2026-06-21T05:30:26.393Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.377Z",
+      "updatedAt": "2026-06-21T05:30:26.393Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,16 +383,16 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.377Z",
+      "updatedAt": "2026-06-21T05:30:26.393Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     },
     "F4": {
       "home": 0,
-      "away": 2,
+      "away": 3,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-21T05:29:25.408Z",
+      "updatedAt": "2026-06-21T05:30:26.409Z",
       "lastScorer": {
         "name": "Junya Ito",
         "side": "away"
@@ -400,6 +400,6 @@
       "firstLiveAt": "2026-06-21T04:49:44.222Z"
     }
   },
-  "updatedAt": "2026-06-21T05:29:25.431Z",
+  "updatedAt": "2026-06-21T05:30:26.433Z",
   "matchCount": 36
 }
