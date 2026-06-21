@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T16:06:22.905Z",
+  "generatedAt": "2026-06-21T16:07:23.902Z",
   "debugLog": [
     {
       "date": "20260619",
@@ -94,7 +94,7 @@
       "awayEN": "Saudi Arabia",
       "homeES": "España",
       "awayES": "Arabia Saudita",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "H3"
     },
     {
