@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.222Z",
+      "updatedAt": "2026-06-22T02:39:04.703Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.223Z",
+      "updatedAt": "2026-06-22T02:39:04.703Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,7 +383,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.223Z",
+      "updatedAt": "2026-06-22T02:39:04.703Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     },
@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.367Z",
+      "updatedAt": "2026-06-22T02:39:04.764Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.367Z",
+      "updatedAt": "2026-06-22T02:39:04.764Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.367Z",
+      "updatedAt": "2026-06-22T02:39:04.764Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.367Z",
+      "updatedAt": "2026-06-22T02:39:04.764Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 2,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-22T02:38:03.367Z",
+      "updatedAt": "2026-06-22T02:39:04.764Z",
       "lastScorer": {
         "name": "Mohamed Salah",
         "side": "away"
@@ -445,6 +445,6 @@
       "firstLiveAt": "2026-06-22T01:01:46.600Z"
     }
   },
-  "updatedAt": "2026-06-22T02:38:03.395Z",
+  "updatedAt": "2026-06-22T02:39:04.791Z",
   "matchCount": 40
 }
