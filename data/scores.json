@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.916Z",
+      "updatedAt": "2026-06-22T17:43:55.232Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.916Z",
+      "updatedAt": "2026-06-22T17:43:55.232Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,7 +383,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.916Z",
+      "updatedAt": "2026-06-22T17:43:55.232Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     },
@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.933Z",
+      "updatedAt": "2026-06-22T17:43:55.389Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.934Z",
+      "updatedAt": "2026-06-22T17:43:55.389Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.934Z",
+      "updatedAt": "2026-06-22T17:43:55.389Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.934Z",
+      "updatedAt": "2026-06-22T17:43:55.389Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.934Z",
+      "updatedAt": "2026-06-22T17:43:55.389Z",
       "lastScorer": {
         "name": "Trézéguet",
         "side": "away"
@@ -449,7 +449,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-22T17:42:53.949Z",
+      "updatedAt": "2026-06-22T17:43:55.576Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -457,6 +457,6 @@
       "firstLiveAt": "2026-06-22T17:02:01.939Z"
     }
   },
-  "updatedAt": "2026-06-22T17:42:53.980Z",
+  "updatedAt": "2026-06-22T17:43:55.811Z",
   "matchCount": 41
 }
