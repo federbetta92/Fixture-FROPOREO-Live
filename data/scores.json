@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.272Z",
+      "updatedAt": "2026-06-22T00:05:27.831Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.273Z",
+      "updatedAt": "2026-06-22T00:05:27.831Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,7 +383,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.273Z",
+      "updatedAt": "2026-06-22T00:05:27.831Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     },
@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.289Z",
+      "updatedAt": "2026-06-22T00:05:27.855Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.289Z",
+      "updatedAt": "2026-06-22T00:05:27.855Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,16 +416,16 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.289Z",
+      "updatedAt": "2026-06-22T00:05:27.855Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
     "H4": {
       "home": 2,
       "away": 2,
-      "status": "live",
+      "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T00:04:26.289Z",
+      "updatedAt": "2026-06-22T00:05:27.855Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -433,6 +433,6 @@
       "firstLiveAt": "2026-06-21T22:02:13.835Z"
     }
   },
-  "updatedAt": "2026-06-22T00:04:26.329Z",
+  "updatedAt": "2026-06-22T00:05:28.046Z",
   "matchCount": 39
 }
