@@ -359,7 +359,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.672Z",
+      "updatedAt": "2026-06-22T01:52:58.998Z",
       "lastScorer": {
         "name": "Crysencio Summerville",
         "side": "home"
@@ -371,7 +371,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.672Z",
+      "updatedAt": "2026-06-22T01:52:58.998Z",
       "lastScorer": {
         "name": "Deniz Undav",
         "side": "home"
@@ -383,7 +383,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.673Z",
+      "updatedAt": "2026-06-22T01:52:58.998Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T00:01:21.235Z"
     },
@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.687Z",
+      "updatedAt": "2026-06-22T01:52:59.033Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.687Z",
+      "updatedAt": "2026-06-22T01:52:59.033Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.687Z",
+      "updatedAt": "2026-06-22T01:52:59.033Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.687Z",
+      "updatedAt": "2026-06-22T01:52:59.033Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-22T01:51:57.687Z",
+      "updatedAt": "2026-06-22T01:52:59.033Z",
       "lastScorer": {
         "name": "Finn Surman",
         "side": "home"
@@ -445,6 +445,6 @@
       "firstLiveAt": "2026-06-22T01:01:46.600Z"
     }
   },
-  "updatedAt": "2026-06-22T01:51:57.745Z",
+  "updatedAt": "2026-06-22T01:52:59.160Z",
   "matchCount": 40
 }
