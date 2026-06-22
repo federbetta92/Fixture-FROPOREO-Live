@@ -1,47 +1,6 @@
 {
-  "generatedAt": "2026-06-21T23:59:19.386Z",
+  "generatedAt": "2026-06-22T00:00:20.802Z",
   "debugLog": [
-    {
-      "date": "20260619",
-      "endpoint": "world",
-      "eventsFound": 4
-    },
-    {
-      "date": "20260619",
-      "homeEN": "United States",
-      "awayEN": "Australia",
-      "homeES": "Estados Unidos",
-      "awayES": "Australia",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "D3"
-    },
-    {
-      "date": "20260619",
-      "homeEN": "Scotland",
-      "awayEN": "Morocco",
-      "homeES": "Escocia",
-      "awayES": "Marruecos",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "C3"
-    },
-    {
-      "date": "20260619",
-      "homeEN": "Brazil",
-      "awayEN": "Haiti",
-      "homeES": "Brasil",
-      "awayES": "Haití",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "C4"
-    },
-    {
-      "date": "20260619",
-      "homeEN": "Türkiye",
-      "awayEN": "Paraguay",
-      "homeES": "Turquía",
-      "awayES": "Paraguay",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "D4"
-    },
     {
       "date": "20260620",
       "endpoint": "world",
@@ -162,6 +121,47 @@
       "awayEN": "Algeria",
       "homeES": "Jordania",
       "awayES": "Argelia",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260623",
+      "endpoint": "world",
+      "eventsFound": 4
+    },
+    {
+      "date": "20260623",
+      "homeEN": "Portugal",
+      "awayEN": "Uzbekistan",
+      "homeES": "Portugal",
+      "awayES": "Uzbekistán",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260623",
+      "homeEN": "England",
+      "awayEN": "Ghana",
+      "homeES": "Inglaterra",
+      "awayES": "Ghana",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260623",
+      "homeEN": "Panama",
+      "awayEN": "Croatia",
+      "homeES": "Panamá",
+      "awayES": "Croacia",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260623",
+      "homeEN": "Colombia",
+      "awayEN": "Congo DR",
+      "homeES": "Colombia",
+      "awayES": "RD de Congo",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
