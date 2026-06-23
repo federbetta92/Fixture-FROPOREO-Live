@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T01:04:32.973Z",
+  "generatedAt": "2026-06-23T01:05:34.341Z",
   "debugLog": [
     {
       "date": "20260621",
@@ -80,7 +80,7 @@
       "awayEN": "Senegal",
       "homeES": "Noruega",
       "awayES": "Senegal",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "I4"
     },
     {
