@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T15:12:00.367Z",
+  "generatedAt": "2026-06-23T20:12:03.561Z",
   "debugLog": [
     {
       "date": "20260621",
@@ -103,8 +103,8 @@
       "awayEN": "Uzbekistan",
       "homeES": "Portugal",
       "awayES": "Uzbekistán",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FULL_TIME",
+      "matchedId": "K3"
     },
     {
       "date": "20260623",
@@ -112,8 +112,8 @@
       "awayEN": "Ghana",
       "homeES": "Inglaterra",
       "awayES": "Ghana",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "L3"
     },
     {
       "date": "20260623",
