@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T00:00:08.494Z",
+  "generatedAt": "2026-06-23T00:01:10.231Z",
   "debugLog": [
     {
       "date": "20260621",
@@ -80,8 +80,8 @@
       "awayEN": "Senegal",
       "homeES": "Noruega",
       "awayES": "Senegal",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "I4"
     },
     {
       "date": "20260622",
