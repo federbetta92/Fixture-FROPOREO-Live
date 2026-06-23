@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T03:51:03.781Z",
+  "generatedAt": "2026-06-23T03:52:04.882Z",
   "debugLog": [
     {
       "date": "20260621",
@@ -89,7 +89,7 @@
       "awayEN": "Algeria",
       "homeES": "Jordania",
       "awayES": "Argelia",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_HALFTIME",
       "matchedId": "J4"
     },
     {
