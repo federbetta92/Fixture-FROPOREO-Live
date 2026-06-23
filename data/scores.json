@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.280Z",
+      "updatedAt": "2026-06-23T01:52:34.530Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.280Z",
+      "updatedAt": "2026-06-23T01:52:34.530Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.281Z",
+      "updatedAt": "2026-06-23T01:52:34.530Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.281Z",
+      "updatedAt": "2026-06-23T01:52:34.530Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.281Z",
+      "updatedAt": "2026-06-23T01:52:34.531Z",
       "lastScorer": {
         "name": "Trézéguet",
         "side": "away"
@@ -449,7 +449,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.381Z",
+      "updatedAt": "2026-06-23T01:52:34.570Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -461,7 +461,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.381Z",
+      "updatedAt": "2026-06-23T01:52:34.571Z",
       "lastScorer": {
         "name": "Ousmane Dembélé",
         "side": "home"
@@ -470,17 +470,17 @@
     },
     "I4": {
       "home": 3,
-      "away": 1,
+      "away": 2,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-23T01:51:33.381Z",
+      "updatedAt": "2026-06-23T01:52:34.571Z",
       "lastScorer": {
-        "name": "Erling Haaland",
-        "side": "home"
+        "name": "Ismaïla Sarr",
+        "side": "away"
       },
       "firstLiveAt": "2026-06-23T00:01:10.027Z"
     }
   },
-  "updatedAt": "2026-06-23T01:51:33.501Z",
+  "updatedAt": "2026-06-23T01:52:34.643Z",
   "matchCount": 43
 }
