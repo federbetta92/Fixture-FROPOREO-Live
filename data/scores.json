@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.777Z",
+      "updatedAt": "2026-06-23T03:37:47.981Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.777Z",
+      "updatedAt": "2026-06-23T03:37:47.982Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.777Z",
+      "updatedAt": "2026-06-23T03:37:47.982Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.777Z",
+      "updatedAt": "2026-06-23T03:37:47.982Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.778Z",
+      "updatedAt": "2026-06-23T03:37:47.982Z",
       "lastScorer": {
         "name": "Trézéguet",
         "side": "away"
@@ -449,7 +449,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.819Z",
+      "updatedAt": "2026-06-23T03:37:48.000Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -461,7 +461,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.819Z",
+      "updatedAt": "2026-06-23T03:37:48.000Z",
       "lastScorer": {
         "name": "Ousmane Dembélé",
         "side": "home"
@@ -473,7 +473,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.819Z",
+      "updatedAt": "2026-06-23T03:37:48.001Z",
       "lastScorer": {
         "name": "Ismaïla Sarr",
         "side": "away"
@@ -481,15 +481,18 @@
       "firstLiveAt": "2026-06-23T00:01:10.027Z"
     },
     "J4": {
-      "home": 0,
+      "home": 1,
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-23T03:36:46.819Z",
-      "lastScorer": null,
+      "updatedAt": "2026-06-23T03:37:48.001Z",
+      "lastScorer": {
+        "name": "Nizar Al-Rashdan",
+        "side": "home"
+      },
       "firstLiveAt": "2026-06-23T03:02:04.806Z"
     }
   },
-  "updatedAt": "2026-06-23T03:36:46.865Z",
+  "updatedAt": "2026-06-23T03:37:48.078Z",
   "matchCount": 44
 }
