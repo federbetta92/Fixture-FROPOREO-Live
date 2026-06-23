@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.303Z",
+      "updatedAt": "2026-06-23T00:13:26.462Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.303Z",
+      "updatedAt": "2026-06-23T00:13:26.462Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.303Z",
+      "updatedAt": "2026-06-23T00:13:26.462Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.303Z",
+      "updatedAt": "2026-06-23T00:13:26.463Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.303Z",
+      "updatedAt": "2026-06-23T00:13:26.463Z",
       "lastScorer": {
         "name": "Trézéguet",
         "side": "away"
@@ -449,7 +449,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.336Z",
+      "updatedAt": "2026-06-23T00:13:26.488Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -461,7 +461,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.336Z",
+      "updatedAt": "2026-06-23T00:13:26.488Z",
       "lastScorer": {
         "name": "Kylian Mbappé",
         "side": "home"
@@ -473,11 +473,11 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-23T00:12:25.336Z",
+      "updatedAt": "2026-06-23T00:13:26.489Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-23T00:01:10.027Z"
     }
   },
-  "updatedAt": "2026-06-23T00:12:25.403Z",
+  "updatedAt": "2026-06-23T00:13:26.645Z",
   "matchCount": 43
 }
