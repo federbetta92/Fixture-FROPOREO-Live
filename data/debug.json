@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T22:00:37.880Z",
+  "generatedAt": "2026-06-23T22:01:39.171Z",
   "debugLog": [
     {
       "date": "20260621",
@@ -112,7 +112,7 @@
       "awayEN": "Ghana",
       "homeES": "Inglaterra",
       "awayES": "Ghana",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "L3"
     },
     {
