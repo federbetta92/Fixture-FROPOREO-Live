@@ -392,7 +392,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.217Z",
+      "updatedAt": "2026-06-23T01:03:31.578Z",
       "lastScorer": {
         "name": "Ayase Ueda",
         "side": "away"
@@ -404,7 +404,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.217Z",
+      "updatedAt": "2026-06-23T01:03:31.578Z",
       "lastScorer": {
         "name": "Mikel Oyarzabal",
         "side": "home"
@@ -416,7 +416,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.217Z",
+      "updatedAt": "2026-06-23T01:03:31.578Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-21T19:50:48.781Z"
     },
@@ -425,7 +425,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.217Z",
+      "updatedAt": "2026-06-23T01:03:31.578Z",
       "lastScorer": {
         "name": "Hélio Varela",
         "side": "away"
@@ -437,7 +437,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.217Z",
+      "updatedAt": "2026-06-23T01:03:31.578Z",
       "lastScorer": {
         "name": "Trézéguet",
         "side": "away"
@@ -449,7 +449,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.273Z",
+      "updatedAt": "2026-06-23T01:03:31.617Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -461,7 +461,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.273Z",
+      "updatedAt": "2026-06-23T01:03:31.617Z",
       "lastScorer": {
         "name": "Ousmane Dembélé",
         "side": "home"
@@ -473,7 +473,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-23T01:02:30.273Z",
+      "updatedAt": "2026-06-23T01:03:31.617Z",
       "lastScorer": {
         "name": "Marcus Holmgren Pedersen",
         "side": "home"
@@ -481,6 +481,6 @@
       "firstLiveAt": "2026-06-23T00:01:10.027Z"
     }
   },
-  "updatedAt": "2026-06-23T01:02:30.503Z",
+  "updatedAt": "2026-06-23T01:03:31.708Z",
   "matchCount": 43
 }
