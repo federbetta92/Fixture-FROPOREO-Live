@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T20:03:59.871Z",
+  "generatedAt": "2026-06-24T20:05:01.197Z",
   "debugLog": [
     {
       "date": "20260622",
@@ -103,7 +103,7 @@
       "awayEN": "Canada",
       "homeES": "Suiza",
       "awayES": "Canadá",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "B5"
     },
     {
