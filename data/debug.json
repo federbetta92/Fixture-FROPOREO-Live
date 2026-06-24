@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T22:44:57.335Z",
+  "generatedAt": "2026-06-24T22:45:59.469Z",
   "debugLog": [
     {
       "date": "20260622",
@@ -121,7 +121,7 @@
       "awayEN": "Brazil",
       "homeES": "Escocia",
       "awayES": "Brasil",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "C6"
     },
     {
