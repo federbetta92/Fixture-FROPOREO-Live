@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T23:08:28.205Z",
+  "generatedAt": "2026-06-24T23:09:29.456Z",
   "debugLog": [
     {
       "date": "20260622",
@@ -112,7 +112,7 @@
       "awayEN": "Haiti",
       "homeES": "Marruecos",
       "awayES": "Haití",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "C5"
     },
     {
