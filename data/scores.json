@@ -449,7 +449,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.484Z",
+      "updatedAt": "2026-06-24T08:01:11.593Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -461,7 +461,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.484Z",
+      "updatedAt": "2026-06-24T08:01:11.593Z",
       "lastScorer": {
         "name": "Ousmane Dembélé",
         "side": "home"
@@ -473,7 +473,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.484Z",
+      "updatedAt": "2026-06-24T08:01:11.593Z",
       "lastScorer": {
         "name": "Ismaïla Sarr",
         "side": "away"
@@ -485,7 +485,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.484Z",
+      "updatedAt": "2026-06-24T08:01:11.593Z",
       "lastScorer": {
         "name": "Amine Gouiri",
         "side": "away"
@@ -497,7 +497,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.498Z",
+      "updatedAt": "2026-06-24T08:01:11.617Z",
       "lastScorer": {
         "name": "Rafael Leão",
         "side": "home"
@@ -509,7 +509,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.498Z",
+      "updatedAt": "2026-06-24T08:01:11.617Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-23T20:12:03.505Z"
     },
@@ -518,7 +518,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.498Z",
+      "updatedAt": "2026-06-24T08:01:11.617Z",
       "lastScorer": {
         "name": "Ante Budimir",
         "side": "away"
@@ -530,7 +530,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T08:00:10.498Z",
+      "updatedAt": "2026-06-24T08:01:11.617Z",
       "lastScorer": {
         "name": "Daniel Muñoz",
         "side": "home"
@@ -538,6 +538,6 @@
       "firstLiveAt": null
     }
   },
-  "updatedAt": "2026-06-24T08:00:10.527Z",
+  "updatedAt": "2026-06-24T08:01:11.652Z",
   "matchCount": 48
 }
