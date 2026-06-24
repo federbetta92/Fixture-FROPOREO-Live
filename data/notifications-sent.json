@@ -86,8 +86,10 @@
     "finished-B5",
     "finished-B6",
     "upcoming-C5-2026-06-24",
-    "upcoming-C6-2026-06-24"
+    "upcoming-C6-2026-06-24",
+    "started-C5",
+    "started-C6"
   ],
-  "updatedAt": "2026-06-24T22:01:24.137Z",
-  "totalSent": 87
+  "updatedAt": "2026-06-24T22:02:26.193Z",
+  "totalSent": 89
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T22:01:24.136Z",
+  "generatedAt": "2026-06-24T22:02:25.170Z",
   "debugLog": [
     {
       "date": "20260622",
@@ -112,8 +112,8 @@
       "awayEN": "Haiti",
       "homeES": "Marruecos",
       "awayES": "Haití",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "C5"
     },
     {
       "date": "20260624",
@@ -121,8 +121,8 @@
       "awayEN": "Brazil",
       "homeES": "Escocia",
       "awayES": "Brasil",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "C6"
     },
     {
       "date": "20260624",
