@@ -449,7 +449,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.563Z",
+      "updatedAt": "2026-06-24T22:53:08.696Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "home"
@@ -461,7 +461,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.563Z",
+      "updatedAt": "2026-06-24T22:53:08.696Z",
       "lastScorer": {
         "name": "Ousmane Dembélé",
         "side": "home"
@@ -473,7 +473,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.563Z",
+      "updatedAt": "2026-06-24T22:53:08.697Z",
       "lastScorer": {
         "name": "Ismaïla Sarr",
         "side": "away"
@@ -485,7 +485,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.563Z",
+      "updatedAt": "2026-06-24T22:53:08.697Z",
       "lastScorer": {
         "name": "Amine Gouiri",
         "side": "away"
@@ -497,7 +497,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.582Z",
+      "updatedAt": "2026-06-24T22:53:08.714Z",
       "lastScorer": {
         "name": "Rafael Leão",
         "side": "home"
@@ -509,7 +509,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.582Z",
+      "updatedAt": "2026-06-24T22:53:08.714Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-23T20:12:03.505Z"
     },
@@ -518,7 +518,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.582Z",
+      "updatedAt": "2026-06-24T22:53:08.714Z",
       "lastScorer": {
         "name": "Ante Budimir",
         "side": "away"
@@ -530,7 +530,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.583Z",
+      "updatedAt": "2026-06-24T22:53:08.714Z",
       "lastScorer": {
         "name": "Daniel Muñoz",
         "side": "home"
@@ -542,7 +542,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.605Z",
+      "updatedAt": "2026-06-24T22:53:08.736Z",
       "lastScorer": {
         "name": "Ermin Mahmic",
         "side": "home"
@@ -554,7 +554,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.605Z",
+      "updatedAt": "2026-06-24T22:53:08.736Z",
       "lastScorer": {
         "name": "Promise David",
         "side": "away"
@@ -566,7 +566,7 @@
       "away": 2,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.605Z",
+      "updatedAt": "2026-06-24T22:53:08.736Z",
       "lastScorer": {
         "name": "Ismael Saibari",
         "side": "home"
@@ -578,7 +578,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-24T22:52:07.605Z",
+      "updatedAt": "2026-06-24T22:53:08.736Z",
       "lastScorer": {
         "name": "Vinícius Júnior",
         "side": "home"
@@ -586,6 +586,6 @@
       "firstLiveAt": "2026-06-24T22:02:25.152Z"
     }
   },
-  "updatedAt": "2026-06-24T22:52:07.642Z",
+  "updatedAt": "2026-06-24T22:53:08.758Z",
   "matchCount": 52
 }
