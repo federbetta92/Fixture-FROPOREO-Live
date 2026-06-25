@@ -463,12 +463,23 @@ button { cursor: pointer; font-family: inherit; }
   color: rgba(240,120,35,.4); text-transform: uppercase;
 }
 .cal-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
+    display: grid;
+    /* Esto centra la grilla horizontalmente si los elementos no ocupan todo el ancho */
+    justify-content: center; 
+    
+    /* Mantenemos tu configuración actual */
+    grid-template-columns: 1fr;
+    gap: 8px;
+    
+    /* IMPORTANTE: Asegura que el contenedor no se pegue a los bordes */
+    width: 100%;
+    max-width: 800px; /* Ajusta según el ancho que desees para tus tarjetas */
+    margin: 0 auto;   /* Esto centra el bloque entero en la pantalla */
 }
+/* Para escritorio, mantenemos la lógica pero permitiendo centrado */
 .view-desktop .cal-grid {
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    justify-items: center; /* Centra las cartas dentro de sus celdas de grilla */
 }
 .cal-card {
   background: linear-gradient(135deg, var(--green-800), var(--green-700));
