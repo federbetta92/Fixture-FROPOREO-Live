@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T21:20:26.643Z",
+  "generatedAt": "2026-06-25T21:21:28.047Z",
   "debugLog": [
     {
       "date": "20260623",
@@ -121,7 +121,7 @@
       "awayEN": "Germany",
       "homeES": "Ecuador",
       "awayES": "Alemania",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "E6"
     },
     {
