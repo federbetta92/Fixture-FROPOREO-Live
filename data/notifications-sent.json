@@ -101,8 +101,10 @@
     "finished-C5",
     "finished-C6",
     "upcoming-A6-2026-06-25",
-    "upcoming-A5-2026-06-25"
+    "upcoming-A5-2026-06-25",
+    "started-A6",
+    "started-A5"
   ],
-  "updatedAt": "2026-06-25T01:00:54.706Z",
-  "totalSent": 102
+  "updatedAt": "2026-06-25T01:01:56.896Z",
+  "totalSent": 104
 }
