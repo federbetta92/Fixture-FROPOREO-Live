@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T01:02:58.786Z",
+  "generatedAt": "2026-06-25T01:03:59.874Z",
   "debugLog": [
     {
       "date": "20260623",
@@ -98,7 +98,7 @@
       "awayEN": "South Korea",
       "homeES": "Sudáfrica",
       "awayES": "Corea del Sur",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FIRST_HALF",
       "matchedId": "A5"
     },
     {
