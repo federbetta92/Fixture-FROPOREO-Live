@@ -1,47 +1,6 @@
 {
-  "generatedAt": "2026-06-24T23:59:30.736Z",
+  "generatedAt": "2026-06-25T00:00:31.805Z",
   "debugLog": [
-    {
-      "date": "20260622",
-      "endpoint": "world",
-      "eventsFound": 4
-    },
-    {
-      "date": "20260622",
-      "homeEN": "Argentina",
-      "awayEN": "Austria",
-      "homeES": "Argentina",
-      "awayES": "Austria",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "J3"
-    },
-    {
-      "date": "20260622",
-      "homeEN": "France",
-      "awayEN": "Iraq",
-      "homeES": "Francia",
-      "awayES": "Irak",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "I3"
-    },
-    {
-      "date": "20260622",
-      "homeEN": "Norway",
-      "awayEN": "Senegal",
-      "homeES": "Noruega",
-      "awayES": "Senegal",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "I4"
-    },
-    {
-      "date": "20260622",
-      "homeEN": "Jordan",
-      "awayEN": "Algeria",
-      "homeES": "Jordania",
-      "awayES": "Argelia",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "J4"
-    },
     {
       "date": "20260623",
       "endpoint": "world",
@@ -198,6 +157,65 @@
       "awayEN": "United States",
       "homeES": "Turquía",
       "awayES": "Estados Unidos",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260626",
+      "endpoint": "world",
+      "eventsFound": 6
+    },
+    {
+      "date": "20260626",
+      "homeEN": "Norway",
+      "awayEN": "France",
+      "homeES": "Noruega",
+      "awayES": "Francia",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260626",
+      "homeEN": "Senegal",
+      "awayEN": "Iraq",
+      "homeES": "Senegal",
+      "awayES": "Irak",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260626",
+      "homeEN": "Cape Verde",
+      "awayEN": "Saudi Arabia",
+      "homeES": "Cabo Verde",
+      "awayES": "Arabia Saudita",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260626",
+      "homeEN": "Uruguay",
+      "awayEN": "Spain",
+      "homeES": "Uruguay",
+      "awayES": "España",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260626",
+      "homeEN": "Egypt",
+      "awayEN": "Iran",
+      "homeES": "Egipto",
+      "awayES": "Irán",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260626",
+      "homeEN": "New Zealand",
+      "awayEN": "Belgium",
+      "homeES": "Nueva Zelanda",
+      "awayES": "Bélgica",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
