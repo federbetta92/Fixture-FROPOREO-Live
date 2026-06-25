@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T01:17:15.250Z",
+  "generatedAt": "2026-06-25T01:18:16.745Z",
   "debugLog": [
     {
       "date": "20260623",
@@ -89,7 +89,7 @@
       "awayEN": "Mexico",
       "homeES": "República Checa",
       "awayES": "México",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "A6"
     },
     {
@@ -98,7 +98,7 @@
       "awayEN": "South Korea",
       "homeES": "Sudáfrica",
       "awayES": "Corea del Sur",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FIRST_HALF",
       "matchedId": "A5"
     },
     {
