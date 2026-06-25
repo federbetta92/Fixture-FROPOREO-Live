@@ -497,7 +497,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.399Z",
+      "updatedAt": "2026-06-25T01:51:00.611Z",
       "lastScorer": {
         "name": "Rafael Leão",
         "side": "home"
@@ -509,7 +509,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.399Z",
+      "updatedAt": "2026-06-25T01:51:00.611Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-23T20:12:03.505Z"
     },
@@ -518,7 +518,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.399Z",
+      "updatedAt": "2026-06-25T01:51:00.611Z",
       "lastScorer": {
         "name": "Ante Budimir",
         "side": "away"
@@ -530,7 +530,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.399Z",
+      "updatedAt": "2026-06-25T01:51:00.612Z",
       "lastScorer": {
         "name": "Daniel Muñoz",
         "side": "home"
@@ -542,7 +542,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.433Z",
+      "updatedAt": "2026-06-25T01:51:00.634Z",
       "lastScorer": {
         "name": "Ermin Mahmic",
         "side": "home"
@@ -554,7 +554,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.433Z",
+      "updatedAt": "2026-06-25T01:51:00.634Z",
       "lastScorer": {
         "name": "Promise David",
         "side": "away"
@@ -566,7 +566,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.434Z",
+      "updatedAt": "2026-06-25T01:51:00.634Z",
       "lastScorer": {
         "name": "Gessime Yassine",
         "side": "home"
@@ -578,7 +578,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.434Z",
+      "updatedAt": "2026-06-25T01:51:00.634Z",
       "lastScorer": {
         "name": "Matheus Cunha",
         "side": "home"
@@ -590,7 +590,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.434Z",
+      "updatedAt": "2026-06-25T01:51:00.634Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-25T01:01:55.729Z"
     },
@@ -599,11 +599,11 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-25T01:49:58.434Z",
+      "updatedAt": "2026-06-25T01:51:00.634Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-25T01:01:55.729Z"
     }
   },
-  "updatedAt": "2026-06-25T01:49:58.647Z",
+  "updatedAt": "2026-06-25T01:51:00.701Z",
   "matchCount": 54
 }
