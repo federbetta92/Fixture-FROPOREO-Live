@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T01:05:01.065Z",
+  "generatedAt": "2026-06-25T01:06:02.358Z",
   "debugLog": [
     {
       "date": "20260623",
@@ -89,7 +89,7 @@
       "awayEN": "Mexico",
       "homeES": "República Checa",
       "awayES": "México",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FIRST_HALF",
       "matchedId": "A6"
     },
     {
