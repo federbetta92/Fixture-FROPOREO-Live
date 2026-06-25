@@ -140,7 +140,7 @@ const KO_ROUNDS = [
       {id:'73',  date:'Dom 28 Jun', time:'16:00', venue:'Los Ángeles',   s1:{type:'group',pos:2,grp:'A'}, s2:{type:'group',pos:2,grp:'B'}},
       {id:'74',  date:'Lun 29 Jun', time:'17:30', venue:'Boston',        s1:{type:'group',pos:1,grp:'E'}, s2:{type:'best3',label:'3° A/B/C/D/F'}},
       {id:'75',  date:'Lun 29 Jun', time:'22:00', venue:'Monterrey',     s1:{type:'group',pos:1,grp:'F'}, s2:{type:'group',pos:2,grp:'C'}},
-      {id:'76',  date:'Lun 29 Jun', time:'14:00', venue:'Houston',       s1:{type:'group',pos:1,grp:'E'}, s2:{type:'group',pos:2,grp:'F'}},
+      {id:'76',  date:'Lun 29 Jun', time:'14:00', venue:'Houston',       s1:{type:'group',pos:1,grp:'C'}, s2:{type:'group',pos:2,grp:'F'}},
       {id:'77',  date:'Mar 30 Jun', time:'18:00', venue:'Nueva Jersey',  s1:{type:'group',pos:1,grp:'I'}, s2:{type:'best3',label:'3° C/D/F/G/H'}},
       {id:'78',  date:'Mar 30 Jun', time:'14:00', venue:'Dallas',        s1:{type:'group',pos:2,grp:'E'}, s2:{type:'group',pos:2,grp:'I'}},
       {id:'79',  date:'Mar 30 Jun', time:'22:00', venue:'Ciudad de México', s1:{type:'group',pos:1,grp:'A'}, s2:{type:'best3',label:'3° C/E/F/H/I'}},
