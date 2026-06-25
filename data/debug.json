@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T23:00:30.072Z",
+  "generatedAt": "2026-06-25T23:01:31.196Z",
   "debugLog": [
     {
       "date": "20260623",
@@ -130,8 +130,8 @@
       "awayEN": "Sweden",
       "homeES": "Japón",
       "awayES": "Suecia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "F5"
     },
     {
       "date": "20260625",
@@ -139,8 +139,8 @@
       "awayEN": "Netherlands",
       "homeES": "Túnez",
       "awayES": "Países Bajos",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "F6"
     },
     {
       "date": "20260625",

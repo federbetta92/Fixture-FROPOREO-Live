@@ -122,8 +122,10 @@
     "finished-E5",
     "finished-E6",
     "upcoming-F5-2026-06-25",
-    "upcoming-F6-2026-06-25"
+    "upcoming-F6-2026-06-25",
+    "started-F5",
+    "started-F6"
   ],
-  "updatedAt": "2026-06-25T23:00:30.073Z",
-  "totalSent": 123
+  "updatedAt": "2026-06-25T23:01:32.235Z",
+  "totalSent": 125
 }
