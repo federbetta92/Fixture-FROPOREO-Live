@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T19:02:48.428Z",
+  "generatedAt": "2026-06-26T19:03:50.514Z",
   "debugLog": [
     {
       "date": "20260624",
@@ -139,8 +139,8 @@
       "awayEN": "Iraq",
       "homeES": "Senegal",
       "awayES": "Irak",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "I6"
     },
     {
       "date": "20260626",
