@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T00:10:49.483Z",
+  "generatedAt": "2026-06-26T00:11:50.607Z",
   "debugLog": [
     {
       "date": "20260624",
@@ -89,7 +89,7 @@
       "awayEN": "Sweden",
       "homeES": "Japón",
       "awayES": "Suecia",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "F5"
     },
     {
@@ -98,7 +98,7 @@
       "awayEN": "Netherlands",
       "homeES": "Túnez",
       "awayES": "Países Bajos",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "F6"
     },
     {
