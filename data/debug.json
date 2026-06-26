@@ -1,64 +1,10 @@
 {
-  "generatedAt": "2026-06-26T07:49:01.826Z",
+  "generatedAt": "2026-06-26T07:50:04.534Z",
   "debugLog": [
     {
       "date": "20260624",
       "endpoint": "world",
-      "eventsFound": 6
-    },
-    {
-      "date": "20260624",
-      "homeEN": "Bosnia-Herzegovina",
-      "awayEN": "Qatar",
-      "homeES": "Bosnia",
-      "awayES": "Qatar",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "B6"
-    },
-    {
-      "date": "20260624",
-      "homeEN": "Switzerland",
-      "awayEN": "Canada",
-      "homeES": "Suiza",
-      "awayES": "Canadá",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "B5"
-    },
-    {
-      "date": "20260624",
-      "homeEN": "Morocco",
-      "awayEN": "Haiti",
-      "homeES": "Marruecos",
-      "awayES": "Haití",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "C5"
-    },
-    {
-      "date": "20260624",
-      "homeEN": "Scotland",
-      "awayEN": "Brazil",
-      "homeES": "Escocia",
-      "awayES": "Brasil",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "C6"
-    },
-    {
-      "date": "20260624",
-      "homeEN": "Czechia",
-      "awayEN": "Mexico",
-      "homeES": "República Checa",
-      "awayES": "México",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "A6"
-    },
-    {
-      "date": "20260624",
-      "homeEN": "South Africa",
-      "awayEN": "South Korea",
-      "homeES": "Sudáfrica",
-      "awayES": "Corea del Sur",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "A5"
+      "fetchError": "write EPROTO 80DCCB100D7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:1601:SSL alert number 80\n"
     },
     {
       "date": "20260625",
