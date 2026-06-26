@@ -1,47 +1,6 @@
 {
-  "generatedAt": "2026-06-25T23:59:38.014Z",
+  "generatedAt": "2026-06-26T00:00:38.968Z",
   "debugLog": [
-    {
-      "date": "20260623",
-      "endpoint": "world",
-      "eventsFound": 4
-    },
-    {
-      "date": "20260623",
-      "homeEN": "Portugal",
-      "awayEN": "Uzbekistan",
-      "homeES": "Portugal",
-      "awayES": "Uzbekistán",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "K3"
-    },
-    {
-      "date": "20260623",
-      "homeEN": "England",
-      "awayEN": "Ghana",
-      "homeES": "Inglaterra",
-      "awayES": "Ghana",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "L3"
-    },
-    {
-      "date": "20260623",
-      "homeEN": "Panama",
-      "awayEN": "Croatia",
-      "homeES": "Panamá",
-      "awayES": "Croacia",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "L4"
-    },
-    {
-      "date": "20260623",
-      "homeEN": "Colombia",
-      "awayEN": "Congo DR",
-      "homeES": "Colombia",
-      "awayES": "RD de Congo",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "K4"
-    },
     {
       "date": "20260624",
       "endpoint": "world",
@@ -216,6 +175,65 @@
       "awayEN": "Belgium",
       "homeES": "Nueva Zelanda",
       "awayES": "Bélgica",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260627",
+      "endpoint": "world",
+      "eventsFound": 6
+    },
+    {
+      "date": "20260627",
+      "homeEN": "Croatia",
+      "awayEN": "Ghana",
+      "homeES": "Croacia",
+      "awayES": "Ghana",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260627",
+      "homeEN": "Panama",
+      "awayEN": "England",
+      "homeES": "Panamá",
+      "awayES": "Inglaterra",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260627",
+      "homeEN": "Colombia",
+      "awayEN": "Portugal",
+      "homeES": "Colombia",
+      "awayES": "Portugal",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260627",
+      "homeEN": "Congo DR",
+      "awayEN": "Uzbekistan",
+      "homeES": "RD de Congo",
+      "awayES": "Uzbekistán",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260627",
+      "homeEN": "Algeria",
+      "awayEN": "Austria",
+      "homeES": "Argelia",
+      "awayES": "Austria",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260627",
+      "homeEN": "Jordan",
+      "awayEN": "Argentina",
+      "homeES": "Jordania",
+      "awayES": "Argentina",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
