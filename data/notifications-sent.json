@@ -134,8 +134,10 @@
     "finished-F6",
     "finished-F5",
     "upcoming-D5-2026-06-26",
-    "upcoming-D6-2026-06-26"
+    "upcoming-D6-2026-06-26",
+    "started-D5",
+    "started-D6"
   ],
-  "updatedAt": "2026-06-26T02:00:59.413Z",
-  "totalSent": 135
+  "updatedAt": "2026-06-26T02:02:01.645Z",
+  "totalSent": 137
 }
