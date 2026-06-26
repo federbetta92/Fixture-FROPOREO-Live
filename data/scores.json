@@ -542,7 +542,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.960Z",
+      "updatedAt": "2026-06-26T04:03:14.559Z",
       "lastScorer": {
         "name": "Ermin Mahmic",
         "side": "home"
@@ -554,7 +554,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.961Z",
+      "updatedAt": "2026-06-26T04:03:14.560Z",
       "lastScorer": {
         "name": "Promise David",
         "side": "away"
@@ -566,7 +566,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.961Z",
+      "updatedAt": "2026-06-26T04:03:14.560Z",
       "lastScorer": {
         "name": "Gessime Yassine",
         "side": "home"
@@ -578,7 +578,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.961Z",
+      "updatedAt": "2026-06-26T04:03:14.560Z",
       "lastScorer": {
         "name": "Matheus Cunha",
         "side": "home"
@@ -590,7 +590,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.961Z",
+      "updatedAt": "2026-06-26T04:03:14.560Z",
       "lastScorer": {
         "name": "Álvaro Fidalgo",
         "side": "away"
@@ -602,7 +602,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.961Z",
+      "updatedAt": "2026-06-26T04:03:14.560Z",
       "lastScorer": {
         "name": "Thapelo Maseko",
         "side": "home"
@@ -614,7 +614,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.990Z",
+      "updatedAt": "2026-06-26T04:03:14.573Z",
       "lastScorer": {
         "name": "Gonzalo Plata",
         "side": "home"
@@ -626,7 +626,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.990Z",
+      "updatedAt": "2026-06-26T04:03:14.573Z",
       "lastScorer": {
         "name": "Nicolas Pépé",
         "side": "away"
@@ -638,7 +638,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.990Z",
+      "updatedAt": "2026-06-26T04:03:14.573Z",
       "lastScorer": {
         "name": "Anthony Elanga",
         "side": "away"
@@ -650,7 +650,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.990Z",
+      "updatedAt": "2026-06-26T04:03:14.573Z",
       "lastScorer": {
         "name": "Jan Paul van Hecke",
         "side": "away"
@@ -662,16 +662,16 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.990Z",
+      "updatedAt": "2026-06-26T04:03:14.574Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-26T02:02:00.558Z"
     },
     "D6": {
       "home": 3,
       "away": 2,
-      "status": "live",
+      "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-26T04:02:12.990Z",
+      "updatedAt": "2026-06-26T04:03:14.574Z",
       "lastScorer": {
         "name": "Kaan Ayhan",
         "side": "home"
@@ -679,6 +679,6 @@
       "firstLiveAt": "2026-06-26T02:02:00.558Z"
     }
   },
-  "updatedAt": "2026-06-26T04:02:13.037Z",
+  "updatedAt": "2026-06-26T04:03:14.605Z",
   "matchCount": 60
 }
