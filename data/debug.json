@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T00:54:39.710Z",
+  "generatedAt": "2026-06-26T00:55:40.906Z",
   "debugLog": [
     {
       "date": "20260624",
@@ -98,7 +98,7 @@
       "awayEN": "Netherlands",
       "homeES": "Túnez",
       "awayES": "Países Bajos",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_FULL_TIME",
       "matchedId": "F6"
     },
     {
