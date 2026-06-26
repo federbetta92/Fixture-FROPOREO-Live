@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T02:12:15.090Z",
+  "generatedAt": "2026-06-26T02:13:16.171Z",
   "debugLog": [
     {
       "date": "20260624",
@@ -107,7 +107,7 @@
       "awayEN": "Australia",
       "homeES": "Paraguay",
       "awayES": "Australia",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "D5"
     },
     {
