@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T22:10:24.058Z",
+  "generatedAt": "2026-06-27T22:11:24.983Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -130,7 +130,7 @@
       "awayEN": "Ghana",
       "homeES": "Croacia",
       "awayES": "Ghana",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "L5"
     },
     {
@@ -139,7 +139,7 @@
       "awayEN": "England",
       "homeES": "Panamá",
       "awayES": "Inglaterra",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "L6"
     },
     {
