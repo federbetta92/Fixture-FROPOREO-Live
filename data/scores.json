@@ -614,7 +614,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.556Z",
+      "updatedAt": "2026-06-27T15:15:57.927Z",
       "lastScorer": {
         "name": "Gonzalo Plata",
         "side": "home"
@@ -626,7 +626,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.556Z",
+      "updatedAt": "2026-06-27T15:15:57.927Z",
       "lastScorer": {
         "name": "Nicolas Pépé",
         "side": "away"
@@ -638,7 +638,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.557Z",
+      "updatedAt": "2026-06-27T15:15:57.928Z",
       "lastScorer": {
         "name": "Anthony Elanga",
         "side": "away"
@@ -650,7 +650,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.557Z",
+      "updatedAt": "2026-06-27T15:15:57.928Z",
       "lastScorer": {
         "name": "Jan Paul van Hecke",
         "side": "away"
@@ -662,7 +662,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.557Z",
+      "updatedAt": "2026-06-27T15:15:57.928Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-26T02:02:00.558Z"
     },
@@ -671,7 +671,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.557Z",
+      "updatedAt": "2026-06-27T15:15:57.928Z",
       "lastScorer": {
         "name": "Kaan Ayhan",
         "side": "home"
@@ -683,7 +683,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.593Z",
+      "updatedAt": "2026-06-27T15:15:57.938Z",
       "lastScorer": {
         "name": "Désiré Doué",
         "side": "away"
@@ -695,7 +695,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.594Z",
+      "updatedAt": "2026-06-27T15:15:57.938Z",
       "lastScorer": {
         "name": "Iliman Ndiaye",
         "side": "home"
@@ -707,7 +707,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.594Z",
+      "updatedAt": "2026-06-27T15:15:57.938Z",
       "lastScorer": {
         "name": "Álex Baena",
         "side": "away"
@@ -719,7 +719,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.594Z",
+      "updatedAt": "2026-06-27T15:15:57.938Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-27T00:02:59.925Z"
     },
@@ -728,7 +728,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.594Z",
+      "updatedAt": "2026-06-27T15:15:57.938Z",
       "lastScorer": {
         "name": "Ramin Rezaeian",
         "side": "away"
@@ -740,7 +740,7 @@
       "away": 5,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-27T15:14:56.594Z",
+      "updatedAt": "2026-06-27T15:15:57.938Z",
       "lastScorer": {
         "name": "Alexis Saelemaekers",
         "side": "away"
@@ -748,6 +748,6 @@
       "firstLiveAt": "2026-06-27T03:01:49.127Z"
     }
   },
-  "updatedAt": "2026-06-27T15:14:56.613Z",
+  "updatedAt": "2026-06-27T15:15:57.960Z",
   "matchCount": 66
 }
