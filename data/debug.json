@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T03:52:56.944Z",
+  "generatedAt": "2026-06-27T03:53:58.119Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -116,7 +116,7 @@
       "awayEN": "Belgium",
       "homeES": "Nueva Zelanda",
       "awayES": "Bélgica",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_HALFTIME",
       "matchedId": "G6"
     },
     {
