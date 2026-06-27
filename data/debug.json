@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T23:40:56.272Z",
+  "generatedAt": "2026-06-27T23:41:57.248Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -148,7 +148,7 @@
       "awayEN": "Portugal",
       "homeES": "Colombia",
       "awayES": "Portugal",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FIRST_HALF",
       "matchedId": "K5"
     },
     {
@@ -157,7 +157,7 @@
       "awayEN": "Uzbekistan",
       "homeES": "RD de Congo",
       "awayES": "Uzbekistán",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "K6"
     },
     {
