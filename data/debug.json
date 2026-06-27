@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T22:09:23.065Z",
+  "generatedAt": "2026-06-27T22:10:24.058Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -139,7 +139,7 @@
       "awayEN": "England",
       "homeES": "Panamá",
       "awayES": "Inglaterra",
-      "statusName": "STATUS_SECOND_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "L6"
     },
     {
