@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T01:09:22.384Z",
+  "generatedAt": "2026-06-27T01:10:23.661Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -89,7 +89,7 @@
       "awayEN": "Saudi Arabia",
       "homeES": "Cabo Verde",
       "awayES": "Arabia Saudita",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "H5"
     },
     {
@@ -98,7 +98,7 @@
       "awayEN": "Spain",
       "homeES": "Uruguay",
       "awayES": "España",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": "H6"
     },
     {
