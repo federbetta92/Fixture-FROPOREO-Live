@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T00:00:56.960Z",
+  "generatedAt": "2026-06-27T00:01:58.185Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -98,8 +98,8 @@
       "awayEN": "Spain",
       "homeES": "Uruguay",
       "awayES": "España",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "H6"
     },
     {
       "date": "20260626",
