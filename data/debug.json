@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T03:48:51.920Z",
+  "generatedAt": "2026-06-27T03:49:53.140Z",
   "debugLog": [
     {
       "date": "20260625",
@@ -107,7 +107,7 @@
       "awayEN": "Iran",
       "homeES": "Egipto",
       "awayES": "Irán",
-      "statusName": "STATUS_FIRST_HALF",
+      "statusName": "STATUS_IN_PROGRESS",
       "matchedId": "G5"
     },
     {
@@ -116,7 +116,7 @@
       "awayEN": "Belgium",
       "homeES": "Nueva Zelanda",
       "awayES": "Bélgica",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FIRST_HALF",
       "matchedId": "G6"
     },
     {
