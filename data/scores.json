@@ -683,7 +683,7 @@
       "away": 4,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.796Z",
+      "updatedAt": "2026-06-28T00:03:18.837Z",
       "lastScorer": {
         "name": "Désiré Doué",
         "side": "away"
@@ -695,7 +695,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.796Z",
+      "updatedAt": "2026-06-28T00:03:18.837Z",
       "lastScorer": {
         "name": "Iliman Ndiaye",
         "side": "home"
@@ -707,7 +707,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.796Z",
+      "updatedAt": "2026-06-28T00:03:18.837Z",
       "lastScorer": {
         "name": "Álex Baena",
         "side": "away"
@@ -719,7 +719,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.796Z",
+      "updatedAt": "2026-06-28T00:03:18.837Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-27T00:02:59.925Z"
     },
@@ -728,7 +728,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.796Z",
+      "updatedAt": "2026-06-28T00:03:18.838Z",
       "lastScorer": {
         "name": "Ramin Rezaeian",
         "side": "away"
@@ -740,7 +740,7 @@
       "away": 5,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.796Z",
+      "updatedAt": "2026-06-28T00:03:18.838Z",
       "lastScorer": {
         "name": "Alexis Saelemaekers",
         "side": "away"
@@ -752,7 +752,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.810Z",
+      "updatedAt": "2026-06-28T00:03:18.870Z",
       "lastScorer": {
         "name": "Nikola Vlasic",
         "side": "home"
@@ -764,7 +764,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.810Z",
+      "updatedAt": "2026-06-28T00:03:18.870Z",
       "lastScorer": {
         "name": "Harry Kane",
         "side": "away"
@@ -776,7 +776,7 @@
       "away": 0,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.811Z",
+      "updatedAt": "2026-06-28T00:03:18.870Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-27T23:32:47.538Z"
     },
@@ -785,7 +785,7 @@
       "away": 1,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-06-28T00:02:17.811Z",
+      "updatedAt": "2026-06-28T00:03:18.870Z",
       "lastScorer": {
         "name": "Eldor Shomurodov",
         "side": "away"
@@ -793,6 +793,6 @@
       "firstLiveAt": "2026-06-27T23:32:47.538Z"
     }
   },
-  "updatedAt": "2026-06-28T00:02:17.896Z",
+  "updatedAt": "2026-06-28T00:03:18.901Z",
   "matchCount": 70
 }
