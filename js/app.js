@@ -226,6 +226,7 @@ function toggleView() {
 //  SCORES PERSISTENCE
 // ════════════════════════════════════════════════════
 function saveScores() {
+  _best3Cache = null; // invalidar caché de mejores terceros al cambiar scores
   try { localStorage.setItem('froporeo_scores', JSON.stringify(scores)); } catch(e){}
 }
 function loadScores() {
@@ -447,23 +448,113 @@ function calcStandings(letter) {
 }
 
 // ════════════════════════════════════════════════════
+//  MEJORES TERCEROS — cálculo y asignación automática
+// ════════════════════════════════════════════════════
+let _best3Cache = null; // {assignmentMap, allGroupsComplete}
+
+// Slots best3 con los grupos elegibles para cada partido de 16avos
+const BEST3_SLOTS = {
+  '74': ['A','B','C','D','F'],
+  '77': ['C','D','F','G','H'],
+  '79': ['C','E','F','H','I'],
+  '80': ['E','H','I','J','K'],
+  '81': ['B','E','F','I','J'],
+  '82': ['A','E','H','I','J'],
+  '85': ['E','F','G','I','J'],
+  '87': ['D','E','I','J','L'],
+};
+
+function calcBest3Assignments() {
+  // Calcular el tercer equipo de cada grupo y sus stats
+  const allLetters = Object.keys(GROUPS);
+  const thirds = [];
+  let completedGroups = 0;
+
+  for (const letter of allLetters) {
+    const { sorted, st, complete } = calcStandings(letter);
+    if (complete) completedGroups++;
+    const team = sorted[2];
+    if (team && st[team]) {
+      thirds.push({
+        team, grp: letter,
+        pts: st[team].pts,
+        dg:  st[team].gf - st[team].gc,
+        gf:  st[team].gf,
+        complete,
+      });
+    }
+  }
+
+  // Solo calcular cuando todos los grupos terminaron
+  const allComplete = completedGroups === allLetters.length;
+  if (!allComplete) return null;
+
+  // Ordenar por criterios FIFA: pts → DG → GF → grupo alfabético
+  thirds.sort((a, b) =>
+    b.pts - a.pts || b.dg - a.dg || b.gf - a.gf || a.grp.localeCompare(b.grp)
+  );
+
+  // Tomar los 8 mejores terceros
+  const best8 = thirds.slice(0, 8);
+  if (best8.length < 8) return null;
+
+  // Asignar cada tercero a un slot mediante backtracking
+  // (los slots más restrictivos primero para mayor eficiencia)
+  const slotsOrdered = Object.entries(BEST3_SLOTS)
+    .sort((a, b) => a[1].length - b[1].length);
+
+  const assignment = {};
+  const usedGroups = new Set();
+
+  function backtrack(idx) {
+    if (idx >= slotsOrdered.length) return true;
+    const [matchId, eligibleGroups] = slotsOrdered[idx];
+    // Candidatos: están en best8, su grupo está en los elegibles, y no fue usado
+    const candidates = best8.filter(t =>
+      eligibleGroups.includes(t.grp) && !usedGroups.has(t.grp)
+    );
+    for (const cand of candidates) {
+      assignment[matchId] = cand.team;
+      usedGroups.add(cand.grp);
+      if (backtrack(idx + 1)) return true;
+      delete assignment[matchId];
+      usedGroups.delete(cand.grp);
+    }
+    return false;
+  }
+
+  const ok = backtrack(0);
+  return ok ? assignment : null;
+}
+
+function getBest3Team(matchId) {
+  if (!_best3Cache) _best3Cache = calcBest3Assignments();
+  return _best3Cache ? _best3Cache[matchId] : null;
+}
+
+// Invalidar el caché cuando cambian los resultados
+const _origSaveScores = typeof saveScores === 'function' ? saveScores : null;
+
+// ════════════════════════════════════════════════════
 //  KO RESOLVER
 // ════════════════════════════════════════════════════
-function resolveTeam(source) {
+function resolveTeam(source, matchId) {
   if (!source) return null;
   if (source.type === 'group') {
     const { sorted, complete } = calcStandings(source.grp);
     if (!complete) return null;
     return sorted[source.pos - 1];
   }
-  if (source.type === 'best3') return null;
+  if (source.type === 'best3') {
+    return matchId ? getBest3Team(matchId) : null;
+  }
   if (source.type === 'winner' || source.type === 'loser') {
     const koMatch = findKoMatch(source.ko);
     if (!koMatch) return null;
     const s = getScore(source.ko);
     if (!s || s.status === 'delete') return null;
-    const team1 = resolveTeam(koMatch.s1);
-    const team2 = resolveTeam(koMatch.s2);
+    const team1 = resolveTeam(koMatch.s1, koMatch.id);
+    const team2 = resolveTeam(koMatch.s2, koMatch.id);
     if (!team1 || !team2) return null;
     if (source.type === 'winner') return s.home > s.away ? team1 : team2;
     if (source.type === 'loser')  return s.home > s.away ? team2 : team1;
@@ -683,8 +774,8 @@ function renderKnockout() {
     }
     html += `<div class="ko-round-title" style="${isFinal?'color:var(--orange-lite);font-size:28px':''}">${title}</div><div class="ko-grid">`;
     matches.forEach(m => {
-      const team1 = resolveTeam(m.s1);
-      const team2 = resolveTeam(m.s2);
+      const team1 = resolveTeam(m.s1, m.id);
+      const team2 = resolveTeam(m.s2, m.id);
       const t1html = team1 ? `${flag(team1)} <span class="tname">${team1}</span>` : `<span class="ko-pending">${sourceLabel(m.s1)}</span>`;
       const t2html = team2 ? `${flag(team2)} <span class="tname">${team2}</span>` : `<span class="ko-pending">${sourceLabel(m.s2)}</span>`;
       const s = getScore(m.id);
