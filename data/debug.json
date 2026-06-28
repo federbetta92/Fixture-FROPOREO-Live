@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T02:01:23.362Z",
+  "generatedAt": "2026-06-28T02:02:24.877Z",
   "debugLog": [
     {
       "date": "20260626",
@@ -107,8 +107,8 @@
       "awayEN": "Austria",
       "homeES": "Argelia",
       "awayES": "Austria",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": "J5"
     },
     {
       "date": "20260627",
