@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T20:44:52.961Z",
+  "generatedAt": "2026-06-28T20:45:54.228Z",
   "debugLog": [
     {
       "date": "20260626",
@@ -130,7 +130,7 @@
       "awayEN": "Canada",
       "homeES": "Sudáfrica",
       "awayES": "Canadá",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": null
     },
     {
