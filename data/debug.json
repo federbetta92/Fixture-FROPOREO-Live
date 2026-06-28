@@ -1,65 +1,6 @@
 {
-  "generatedAt": "2026-06-27T23:59:14.972Z",
+  "generatedAt": "2026-06-28T00:00:16.010Z",
   "debugLog": [
-    {
-      "date": "20260625",
-      "endpoint": "world",
-      "eventsFound": 6
-    },
-    {
-      "date": "20260625",
-      "homeEN": "Curaçao",
-      "awayEN": "Ivory Coast",
-      "homeES": "Curazao",
-      "awayES": "Costa de Marfil",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "E5"
-    },
-    {
-      "date": "20260625",
-      "homeEN": "Ecuador",
-      "awayEN": "Germany",
-      "homeES": "Ecuador",
-      "awayES": "Alemania",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "E6"
-    },
-    {
-      "date": "20260625",
-      "homeEN": "Japan",
-      "awayEN": "Sweden",
-      "homeES": "Japón",
-      "awayES": "Suecia",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "F5"
-    },
-    {
-      "date": "20260625",
-      "homeEN": "Tunisia",
-      "awayEN": "Netherlands",
-      "homeES": "Túnez",
-      "awayES": "Países Bajos",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "F6"
-    },
-    {
-      "date": "20260625",
-      "homeEN": "Paraguay",
-      "awayEN": "Australia",
-      "homeES": "Paraguay",
-      "awayES": "Australia",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "D5"
-    },
-    {
-      "date": "20260625",
-      "homeEN": "Türkiye",
-      "awayEN": "United States",
-      "homeES": "Turquía",
-      "awayES": "Estados Unidos",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "D6"
-    },
     {
       "date": "20260626",
       "endpoint": "world",
@@ -157,7 +98,7 @@
       "awayEN": "Uzbekistan",
       "homeES": "RD de Congo",
       "awayES": "Uzbekistán",
-      "statusName": "STATUS_IN_PROGRESS",
+      "statusName": "STATUS_FIRST_HALF",
       "matchedId": "K6"
     },
     {
@@ -189,6 +130,38 @@
       "awayEN": "Canada",
       "homeES": "Sudáfrica",
       "awayES": "Canadá",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260629",
+      "endpoint": "world",
+      "eventsFound": 3
+    },
+    {
+      "date": "20260629",
+      "homeEN": "Brazil",
+      "awayEN": "Japan",
+      "homeES": "Brasil",
+      "awayES": "Japón",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260629",
+      "homeEN": "Germany",
+      "awayEN": "Paraguay",
+      "homeES": "Alemania",
+      "awayES": "Paraguay",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260629",
+      "homeEN": "Netherlands",
+      "awayEN": "Morocco",
+      "homeES": "Países Bajos",
+      "awayES": "Marruecos",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
