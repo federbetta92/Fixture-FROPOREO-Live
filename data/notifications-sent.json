@@ -214,8 +214,10 @@
     "goal-J6-h1-a2",
     "goal-J5-h1-a2",
     "goal-J5-h2-a2",
-    "goal-J6-h1-a3"
+    "goal-J6-h1-a3",
+    "finished-J6",
+    "finished-J5"
   ],
-  "updatedAt": "2026-06-28T03:52:18.694Z",
-  "totalSent": 215
+  "updatedAt": "2026-06-28T04:16:46.404Z",
+  "totalSent": 217
 }
