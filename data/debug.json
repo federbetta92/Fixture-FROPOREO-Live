@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T18:06:30.749Z",
+  "generatedAt": "2026-06-29T18:07:31.994Z",
   "debugLog": [
     {
       "date": "20260627",
@@ -85,7 +85,7 @@
       "awayEN": "Japan",
       "homeES": "Brasil",
       "awayES": "Japón",
-      "statusName": "STATUS_HALFTIME",
+      "statusName": "STATUS_SECOND_HALF",
       "matchedId": null
     },
     {
