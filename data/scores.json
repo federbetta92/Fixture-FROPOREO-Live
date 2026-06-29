@@ -752,7 +752,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-29T23:00:49.889Z",
+      "updatedAt": "2026-06-29T23:01:51.224Z",
       "lastScorer": {
         "name": "Nikola Vlasic",
         "side": "home"
@@ -764,7 +764,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-29T23:00:49.889Z",
+      "updatedAt": "2026-06-29T23:01:51.224Z",
       "lastScorer": {
         "name": "Harry Kane",
         "side": "away"
@@ -776,7 +776,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-29T23:00:49.889Z",
+      "updatedAt": "2026-06-29T23:01:51.224Z",
       "lastScorer": null,
       "firstLiveAt": "2026-06-27T23:32:47.538Z"
     },
@@ -785,7 +785,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-29T23:00:49.889Z",
+      "updatedAt": "2026-06-29T23:01:51.225Z",
       "lastScorer": {
         "name": "Yoane Wissa",
         "side": "home"
@@ -797,7 +797,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-29T23:00:49.889Z",
+      "updatedAt": "2026-06-29T23:01:51.225Z",
       "lastScorer": {
         "name": "Lionel Messi",
         "side": "away"
@@ -809,7 +809,7 @@
       "away": 3,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-06-29T23:00:49.889Z",
+      "updatedAt": "2026-06-29T23:01:51.225Z",
       "lastScorer": {
         "name": "Sasa Kalajdzic",
         "side": "away"
@@ -817,6 +817,6 @@
       "firstLiveAt": "2026-06-28T02:02:24.824Z"
     }
   },
-  "updatedAt": "2026-06-29T23:00:50.079Z",
+  "updatedAt": "2026-06-29T23:01:51.385Z",
   "matchCount": 72
 }
