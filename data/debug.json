@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T20:31:09.688Z",
+  "generatedAt": "2026-06-29T20:32:10.703Z",
   "debugLog": [
     {
       "date": "20260627",
@@ -94,8 +94,8 @@
       "awayEN": "Paraguay",
       "homeES": "Alemania",
       "awayES": "Paraguay",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": null
     },
     {
       "date": "20260629",
