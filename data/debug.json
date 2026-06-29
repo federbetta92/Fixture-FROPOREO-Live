@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T22:55:43.450Z",
+  "generatedAt": "2026-06-29T22:56:44.818Z",
   "debugLog": [
     {
       "date": "20260627",
@@ -94,7 +94,7 @@
       "awayEN": "Paraguay",
       "homeES": "Alemania",
       "awayES": "Paraguay",
-      "statusName": "STATUS_HALFTIME_ET",
+      "statusName": "STATUS_OVERTIME",
       "matchedId": null
     },
     {
