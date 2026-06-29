@@ -1,65 +1,6 @@
 {
-  "generatedAt": "2026-06-28T23:59:49.002Z",
+  "generatedAt": "2026-06-29T00:00:50.157Z",
   "debugLog": [
-    {
-      "date": "20260626",
-      "endpoint": "world",
-      "eventsFound": 6
-    },
-    {
-      "date": "20260626",
-      "homeEN": "Norway",
-      "awayEN": "France",
-      "homeES": "Noruega",
-      "awayES": "Francia",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "I5"
-    },
-    {
-      "date": "20260626",
-      "homeEN": "Senegal",
-      "awayEN": "Iraq",
-      "homeES": "Senegal",
-      "awayES": "Irak",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "I6"
-    },
-    {
-      "date": "20260626",
-      "homeEN": "Cape Verde",
-      "awayEN": "Saudi Arabia",
-      "homeES": "Cabo Verde",
-      "awayES": "Arabia Saudita",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "H5"
-    },
-    {
-      "date": "20260626",
-      "homeEN": "Uruguay",
-      "awayEN": "Spain",
-      "homeES": "Uruguay",
-      "awayES": "España",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "H6"
-    },
-    {
-      "date": "20260626",
-      "homeEN": "Egypt",
-      "awayEN": "Iran",
-      "homeES": "Egipto",
-      "awayES": "Irán",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "G5"
-    },
-    {
-      "date": "20260626",
-      "homeEN": "New Zealand",
-      "awayEN": "Belgium",
-      "homeES": "Nueva Zelanda",
-      "awayES": "Bélgica",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": "G6"
-    },
     {
       "date": "20260627",
       "endpoint": "world",
@@ -162,6 +103,38 @@
       "awayEN": "Morocco",
       "homeES": "Países Bajos",
       "awayES": "Marruecos",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260630",
+      "endpoint": "world",
+      "eventsFound": 3
+    },
+    {
+      "date": "20260630",
+      "homeEN": "Ivory Coast",
+      "awayEN": "Norway",
+      "homeES": "Costa de Marfil",
+      "awayES": "Noruega",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260630",
+      "homeEN": "France",
+      "awayEN": "Sweden",
+      "homeES": "Francia",
+      "awayES": "Suecia",
+      "statusName": "STATUS_SCHEDULED",
+      "skipped": "scheduled"
+    },
+    {
+      "date": "20260630",
+      "homeEN": "Mexico",
+      "awayEN": "Ecuador",
+      "homeES": "México",
+      "awayES": "Ecuador",
       "statusName": "STATUS_SCHEDULED",
       "skipped": "scheduled"
     }
