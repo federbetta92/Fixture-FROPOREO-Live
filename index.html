@@ -152,6 +152,22 @@
       <option value="live">🔴 En curso (LIVE)</option>
       <option value="delete">🗑 Borrar resultado</option>
     </select>
+    <!-- Penales — solo visible en partidos de eliminatorias -->
+    <div id="pen-row" style="display:none;margin-top:10px">
+      <div class="modal-status-label">PENALES (opcional)</div>
+      <div class="modal-scores" style="margin-top:6px">
+        <div>
+          <div class="modal-team-label" id="modal-home-label-pen"></div>
+          <input class="modal-inp" id="inp-pen-home" type="number" min="0" max="99" placeholder="—" style="width:54px">
+        </div>
+        <div class="modal-sep">—</div>
+        <div>
+          <div class="modal-team-label" id="modal-away-label-pen"></div>
+          <input class="modal-inp" id="inp-pen-away" type="number" min="0" max="99" placeholder="—" style="width:54px">
+        </div>
+      </div>
+      <div style="font-size:10px;color:rgba(255,255,255,.3);text-align:center;margin-top:4px;font-family:'Barlow Condensed',sans-serif">Dejá vacío si no hubo penales</div>
+    </div>
     <div class="modal-btns">
       <button class="modal-save" onclick="saveScore()">GUARDAR</button>
       <button class="modal-cancel" onclick="closeModal()">✕</button>

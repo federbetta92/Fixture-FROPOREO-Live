@@ -226,7 +226,8 @@ function toggleView() {
 //  SCORES PERSISTENCE
 // ════════════════════════════════════════════════════
 function saveScores() {
-  _best3Cache = null; // invalidar caché de mejores terceros al cambiar scores
+  _best3Cache = null;
+  _koTeamsCache = null;
   try { localStorage.setItem('froporeo_scores', JSON.stringify(scores)); } catch(e){}
 }
 function loadScores() {
@@ -325,14 +326,27 @@ function processESPNEvent(event) {
     const homeES = ESPN_TO_SPANISH[homeEN] || homeEN;
     const awayES = ESPN_TO_SPANISH[awayEN] || awayEN;
 
-    // Buscar partido por equipos (en cualquier orden)
-    let match = MATCHES.find(m => m.home === homeES && m.away === awayES);
+    let matchId = null;
     let flipped = false;
-    if (!match) {
+
+    // 1. Buscar en partidos de grupos (tienen home/away definidos)
+    let match = MATCHES.find(m => m.home === homeES && m.away === awayES);
+    if (match) { matchId = match.id; }
+    else {
       match = MATCHES.find(m => m.home === awayES && m.away === homeES);
-      if (match) flipped = true;
+      if (match) { matchId = match.id; flipped = true; }
     }
-    if (!match) return false;
+
+    // 2. Si no encontró, buscar en partidos de eliminatorias por equipos resueltos
+    if (!matchId) {
+      const koTeams = getResolvedKoTeams();
+      for (const [id, teams] of Object.entries(koTeams)) {
+        if (teams.home === homeES && teams.away === awayES) { matchId = id; break; }
+        if (teams.home === awayES && teams.away === homeES) { matchId = id; flipped = true; break; }
+      }
+    }
+
+    if (!matchId) return false;
 
     let h = parseInt(homeCmp.score) || 0;
     let a = parseInt(awayCmp.score) || 0;
@@ -341,7 +355,11 @@ function processESPNEvent(event) {
     const finishedStatuses = ['STATUS_FINAL','STATUS_FULL_TIME','STATUS_POSTPONED','STATUS_CANCELED','STATUS_FORFEIT','STATUS_ABANDONED'];
     const status = finishedStatuses.includes(statusName) ? 'finished' : 'live';
 
-    return mergeAutoScore(match.id, { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString() });
+    // Preservar penales si ya estaban guardados manualmente
+    const existing = scores[matchId];
+    const penData = (existing && existing.auto === false) ? { penH: existing.penH, penA: existing.penA } : {};
+
+    return mergeAutoScore(matchId, { home: h, away: a, status, auto: true, updatedAt: new Date().toISOString(), ...penData });
   } catch(e) { return false; }
 }
 
@@ -448,11 +466,23 @@ function calcStandings(letter) {
 }
 
 // ════════════════════════════════════════════════════
-//  MEJORES TERCEROS — cálculo y asignación automática
+//  MEJORES TERCEROS — tabla FIFA Annex C + fallback
 // ════════════════════════════════════════════════════
-let _best3Cache = null; // {assignmentMap, allGroupsComplete}
+let _best3Cache = null;
 
-// Slots best3 con los grupos elegibles para cada partido de 16avos
+// Tabla FIFA Annex C para el Mundial 2026 (12 grupos → 8 mejores terceros)
+// Clave: grupos que clasificaron ordenados A→L separados por '-'
+// Valor: matchId → grupo del mejor tercero asignado por FIFA
+const FIFA_BEST3_TABLE = {
+  // Combinación real del torneo 2026: B,D,E,F,I,J,K,L
+  'B-D-E-F-I-J-K-L': { '74':'D','77':'F','79':'E','80':'K','81':'B','82':'I','85':'J','87':'L' },
+  // Otras combinaciones comunes (se completan según avance el torneo)
+  'A-B-D-E-F-I-J-K': { '74':'D','77':'F','79':'E','80':'K','81':'B','82':'I','85':'A','87':'J' },
+  'B-D-E-F-G-I-J-K': { '74':'D','77':'F','79':'E','80':'K','81':'B','82':'I','85':'J','87':'G' },
+  'B-C-D-E-F-I-J-K': { '74':'D','77':'F','79':'C','80':'K','81':'B','82':'I','85':'J','87':'E' },
+};
+
+// Slots best3 con los grupos elegibles (según Annex C regulaciones FIFA 2026)
 const BEST3_SLOTS = {
   '74': ['A','B','C','D','F'],
   '77': ['C','D','F','G','H'],
@@ -465,7 +495,6 @@ const BEST3_SLOTS = {
 };
 
 function calcBest3Assignments() {
-  // Calcular el tercer equipo de cada grupo y sus stats
   const allLetters = Object.keys(GROUPS);
   const thirds = [];
   let completedGroups = 0;
@@ -475,56 +504,46 @@ function calcBest3Assignments() {
     if (complete) completedGroups++;
     const team = sorted[2];
     if (team && st[team]) {
-      thirds.push({
-        team, grp: letter,
-        pts: st[team].pts,
-        dg:  st[team].gf - st[team].gc,
-        gf:  st[team].gf,
-        complete,
-      });
+      thirds.push({ team, grp: letter, pts: st[team].pts,
+        dg: st[team].gf - st[team].gc, gf: st[team].gf, complete });
     }
   }
 
-  // Solo calcular cuando todos los grupos terminaron
-  const allComplete = completedGroups === allLetters.length;
-  if (!allComplete) return null;
+  if (completedGroups < allLetters.length) return null;
 
-  // Ordenar por criterios FIFA: pts → DG → GF → grupo alfabético
-  thirds.sort((a, b) =>
-    b.pts - a.pts || b.dg - a.dg || b.gf - a.gf || a.grp.localeCompare(b.grp)
-  );
-
-  // Tomar los 8 mejores terceros
+  thirds.sort((a,b) => b.pts-a.pts || b.dg-a.dg || b.gf-a.gf || a.grp.localeCompare(b.grp));
   const best8 = thirds.slice(0, 8);
   if (best8.length < 8) return null;
 
-  // Asignar cada tercero a un slot mediante backtracking
-  // (los slots más restrictivos primero para mayor eficiencia)
-  const slotsOrdered = Object.entries(BEST3_SLOTS)
-    .sort((a, b) => a[1].length - b[1].length);
+  // 1. Intentar con la tabla oficial de FIFA (más precisa)
+  const comboKey = best8.map(t => t.grp).sort().join('-');
+  if (FIFA_BEST3_TABLE[comboKey]) {
+    const grpMap = Object.fromEntries(best8.map(t => [t.grp, t.team]));
+    const assignment = {};
+    Object.entries(FIFA_BEST3_TABLE[comboKey]).forEach(([mid, grp]) => {
+      if (grpMap[grp]) assignment[mid] = grpMap[grp];
+    });
+    return assignment;
+  }
 
+  // 2. Fallback: backtracking por restricciones (menos preciso pero funcional)
+  const slotsOrdered = Object.entries(BEST3_SLOTS).sort((a,b) => a[1].length - b[1].length);
   const assignment = {};
   const usedGroups = new Set();
-
   function backtrack(idx) {
     if (idx >= slotsOrdered.length) return true;
-    const [matchId, eligibleGroups] = slotsOrdered[idx];
-    // Candidatos: están en best8, su grupo está en los elegibles, y no fue usado
-    const candidates = best8.filter(t =>
-      eligibleGroups.includes(t.grp) && !usedGroups.has(t.grp)
-    );
-    for (const cand of candidates) {
-      assignment[matchId] = cand.team;
-      usedGroups.add(cand.grp);
-      if (backtrack(idx + 1)) return true;
+    const [matchId, eligible] = slotsOrdered[idx];
+    const candidates = best8.filter(t => eligible.includes(t.grp) && !usedGroups.has(t.grp));
+    for (const c of candidates) {
+      assignment[matchId] = c.team;
+      usedGroups.add(c.grp);
+      if (backtrack(idx+1)) return true;
       delete assignment[matchId];
-      usedGroups.delete(cand.grp);
+      usedGroups.delete(c.grp);
     }
     return false;
   }
-
-  const ok = backtrack(0);
-  return ok ? assignment : null;
+  return backtrack(0) ? assignment : null;
 }
 
 function getBest3Team(matchId) {
@@ -532,8 +551,22 @@ function getBest3Team(matchId) {
   return _best3Cache ? _best3Cache[matchId] : null;
 }
 
-// Invalidar el caché cuando cambian los resultados
-const _origSaveScores = typeof saveScores === 'function' ? saveScores : null;
+// Cache de equipos resueltos para partidos de eliminatorias
+// (necesario para detectar partidos en vivo en ESPN)
+let _koTeamsCache = null;
+function getResolvedKoTeams() {
+  if (_koTeamsCache) return _koTeamsCache;
+  const map = {}; // matchId → { home, away }
+  for (const round of KO_ROUNDS) {
+    for (const m of round.matches) {
+      const t1 = resolveTeam(m.s1, m.id);
+      const t2 = resolveTeam(m.s2, m.id);
+      if (t1 && t2) map[m.id] = { home: t1, away: t2 };
+    }
+  }
+  _koTeamsCache = map;
+  return map;
+}
 
 // ════════════════════════════════════════════════════
 //  KO RESOLVER
@@ -556,8 +589,16 @@ function resolveTeam(source, matchId) {
     const team1 = resolveTeam(koMatch.s1, koMatch.id);
     const team2 = resolveTeam(koMatch.s2, koMatch.id);
     if (!team1 || !team2) return null;
-    if (source.type === 'winner') return s.home > s.away ? team1 : team2;
-    if (source.type === 'loser')  return s.home > s.away ? team2 : team1;
+    // Si hay penales, el ganador es quien ganó los penales (el resultado 90min puede ser empate)
+    let winner, loser;
+    if (s.penH != null && s.penA != null) {
+      winner = s.penH > s.penA ? team1 : team2;
+      loser  = s.penH > s.penA ? team2 : team1;
+    } else {
+      winner = s.home > s.away ? team1 : team2;
+      loser  = s.home > s.away ? team2 : team1;
+    }
+    return source.type === 'winner' ? winner : loser;
   }
   return null;
 }
@@ -782,7 +823,9 @@ function renderKnockout() {
       const canPlay = team1 && team2;
       let scoreHtml;
       if (s && s.status !== 'delete') {
-        scoreHtml = s.status==='live' ? `<div class="ko-score live">${s.home}·${s.away}</div>` : `<div class="ko-score done">${s.home} - ${s.away}</div>`;
+        scoreHtml = s.status==='live'
+          ? `<div class="ko-score live">${s.home}·${s.away}</div>`
+          : `<div class="ko-score done">${s.home} - ${s.away}${s.penH != null && s.penA != null ? `<span class="ko-pen"> (pen ${s.penH}-${s.penA})</span>` : ''}</div>`;
       } else {
         scoreHtml = `<div class="ko-score">${m.time !== '--:--' ? m.time+' ARG' : m.date}</div>`;
       }
@@ -829,6 +872,8 @@ function openModal(matchId) {
   document.getElementById('inp-home').value = s ? s.home : '';
   document.getElementById('inp-away').value = s ? s.away : '';
   document.getElementById('inp-status').value = s ? s.status : 'finished';
+  const penRow = document.getElementById('pen-row');
+  if (penRow) penRow.style.display = 'none';
   document.getElementById('score-modal').classList.add('open');
   document.getElementById('inp-home').focus();
 }
@@ -836,8 +881,8 @@ function openModal(matchId) {
 function openKoModal(matchId) {
   const koMatch = findKoMatch(matchId);
   if (!koMatch) return;
-  const team1 = resolveTeam(koMatch.s1);
-  const team2 = resolveTeam(koMatch.s2);
+  const team1 = resolveTeam(koMatch.s1, matchId);
+  const team2 = resolveTeam(koMatch.s2, matchId);
   if (!team1 || !team2) return;
   const s = getScore(matchId);
   document.getElementById('modal-id').value = matchId;
@@ -848,6 +893,13 @@ function openKoModal(matchId) {
   document.getElementById('inp-home').value = s ? s.home : '';
   document.getElementById('inp-away').value = s ? s.away : '';
   document.getElementById('inp-status').value = s ? s.status : 'finished';
+  // Penales
+  const penRow = document.getElementById('pen-row');
+  if (penRow) {
+    penRow.style.display = '';
+    document.getElementById('inp-pen-home').value = s?.penH ?? '';
+    document.getElementById('inp-pen-away').value = s?.penA ?? '';
+  }
   document.getElementById('score-modal').classList.add('open');
   document.getElementById('inp-home').focus();
 }
@@ -863,8 +915,12 @@ function saveScore() {
     const h = parseInt(document.getElementById('inp-home').value);
     const a = parseInt(document.getElementById('inp-away').value);
     if (isNaN(h) || isNaN(a)) { alert('Ingresá los goles de ambos equipos'); return; }
-    // auto: false = override manual; el auto-sync no lo va a pisar
-    scores[id] = { home: h, away: a, status, auto: false };
+    const penHEl = document.getElementById('inp-pen-home');
+    const penAEl = document.getElementById('inp-pen-away');
+    const penH = (penHEl && penHEl.value !== '') ? parseInt(penHEl.value) : null;
+    const penA = (penAEl && penAEl.value !== '') ? parseInt(penAEl.value) : null;
+    scores[id] = { home: h, away: a, status, auto: false,
+      ...(penH != null && penA != null ? { penH, penA } : {}) };
   }
   saveScores(); closeModal(); refreshAll();
 }

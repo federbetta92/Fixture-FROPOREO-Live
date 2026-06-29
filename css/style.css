@@ -749,3 +749,6 @@ button { cursor: pointer; font-family: inherit; }
   font-size: 12px; cursor: pointer; font-family: 'Barlow Condensed', sans-serif;
 }
 .test-sound-btn:active { background: rgba(255,255,255,.15); }
+
+/* ── Penales en bracket KO ───────────────────────────── */
+.ko-pen { font-size: 11px; opacity: .65; margin-left: 4px; }
