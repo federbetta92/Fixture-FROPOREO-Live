@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29T23:28:29.889Z",
+  "generatedAt": "2026-06-29T23:29:31.360Z",
   "debugLog": [
     {
       "date": "20260627",
@@ -94,7 +94,7 @@
       "awayEN": "Paraguay",
       "homeES": "Alemania",
       "awayES": "Paraguay",
-      "statusName": "STATUS_SHOOTOUT",
+      "statusName": "STATUS_FINAL_PEN",
       "matchedId": null
     },
     {
