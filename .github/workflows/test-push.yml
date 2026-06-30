@@ -8,34 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 🔍 Ver estado real de ESPN ahora mismo
+      - name: 🔍 Inspeccionar estructura real de penales ESPN
         run: |
-          TODAY=$(date -u +%Y%m%d)
-          curl -s "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=$TODAY" \
-            -H "User-Agent: Mozilla/5.0" > /tmp/espn.json
+          curl -s "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260629" \
+            -H "User-Agent: Mozilla/5.0" > /tmp/espn_0629.json
           python3 -c "
           import json
-          d = json.load(open('/tmp/espn.json'))
-          events = d.get('events', [])
-          out = {'fetched_at_utc': '$(date -u +%Y-%m-%dT%H:%M:%SZ)', 'date_queried': '$TODAY', 'event_count': len(events), 'events': []}
-          for e in events:
+          d = json.load(open('/tmp/espn_0629.json'))
+          for e in d.get('events', []):
               comp = e['competitions'][0]
-              status = comp['status']['type']
               home = comp['competitors'][0]['team']['displayName']
               away = comp['competitors'][1]['team']['displayName']
-              hs = comp['competitors'][0].get('score','?')
-              as_ = comp['competitors'][1].get('score','?')
-              out['events'].append({
-                  'home': home, 'away': away, 'score': f'{hs}-{as_}',
-                  'status_name': status['name'], 'status_detail': status.get('detail',''),
-                  'iso_date': e.get('date'), 'clock': comp.get('status',{}).get('displayClock','')
-              })
-          json.dump(out, open('data/espn-live-check.json','w'), indent=2)
-          print(json.dumps(out, indent=2))
-          "
+              if 'German' in home or 'Paraguay' in away or 'German' in away or 'Paraguay' in home:
+                  print(json.dumps(e, indent=2)[:6000])
+          " > data/espn-pen-debug.json
       - name: 💾 Guardar
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/espn-live-check.json
-          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: estado ESPN" && git push)
+          git add data/espn-pen-debug.json
+          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: estructura penales ESPN" && git push)
