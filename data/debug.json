@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T01:00:41.215Z",
+  "generatedAt": "2026-06-30T01:01:42.644Z",
   "debugLog": [
     {
       "date": "20260628",
@@ -44,8 +44,8 @@
       "awayEN": "Morocco",
       "homeES": "Países Bajos",
       "awayES": "Marruecos",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "statusName": "STATUS_FIRST_HALF",
+      "matchedId": null
     },
     {
       "date": "20260630",
