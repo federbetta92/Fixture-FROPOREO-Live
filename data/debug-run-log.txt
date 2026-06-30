@@ -1,0 +1,18 @@
+🔄 Actualizando resultados del Mundial 2026 (grupos + eliminatorias)...
+
+📅 20260628
+  ✓ 73: Sudáfrica 0-1 Canadá [finished]
+📅 20260629
+  ✓ 76: Brasil 2-1 Japón [finished]
+  ✓ 74: Alemania 1-1 Paraguay [finished] (pen 3-4)
+  ✓ 75: Países Bajos 1-1 Marruecos [finished] (pen 2-3)
+📅 20260630
+  ✓ 78: Costa de Marfil 0-1 Noruega [live]
+📅 20260701
+
+✅ 77 resultados guardados (grupos + eliminatorias).
+
+📲 Detectando cambios para notificaciones...
+  📲 Push OK → "🏟️ ¡Arrancó!": Costa de Marfil vs Noruega
+   1 notificaciones enviadas, 0 a reintentar. Total: 218
+EXIT_CODE=0
