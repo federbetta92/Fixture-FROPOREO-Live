@@ -33,6 +33,7 @@ jobs:
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
+          set +e
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
@@ -42,25 +43,23 @@ jobs:
             ITER=$((ITER+1))
             echo "═══ Iteración $ITER — $(date -u +'%H:%M:%S') UTC ═══"
 
-            if ! node scripts/fetch-scores.js > /tmp/run.log 2>&1; then
-              echo "⚠️ fetch-scores.js falló, guardando error"
-              echo "{\"error\": $(cat /tmp/run.log | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'), \"at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\", \"iter\": $ITER}" > data/last-error.json
-            else
-              rm -f data/last-error.json
-            fi
-            cat /tmp/run.log
+            node scripts/fetch-scores.js
+            echo "(exit code: $?)"
 
-            git add data/scores.json data/debug.json data/notifications-sent.json data/last-error.json 2>/dev/null
-            if git diff --staged --quiet; then
+            git add data/scores.json data/debug.json data/notifications-sent.json 2>/dev/null
+            if git diff --staged --quiet 2>/dev/null; then
               echo "Sin cambios."
             else
-              git commit -m "⚽ Auto: resultados $(date -u +'%H:%M UTC')"
-              if ! git push; then
+              git commit -m "⚽ Auto: resultados $(date -u +'%H:%M UTC')" 2>&1
+              git push 2>&1
+              if [ $? -ne 0 ]; then
                 echo "⚠️ push falló, reintentando con pull --rebase"
-                git pull --rebase origin master && git push
+                git pull --rebase origin master 2>&1
+                git push 2>&1
               fi
             fi
 
             sleep 60
           done
           echo "✅ Loop de 5h45 completo, terminando job (el próximo tick del cron relanza)"
+          exit 0

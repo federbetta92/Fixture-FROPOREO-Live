@@ -1,115 +1,21 @@
 {
-  "generatedAt": "2026-06-30T01:42:39.367Z",
+  "generatedAt": "2026-06-30T18:20:01.507Z",
   "debugLog": [
     {
       "date": "20260628",
-      "endpoint": "world",
-      "eventsFound": 1
-    },
-    {
-      "date": "20260628",
-      "homeEN": "South Africa",
-      "awayEN": "Canada",
-      "homeES": "Sudáfrica",
-      "awayES": "Canadá",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": null
+      "fetchError": "JSON parse error"
     },
     {
       "date": "20260629",
-      "endpoint": "world",
-      "eventsFound": 3
-    },
-    {
-      "date": "20260629",
-      "homeEN": "Brazil",
-      "awayEN": "Japan",
-      "homeES": "Brasil",
-      "awayES": "Japón",
-      "statusName": "STATUS_FULL_TIME",
-      "matchedId": null
-    },
-    {
-      "date": "20260629",
-      "homeEN": "Germany",
-      "awayEN": "Paraguay",
-      "homeES": "Alemania",
-      "awayES": "Paraguay",
-      "statusName": "STATUS_FINAL_PEN",
-      "matchedId": null
-    },
-    {
-      "date": "20260629",
-      "homeEN": "Netherlands",
-      "awayEN": "Morocco",
-      "homeES": "Países Bajos",
-      "awayES": "Marruecos",
-      "statusName": "STATUS_IN_PROGRESS",
-      "matchedId": null
+      "fetchError": "JSON parse error"
     },
     {
       "date": "20260630",
-      "endpoint": "world",
-      "eventsFound": 3
-    },
-    {
-      "date": "20260630",
-      "homeEN": "Ivory Coast",
-      "awayEN": "Norway",
-      "homeES": "Costa de Marfil",
-      "awayES": "Noruega",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
-    },
-    {
-      "date": "20260630",
-      "homeEN": "France",
-      "awayEN": "Sweden",
-      "homeES": "Francia",
-      "awayES": "Suecia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
-    },
-    {
-      "date": "20260630",
-      "homeEN": "Mexico",
-      "awayEN": "Ecuador",
-      "homeES": "México",
-      "awayES": "Ecuador",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "fetchError": "JSON parse error"
     },
     {
       "date": "20260701",
-      "endpoint": "world",
-      "eventsFound": 3
-    },
-    {
-      "date": "20260701",
-      "homeEN": "England",
-      "awayEN": "Congo DR",
-      "homeES": "Inglaterra",
-      "awayES": "RD de Congo",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
-    },
-    {
-      "date": "20260701",
-      "homeEN": "Belgium",
-      "awayEN": "Senegal",
-      "homeES": "Bélgica",
-      "awayES": "Senegal",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
-    },
-    {
-      "date": "20260701",
-      "homeEN": "United States",
-      "awayEN": "Bosnia-Herzegovina",
-      "homeES": "Estados Unidos",
-      "awayES": "Bosnia",
-      "statusName": "STATUS_SCHEDULED",
-      "skipped": "scheduled"
+      "fetchError": "JSON parse error"
     }
   ]
 }
