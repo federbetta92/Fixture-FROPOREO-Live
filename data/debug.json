@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-06-30T18:20:01.507Z",
+  "generatedAt": "2026-06-30T18:22:04.797Z",
   "debugLog": [
     {
       "date": "20260628",
-      "fetchError": "JSON parse error"
+      "eventsFound": 1
     },
     {
       "date": "20260629",
-      "fetchError": "JSON parse error"
+      "eventsFound": 3
     },
     {
       "date": "20260630",
-      "fetchError": "JSON parse error"
+      "eventsFound": 3
     },
     {
       "date": "20260701",
-      "fetchError": "JSON parse error"
+      "eventsFound": 3
     }
   ]
 }
