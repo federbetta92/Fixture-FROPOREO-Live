@@ -1,4 +1,4 @@
-name: "🧪 Diagnóstico fetch-scores"
+name: "🧪 Test Push Notification"
 on:
   workflow_dispatch:
 permissions:
@@ -8,24 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: 🔍 Correr fetch-scores.js una vez y capturar error completo
+      - name: 🔍 Ejecutar fetch-scores.js con captura completa
         env:
           ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
-          node scripts/fetch-scores.js > /tmp/out.log 2>&1
+          set +e
+          node scripts/fetch-scores.js > /tmp/full.log 2>&1
           EXIT_CODE=$?
-          echo "Exit code: $EXIT_CODE"
-          python3 -c "
-          import json
-          log = open('/tmp/out.log').read()
-          json.dump({'exitCode': $EXIT_CODE, 'output': log[-8000:]}, open('data/debug-run.json','w'), indent=2)
-          "
-      - name: 💾 Guardar
+          echo "EXIT_CODE=$EXIT_CODE" >> /tmp/full.log
+          cp /tmp/full.log data/debug-run-log.txt
+      - name: 💾 Guardar log completo
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/debug-run.json
-          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: debug run output" && git push)
+          git add data/debug-run-log.txt
+          git diff --staged --quiet && echo "sin cambios" || (git commit -m "diag: log completo de ejecucion" && git push)
