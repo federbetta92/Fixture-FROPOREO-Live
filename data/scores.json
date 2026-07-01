@@ -13,7 +13,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.862Z",
+      "updatedAt": "2026-07-01T21:09:49.836Z",
       "firstLiveAt": null,
       "penH": 3,
       "penA": 4
@@ -23,7 +23,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.863Z",
+      "updatedAt": "2026-07-01T21:09:49.837Z",
       "firstLiveAt": null,
       "penH": 2,
       "penA": 3
@@ -33,7 +33,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.861Z",
+      "updatedAt": "2026-07-01T21:09:49.835Z",
       "firstLiveAt": null
     },
     "77": {
@@ -41,7 +41,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.888Z",
+      "updatedAt": "2026-07-01T21:09:49.849Z",
       "firstLiveAt": "2026-06-30T21:01:21.642Z"
     },
     "78": {
@@ -49,7 +49,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.887Z",
+      "updatedAt": "2026-07-01T21:09:49.849Z",
       "firstLiveAt": "2026-06-30T18:22:04.782Z"
     },
     "79": {
@@ -57,7 +57,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.888Z",
+      "updatedAt": "2026-07-01T21:09:49.850Z",
       "firstLiveAt": "2026-07-01T02:01:59.467Z"
     },
     "80": {
@@ -65,7 +65,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.917Z",
+      "updatedAt": "2026-07-01T21:09:49.859Z",
       "firstLiveAt": "2026-07-01T16:02:13.274Z"
     },
     "82": {
@@ -73,7 +73,7 @@
       "away": 1,
       "status": "live",
       "auto": true,
-      "updatedAt": "2026-07-01T21:08:48.917Z",
+      "updatedAt": "2026-07-01T21:09:49.860Z",
       "firstLiveAt": "2026-07-01T20:02:40.455Z"
     },
     "A1": {
@@ -893,6 +893,6 @@
       "firstLiveAt": "2026-06-28T02:02:24.824Z"
     }
   },
-  "updatedAt": "2026-07-01T21:08:48.934Z",
+  "updatedAt": "2026-07-01T21:09:49.870Z",
   "matchCount": 81
 }
