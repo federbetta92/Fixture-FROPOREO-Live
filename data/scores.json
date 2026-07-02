@@ -41,7 +41,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-02T05:42:35.425Z",
+      "updatedAt": "2026-07-02T05:43:36.829Z",
       "firstLiveAt": "2026-06-30T21:01:21.642Z"
     },
     "78": {
@@ -49,7 +49,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-02T05:42:35.424Z",
+      "updatedAt": "2026-07-02T05:43:36.828Z",
       "firstLiveAt": "2026-06-30T18:22:04.782Z"
     },
     "79": {
@@ -57,7 +57,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-02T05:42:35.426Z",
+      "updatedAt": "2026-07-02T05:43:36.830Z",
       "firstLiveAt": "2026-07-01T02:01:59.467Z"
     },
     "80": {
@@ -65,7 +65,7 @@
       "away": 1,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-02T05:42:35.447Z",
+      "updatedAt": "2026-07-02T05:43:36.883Z",
       "firstLiveAt": "2026-07-01T16:02:13.274Z"
     },
     "81": {
@@ -73,7 +73,7 @@
       "away": 0,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-02T05:42:35.448Z",
+      "updatedAt": "2026-07-02T05:43:36.884Z",
       "firstLiveAt": "2026-07-02T00:02:01.673Z"
     },
     "82": {
@@ -81,7 +81,7 @@
       "away": 2,
       "status": "finished",
       "auto": true,
-      "updatedAt": "2026-07-02T05:42:35.447Z",
+      "updatedAt": "2026-07-02T05:43:36.884Z",
       "firstLiveAt": "2026-07-01T20:02:40.455Z"
     },
     "A1": {
@@ -901,6 +901,6 @@
       "firstLiveAt": "2026-06-28T02:02:24.824Z"
     }
   },
-  "updatedAt": "2026-07-02T05:42:35.497Z",
+  "updatedAt": "2026-07-02T05:43:36.949Z",
   "matchCount": 82
 }
